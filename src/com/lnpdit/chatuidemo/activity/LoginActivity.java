@@ -16,6 +16,7 @@ package com.lnpdit.chatuidemo.activity;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 import lnpdit.stategrid.informatization.data.MessengerService;
-import lnpdit.stategrid.informatization.tools.UpdataInfo;
 import lnpdit.stategrid.informatization.tools.UpdataInfoParser;
+import lnpdit.stategrid.informatization.tools.UpdateInfo;
 import lnpdit.stategrid.informatization.tools.UpdateManager;
 
 import org.ksoap2.SoapEnvelope;
@@ -34,6 +35,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -57,6 +59,7 @@ import android.widget.Toast;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.easemob.EMCallBack;
 import com.easemob.chat.EMChatManager;
@@ -78,11 +81,13 @@ public class LoginActivity extends BaseActivity {
 	public static final int REQUEST_CODE_SETNICK=1;
 	private EditText usernameEditText;
 	private EditText passwordEditText;
-	private UpdataInfo info = new UpdataInfo();
+	private UpdateInfo info = new UpdateInfo();
+	public static String localVersion="1";
+	public static String serVersion="1";
 
 	private boolean progressShow;
 	private Context context;
-	private CheckVersion checkVersion;
+	
 	Button login_bt;
 	ProgressBar progressbar;
 	
@@ -116,7 +121,9 @@ public class LoginActivity extends BaseActivity {
 //		intent.putExtra("titleIsCancel",true);
 //		intent.putExtra("msg", "请设置当前用户的昵称");
 //		startActivityForResult(intent, REQUEST_CODE_SETNICK);
-		checkVersion.run();
+		CheckVersion ck = new CheckVersion();
+		Thread th = new Thread(ck);
+		th.start();
 	}
 	
 	public void init()
@@ -540,7 +547,7 @@ public class LoginActivity extends BaseActivity {
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setConnectTimeout(5000);
 				InputStream is = conn.getInputStream();
-				info = UpdataInfoParser.getUpdataInfo(is);
+				info = UpdataInfoParser.getUpdateInfo(is);
 				PackageManager packageManager = getPackageManager();  
 				PackageInfo localVersion = packageManager.getPackageInfo(getPackageName(), 0); 
 				System.out.println("VersionActivity            ----------->          info = " + info);
@@ -559,28 +566,6 @@ public class LoginActivity extends BaseActivity {
 		}
 
 	}
-	/* 
-	* 用pull解析器解析服务器返回的xml文件 (xml封装了版本号) 
-	 */  
-	public static UpdataInfo getUpdataInfo(InputStream is) throws Exception{  
-	   XmlPullParser  parser = Xml.newPullParser();    
-	   parser.setInput(is, "utf-8");//设置解析的数据源    
-	   int type = parser.getEventType();  
-	   UpdataInfo info = new UpdataInfo();//实体   
-	   	while(type != XmlPullParser.END_DOCUMENT ){  
-	        switch (type) {  
-	        case XmlPullParser.START_TAG:  
-	          if("version".equals(parser.getName())){  
-	              info.setVersion(parser.nextText()); //获取版本号   
-	            }else if ("url".equals(parser.getName())){  
-	                info.setUrl(parser.nextText()); //获取要升级的APK文件   
-	            }else if ("description".equals(parser.getName())){  
-	                info.setDescription(parser.nextText()); //获取该文件的信息   
-	            }  
-	            break;  
-	        }  
-	        type = parser.next();  
-	    }  
-	    return info;  
-	}
 }
+
+

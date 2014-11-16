@@ -1,6 +1,6 @@
 package lnpdit.stategrid.informatization.tools;
 
-public class UpdataInfo {
+public class UpdateInfo {
 	private String version;
 	private String url;
 	private String description;

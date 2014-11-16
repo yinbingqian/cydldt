@@ -37,7 +37,7 @@ public class ForwardMessageActivity extends PickContactNoCheckboxActivity {
 	protected void onListItemClick(int position) {
 		if (position != 0) {
 			selectUser = contactAdapter.getItem(position);
-			Intent intent = new Intent(ForwardMessageActivity.this, AlertDialog.class);
+			Intent intent = new Intent(ForwardMessageActivity.this, AlertDialog1.class);
 			intent.putExtra("cancel", true);
 			intent.putExtra("titleIsCancel", true);
 			intent.putExtra("msg", getString(R.string.confirm_forward_to, selectUser.getUsername()));

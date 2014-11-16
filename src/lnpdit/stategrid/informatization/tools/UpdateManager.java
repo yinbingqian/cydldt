@@ -79,16 +79,16 @@ public class UpdateManager {
 	}
 
 	// 外部接口让主Activity调用
-	public void checkUpdateInfo(String ver) {
-		String mVer = ver;
-		showNoticeDialog(mVer);
+	public void checkUpdateInfo(String des) {
+		String mDes = des;
+		showNoticeDialog(mDes);
 	}
 
-	private void showNoticeDialog(String version_show) {
+	private void showNoticeDialog(String des) {
 		AlertDialog.Builder builder = new Builder(mContext);
-		final String versionId = version_show;
+		//final String versionId = version_show;
 		builder.setTitle("软件版本更新");
-		builder.setMessage(updateMsg);
+		builder.setMessage(des);
 		builder.setPositiveButton("下载", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();

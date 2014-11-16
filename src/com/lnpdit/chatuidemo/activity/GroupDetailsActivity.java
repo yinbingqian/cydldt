@@ -142,7 +142,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(GroupDetailsActivity.this, AlertDialog.class);
+				Intent intent=new Intent(GroupDetailsActivity.this, AlertDialog1.class);
 				intent.putExtra("cancel",true);
 				intent.putExtra("titleIsCancel", true);
 				intent.putExtra("msg","确定清空此群的聊天记录吗？");
@@ -428,7 +428,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 						if (isInDeleteMode) {
 							// 如果是删除自己，return
 							if (EMChatManager.getInstance().getCurrentUser().equals(username)) {
-								startActivity(new Intent(GroupDetailsActivity.this, AlertDialog.class).putExtra("msg", "不能删除自己"));
+								startActivity(new Intent(GroupDetailsActivity.this, AlertDialog1.class).putExtra("msg", "不能删除自己"));
 								return;
 							}
 							if (!NetUtils.hasNetwork(getApplicationContext())) {

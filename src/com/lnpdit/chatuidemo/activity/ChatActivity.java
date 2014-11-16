@@ -954,7 +954,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener {
 	 */
 	public void emptyHistory(View view) {
 		startActivityForResult(
-				new Intent(this, AlertDialog.class).putExtra("titleIsCancel", true).putExtra("msg", "是否清空所有聊天记录").putExtra("cancel", true),
+				new Intent(this, AlertDialog1.class).putExtra("titleIsCancel", true).putExtra("msg", "是否清空所有聊天记录").putExtra("cancel", true),
 				REQUEST_CODE_EMPTY_HISTORY);
 	}
 

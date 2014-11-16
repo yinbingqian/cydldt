@@ -69,22 +69,9 @@ public class InformationActivity extends Activity implements OnClickListener {
 			case R.id.yuangongpeixun_bt:
 				startActivity(new Intent(InformationActivity.this, PeixunQuestionActivity.class));
 				break;
-//			case R.id.xinxijiaoliu_bt:
-//				try {
-//					Intent intent = new Intent();
-//					intent.setClassName("com.lnpdit.chatuidemo",
-//							"com.lnpdit.chatuidemo.activity.LoginActivity");
-//					intent.putExtra("username", "wys");
-//					intent.putExtra("pwd", "111111");
-//					intent.putExtra("name", "王元石");
-//					startActivity(intent);
-//				} catch (Exception e) {
-//					// TODO: handle exception
-//					Toast.makeText(getApplicationContext(), "未安装一点通交流系统", Toast.LENGTH_SHORT).show();
-////					UpdateManager uManager = new UpdateManager(InformationActivity.this);
-////					uManager.downloadmeeting();
-//				}
-//				break;
+			case R.id.jiaoliu_bt:
+				startActivity(new Intent(InformationActivity.this, MainActivity.class).putExtra("from", "info"));
+				break;
 			case R.id.tupian_bt:
 				startActivity(new Intent(InformationActivity.this, PicActivity.class));
 				break;

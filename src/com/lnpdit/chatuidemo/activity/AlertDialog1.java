@@ -31,7 +31,7 @@ import com.lnpdit.chatuidemo.task.DownloadImageTask;
 import com.lnpdit.chatuidemo.utils.ImageCache;
 import com.easemob.util.ImageUtils;
 
-public class AlertDialog extends BaseActivity {
+public class AlertDialog1 extends BaseActivity {
 	private TextView mTextView;
 	private Button mButton;
 	private int position;

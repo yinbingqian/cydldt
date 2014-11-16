@@ -66,7 +66,7 @@ public class AddContactActivity extends BaseActivity{
 		if (getString(R.string.button_search).equals(saveText)) {
 			toAddUsername = name;
 			if(TextUtils.isEmpty(name)) {
-				startActivity(new Intent(this, AlertDialog.class).putExtra("msg", "请输入用户名"));
+				startActivity(new Intent(this, AlertDialog1.class).putExtra("msg", "请输入用户名"));
 				return;
 			}
 			
@@ -85,12 +85,12 @@ public class AddContactActivity extends BaseActivity{
 	 */
 	public void addContact(View view){
 		if(CydlApplication.getInstance().getUserName().equals(nameText.getText().toString())){
-			startActivity(new Intent(this, AlertDialog.class).putExtra("msg", "不能添加自己"));
+			startActivity(new Intent(this, AlertDialog1.class).putExtra("msg", "不能添加自己"));
 			return;
 		}
 		
 		if(CydlApplication.getInstance().getContactList().containsKey(nameText.getText().toString())){
-			startActivity(new Intent(this, AlertDialog.class).putExtra("msg", "此用户已是你的好友"));
+			startActivity(new Intent(this, AlertDialog1.class).putExtra("msg", "此用户已是你的好友"));
 			return;
 		}
 		

@@ -24,7 +24,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.TextView.BufferType;
 
-import com.lnpdit.chatuidemo.activity.AlertDialog;
+import com.lnpdit.chatuidemo.activity.AlertDialog1;
 import com.lnpdit.chatuidemo.activity.ChatActivity;
 import com.lnpdit.chatuidemo.utils.SmileUtils;
 
@@ -62,7 +62,7 @@ public class PasteEditText extends EditText{
             if(text.startsWith(ChatActivity.COPY_IMAGE)){
 //                intent.setDataAndType(Uri.fromFile(new File("/sdcard/mn1.jpg")), "image/*");     
                 text = text.replace(ChatActivity.COPY_IMAGE, "");
-                Intent intent = new Intent(context,AlertDialog.class);
+                Intent intent = new Intent(context,AlertDialog1.class);
                 intent.putExtra("title", "发送以下图片？");
                 intent.putExtra("forwardImage", text);
                 intent.putExtra("cancel", true);
