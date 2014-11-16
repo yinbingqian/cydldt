@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    android:background="@drawable/weather_item_bg" >
+
+    <RelativeLayout
+        android:id="@+id/left_layout"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerVertical="true"
+        android:background="@color/red_new_style" >
+
+        <TextView
+            android:id="@+id/temp_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="22℃"
+            android:textColor="@color/white"
+            android:textSize="45dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/left_layout"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2014/09/03"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/black" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/hum_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="湿度：22%"
+                android:textColor="@color/dimgray"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/wind_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="风向：东风"
+                android:textColor="@color/dimgray"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/windspeed_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="风速：3级"
+                android:textColor="@color/dimgray"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black" />
+
+</RelativeLayout>

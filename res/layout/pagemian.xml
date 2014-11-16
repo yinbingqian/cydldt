@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_bar_normal_bg" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="位置管理"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"  />
+
+        <Button
+            android:id="@+id/main_left"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/dk_06" />
+
+        <Button
+            android:id="@+id/main_right"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/dk_03" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top" >
+
+        <RelativeLayout
+            android:id="@+id/rel33"
+            android:layout_width="250dip"
+            android:layout_height="250dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/daka_button" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="一键打卡"
+                android:textColor="@android:color/black"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/main_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="23dp"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_rel1"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/main_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dk_btn"
+        android:layout_marginTop="-25dip"
+        android:background="@color/state_grid_green" >
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/dk_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dip"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/dk_15"
+        android:text="打卡记录" />
+
+</RelativeLayout>

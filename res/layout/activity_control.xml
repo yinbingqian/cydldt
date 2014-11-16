@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/state_grid_green" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="现场管控"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button 
+            android:id="@+id/return_bt"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed"/>
+    </RelativeLayout>
+     <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="190dp"
+        android:background="#4e8177" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/banner_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cover_user_photo"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/index_bg_on"/>
+        </RelativeLayout>        
+    </RelativeLayout>  
+	<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_layout"
+        android:layout_marginTop="10dp" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/yujing_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_yujing"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/yujing_bt"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="天气预警"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/anpai_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_anpai"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/anpai_bt"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="工作安排"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/fankui_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_fankui"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/fankui_bt"
+                        android:gravity="center"
+                        android:text="信息反馈"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                  
+                </RelativeLayout>
+            </LinearLayout>
+    </RelativeLayout>   
+</LinearLayout>

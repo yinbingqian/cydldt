@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+<RelativeLayout
+        android:id="@+id/detail_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bottom_bg" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/detailed_event"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/travel_detail_left"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/kbg_11"
+        android:scrollbars="vertical"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/travel_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/time_bule" />
+
+            <TextView
+                android:id="@+id/travel_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/travel_detail_time"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/travel_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shuline_06" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/travel_detail_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="0.5dp"
+                android:text="@string/loading_reply"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shuline_06" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/travel_startdata_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/time_bule"
+                android:text="@string/travel_start_data" />
+
+            <TextView
+                android:id="@+id/travel_startdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/travel_startdata_title"
+                android:textColor="@android:color/white"
+                 />
+
+            <TextView
+                android:id="@+id/travel_enddata_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/travel_startdata_title"
+                android:layout_below="@+id/travel_startdata"
+                android:textColor="@color/time_bule"
+                android:text="@string/travel_end_data" />
+
+            <TextView
+                android:id="@+id/travel_enddata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/travel_startdata"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/travel_enddata_title"
+                android:textColor="@android:color/white"
+                />
+
+<TextView
+                android:id="@+id/travel_place_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/travel_enddata_title"
+                android:layout_below="@+id/travel_enddata"
+                android:textColor="@color/time_bule"
+                android:text="@string/tarvel_addr" />
+
+            <TextView
+                android:id="@+id/travel_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/travel_enddata"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/travel_status_title"
+                android:textColor="@android:color/white"
+                 />
+            <TextView
+                android:id="@+id/travel_status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/travel_place_title"
+                android:layout_below="@+id/travel_place"
+                android:textColor="@color/time_bule"
+                android:text="@string/audit_states" />
+
+            <TextView
+                android:id="@+id/travel_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/travel_place"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/travel_place_title"
+                android:textColor="@android:color/white"
+                 />
+            <TextView
+                android:id="@+id/travel_admin_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/travel_status_title"
+                android:layout_below="@+id/travel_status"
+                android:textColor="@color/time_bule"
+                android:text="@string/audit_people" />
+
+            <TextView
+                android:id="@+id/travel_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/travel_status"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/travel_admin_title"
+                android:textColor="@android:color/white"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

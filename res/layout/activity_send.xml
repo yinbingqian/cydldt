@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/send_topbar_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/state_grid_green" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="短信发送"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button 
+            android:id="@+id/return_bt"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/rcv_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_topbar_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:text="接收人："
+        android:textColor="@color/dimgray"
+        android:textSize="17dp" />
+    
+    <TextView
+        android:id="@+id/rcv_id_text"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:layout_below="@+id/send_topbar_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/dimgray"
+        android:textSize="17dp" />
+    
+    <Button 
+        android:id="@+id/choose_contact"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rcv_text"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="选择联系人"
+        android:textSize="17dp"/>
+    
+    <EditText 
+        android:id="@+id/content_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/choose_contact"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    
+    <Button 
+        android:id="@+id/send_bt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/content_edit"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="发送"
+        android:textSize="17dp"/>
+
+</RelativeLayout>

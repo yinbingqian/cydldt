@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/layout_contact"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/state_grid_green" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="联系人信息"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button 
+            android:id="@+id/return_bt"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contact_infor_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:layout_below="@+id/layout_contact"
+        android:background="@color/white" >
+
+        <lnpdit.stategrid.informatization.tools.CircularImage
+            android:id="@+id/cover_user_photo"
+            android:layout_width="90.0dip"
+            android:layout_height="90.0dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/cover_user_photo" >
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dept_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_text"
+                android:layout_marginTop="15dp"
+                android:text="部门"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/first_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/contact_infor_layout"
+        android:background="@color/state_grid_green" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/first_line"
+        android:background="#eeeeee" >
+
+        <RelativeLayout
+            android:id="@+id/mobile_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp" >
+
+            <TextView
+                android:id="@+id/mobilephone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="13812345678"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/call1_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/call_bt" />
+
+            <Button
+                android:id="@+id/msg1_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/call1_bt"
+                android:background="@drawable/msg_bt" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/second_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/mobile_layout"
+            android:background="@color/state_grid_green" />
+        </RelativeLayout>
+
+</RelativeLayout>

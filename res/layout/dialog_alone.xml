@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/sure"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/dialog_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_button"
+            android:text="@string/sure"
+            android:textColor="@color/time_bule" />
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="5.0dip"
+        android:layout_marginTop="5.0dip" >
+
+        <ImageView
+            android:id="@+id/list_in_journal_icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:background="@drawable/default_microhot" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/list_in_journal_icon1" >
+
+            <TextView
+                android:id="@+id/list_in_journal_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@id/list_in_journal_icon1"
+                android:lineSpacingMultiplier="1.2"
+                android:textColor="@color/black"
+                android:textSize="20.0dip"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/list_in_journal_content1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/list_in_journal_title1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/dimgray"
+                android:textSize="15.0dip" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="5.0dip"
+            android:layout_below="@id/list_in_journal_icon1" />
+    </RelativeLayout>
+
+</RelativeLayout>

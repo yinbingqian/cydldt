@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/indexpage"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray_e" >
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="#4e8177"
+        tools:ignore="ContentDescription" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <lnpdit.stategrid.informatization.tools.CircularImage
+                android:id="@+id/cover_user_photo"
+                android:layout_width="90.0dip"
+                android:layout_height="90.0dip"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/user_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cover_user_photo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="你好，用户"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/top_layout" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            tools:ignore="UselessParent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="DisableBaselineAlignment" >
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_information"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_information"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_information"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="企业微信"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_contact"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_contact"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_contact"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="通讯录"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_meeting"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_meeting"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_meeting"
+                        android:gravity="center"
+                        android:text="视频会议"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_message"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_message"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_message"
+                        android:gravity="center"
+                        android:text="短信发送"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="DisableBaselineAlignment" >
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_location"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_location"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_location"
+                        android:gravity="center"
+                        android:text="位置管理"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_mic"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_mic"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_mic"
+                        android:gravity="center"
+                        android:text="手机麦克"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_mail"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_mail"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_mail"
+                        android:gravity="center"
+                        android:text="手机邮箱"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/btn_control"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/menu_control"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/btn_control"
+                        android:gravity="center"
+                        android:text="现场管控"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

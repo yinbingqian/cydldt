@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ggbg_03" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/paizhao"
+                android:layout_width="100dp"
+                android:layout_height="85dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/upload_03"
+                android:text="@string/Photograph"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/xiangce"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="75dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/greenround2_03"
+                android:text="@string/Uploaded_from_phone"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/quxiao"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="220dp"
+                android:background="@drawable/upload_06"
+                android:layout_centerHorizontal="true"
+                android:text="@string/Cancel"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/center"
+    android:orientation="vertical" >
+
+    <!--
+       padding 内边距   layout_margin 外边距
+  		android:layout_alignParentTop 布局的位置是否处于顶部
+    -->
+
+    <RelativeLayout
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/login_div"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dip"
+            android:background="@drawable/background_login_div_bg"
+            android:padding="15dip" >
+
+            <!-- 服务器地址 -->
+
+            <TextView
+                android:id="@+id/login_address_input"
+                style="@style/normalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:text="@string/login_label_address" />
+
+            <EditText
+                android:id="@+id/serverip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_address_input"
+                android:hint="@string/writeip"
+                android:inputType="text"
+                android:singleLine="true"/>
+            <!-- 账号 -->
+
+            <TextView
+                android:id="@+id/login_user_input"
+                style="@style/normalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/serverip"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="3dp"
+                android:text="@string/login_label_username" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_user_input"
+                android:layout_marginBottom="5dip"
+                android:hint="@string/writeusername"
+                android:inputType="text"
+                android:singleLine="true" />
+            <!-- 密码 text -->
+
+            <TextView
+                android:id="@+id/login_password_input"
+                style="@style/normalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="3dp"
+                android:text="@string/login_label_password" />
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_password_input"
+                android:layout_marginBottom="5dip"
+                android:hint="@string/writepassword"
+                android:inputType="textPassword"
+                android:password="true"
+                android:singleLine="true" />
+            <!-- 登录button -->
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/pass"
+                android:layout_below="@id/pass"
+                android:background="@drawable/blue_button"
+                android:paddingTop="5dip"
+                android:text="@string/login_label_signin" />
+
+            <TextView
+                android:id="@+id/remember"
+                style="@style/normalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/btnLogin"
+                android:layout_alignBottom="@+id/btnLogin"
+                android:layout_alignLeft="@+id/pass"
+                android:paddingTop="5dip"
+                android:text="@string/remember" />
+
+            <com.mulong.widget.MySlipSwitch
+                android:id="@+id/main_myslipswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pass"
+                android:layout_toRightOf="@id/remember" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <ProgressBar
+            android:id="@+id/loginprocess"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateDrawable="@drawable/progressbar" >
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/loginprogresstext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000" >
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>

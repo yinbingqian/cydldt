@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/state_grid_green" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="员工培训"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/return_bt"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/question_content_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_layout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:id="@+id/question_bottom_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/question_answer_bt"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="查看答案" />
+
+        <Button
+            android:id="@+id/question_next_bt"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="下一题" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/question_bottom_layout"
+        android:layout_below="@+id/question_content_text"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/question_check_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <CheckBox
+                    android:id="@+id/question_cb_a"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="A"
+                    android:textColor="@color/black" />
+                <CheckBox
+                    android:id="@+id/question_cb_b"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="B"
+                    android:textColor="@color/black" />
+                <CheckBox
+                    android:id="@+id/question_cb_c"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="C"
+                    android:textColor="@color/black" />
+                <CheckBox
+                    android:id="@+id/question_cb_d"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="D"
+                    android:textColor="@color/black" />
+                <CheckBox
+                    android:id="@+id/question_cb_e"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="E"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/question_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <RadioButton
+                    android:id="@+id/question_rb_a"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="A"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/question_rb_b"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="B"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/question_rb_c"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="C"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/question_rb_d"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="D"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/question_rb_e"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="E"
+                    android:textColor="@color/black" />
+            </RadioGroup>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

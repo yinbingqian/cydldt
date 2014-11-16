@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newsbg" >
+ <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bottom_bg" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Message_Center"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/news_left"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+             android:layout_marginLeft="10dp"
+            android:background="@drawable/backbutton_pressed" />
+
+        <Button
+            android:id="@+id/news_right"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/caidan"
+            android:visibility="gone"
+             />
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_below="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/pic_03" />
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/niu_03"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="@string/Unread_Announcement"
+            android:textColor="@color/time_bule" />
+
+        <TextView
+            android:id="@+id/gonggao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/time_orange" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/niu_03"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="@string/Unread_report"
+            android:textColor="@color/time_bule" />
+
+        <TextView
+            android:id="@+id/huibao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/time_orange" />
+    </RelativeLayout>
+
+</RelativeLayout>

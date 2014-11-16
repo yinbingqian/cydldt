@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blue_deep">#33B5E5</color>
+    <color name="blue_light">#0099CC</color>
+    <color name="netease_red">#990000</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="gold">#b89766</color>
+    <color name="green_deep">#669900</color>
+    <color name="green_light">#99CC00</color>
+    <color name="item_common">#F111</color>
+    <color name="item_1">#F222</color>
+    <color name="item_2">#F000</color>
+    <color name="orange">#FFF48B00</color>
+    <color name="darkorange">#FF824600</color>
+    <color name="transparent_gray">#A000</color>
+    <color name="bg_color">#EDEDED</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="blue_viewfinder_laser">#ff53A701</color>
+    <color name="time_bule">#00d20b</color>
+    <color name="time_orange">#ef5308</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="text_blue">#336699</color>
+    <color name="header">#58567D</color>
+    <color name="grgray">#686868</color>
+    <color name="none">#00000000</color>
+    <color name="bg_copy">#ff181c26</color>
+    <color name="blue_font">#1C914D</color>
+    <color name="green_font">#386EC7</color>
+    <color name="red_font">#C1341A</color>
+    
+    
+    <color name="blue_news_line">#518DFD</color>
+    <color name="red_news_line">#FD6D52</color>
+    <color name="red_new_style">#ED1C24</color>
+    <color name="dimgray">#696969</color>
+    <color name="darkgray">#A9A9A9</color>
+    
+    <color name="state_grid_green">#4E8177</color>
+    <color name="gray_e">#EEEEEE</color>
+    <color name="gray_d">#B2B2B2</color>
+    <color name="gray_title">#F8F6F7</color>
+    
+    <color name="weather_orange">#FF8800</color>
+    <color name="weather_yellow">#FFBB33</color>
+    <color name="weather_red">#CC0000</color>
+    <color name="weather_blue">#0099CC</color>
+
+</resources>

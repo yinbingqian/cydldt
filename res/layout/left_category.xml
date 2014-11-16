@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/left_category_id"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/leftbg_01"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/sliding_tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <RelativeLayout
+                android:id="@+id/myProfile"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/menu_photo"
+                    android:layout_width="80dip"
+                    android:layout_height="80dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/nan_04" />
+
+                <TextView
+                    android:id="@+id/myname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/menu_photo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/fenge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myProfile"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/xian_03" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/menu_setting"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fenge"
+                android:orientation="vertical" >
+
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:focusable="true" >
+
+                            <TextView
+                                android:id="@+id/menu_btn11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:enabled="false"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/want_to_make_cards"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn11"
+                                android:background="@drawable/left_one_bg"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn22"
+                                android:background="@drawable/left_two_bg" />
+
+                            <TextView
+                                android:id="@+id/menu_btn22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/want_to_report"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:visibility="gone"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn33"
+                                android:background="@drawable/left_three_bg" />
+
+                            <TextView
+                                android:id="@+id/menu_btn33"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/Image_upload"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:visibility="gone"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btnmess"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btnmesst"
+                                android:background="@drawable/duan_03" />
+
+                            <TextView
+                                android:id="@+id/menu_btnmesst"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/ShortMessage"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_toreprt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_toreprt1"
+                                android:background="@drawable/yhb_06" />
+
+                            <TextView
+                                android:id="@+id/menu_toreprt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/tomyreport"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/menu_btn5_topline"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn5"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn55"
+                                android:background="@drawable/guiji_10" />
+
+                            <TextView
+                                android:id="@+id/menu_btn55"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/Employees_track"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/fenxian_last1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn6"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn66"
+                                android:background="@drawable/qj_07" />
+
+                            <TextView
+                                android:id="@+id/menu_btn66"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/leave_apply"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/fenxian_last2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn7"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn77"
+                                android:background="@drawable/qj_02" />
+
+                            <TextView
+                                android:id="@+id/menu_btn77"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/leave_record"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/menu_btn8_topline"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn8"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn88"
+                                android:background="@drawable/qj_05" />
+
+                            <TextView
+                                android:id="@+id/menu_btn88"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/to_leave_record"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/menu_btn9_topline"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn9"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn99"
+                                android:background="@drawable/cc_01" />
+
+                            <TextView
+                                android:id="@+id/menu_btn99"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/travel_apply"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/menu_btn10_topline"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn10"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn1010"
+                                android:background="@drawable/cc_02" />
+
+                            <TextView
+                                android:id="@+id/menu_btn1010"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/travel_record"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/menu_btn12_topline"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+
+                        <RelativeLayout
+                            android:id="@+id/menu_btn12"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/left_button"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@+id/menu_btn1212"
+                                android:background="@drawable/cc_03" />
+
+                            <TextView
+                                android:id="@+id/menu_btn1212"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:background="#00000000"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@string/to_travel_record"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/fenxian_last9"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/xian_03" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_setting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/left_button"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/xian_03" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="@string/setup"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

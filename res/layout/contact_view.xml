@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ggbg_03" >
+
+    <RelativeLayout
+        android:id="@+id/contact_view_main"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/txlbg_03" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/contact_view_topleft"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/btf_03" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/contact_view_topright"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/btf_05" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/contact_view_downleft"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/btf_09" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/contact_view_downright"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/btf_10" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/contact_view_pic_bg"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/xq_03" >
+
+            <ImageView
+                android:id="@+id/contact_view_pic"
+                android:layout_width="105dip"
+                android:layout_height="105dip"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/nan_04" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

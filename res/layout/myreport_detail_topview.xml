@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/kbg_10"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/nei_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/time_bule" />
+
+            <TextView
+                android:id="@+id/report_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/report_detail_time"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/report_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shuline_06" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/report_detail_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="0.5dp"
+                android:minLines="4"
+                android:text="@string/loading_reply"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:id="@+id/report_attach"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/report_detail_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/report_attach1_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" 
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach1_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:textColor="@android:color/white"
+                            android:maxEms="20"/>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach1_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7" 
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/report_attach2_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach2_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach2_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/report_attach3_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach3_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach3_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+						android:layout_weight="1.7"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/report_detail_huifu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/report_attach"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/hb_03"
+                android:gravity="center"
+                android:text="@string/reply"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/report_detail_topdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/kbg_07"
+        android:visibility="gone" />
+
+</LinearLayout>

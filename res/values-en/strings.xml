@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">3Gmonitor</string>
+	<string name="welcome">Welcome to use 3Gmonitor</string>
+	<string name="start">Please choose the device to watch video</string>
+	
+	<string name="ip">Server IP:</string>
+	<string name="username">UserName:</string>
+	<string name="password">PassWord:</string>
+	<string name="status">Status:</string>
+	<string name="remember">Remember Me</string>
+	<string name="autolog">Auto Log</string>
+	<string name="cancel">Cancel AutoLog</string>
+	<string name="nonetwork">sorry,there isn\'t network</string>	
+	
+	<string name="loginfail">username or password error</string>
+	<string name="device">Device</string>
+	<string name="yuntai">Holder</string>
+	<string name="paizhao">Photo</string>
+	<string name="luxiang">Video</string>
+	<string name="setting">Settings</string>	
+	<string name="set">Settings\tList</string>		
+	<string name="up">up</string>	
+	<string name="down">down</string>	
+	<string name="left">left</string>
+	<string name="right">right</string>		
+		
+	<string name="channel">Selector Channel</string>
+	<string name="sure">Message</string>
+	<string name="log">LogIn</string>
+	<string name="yes">OK</string>
+	<string name="back">Back</string>
+	<string name="close">exit</string>
+	<string name="ch01"> Channel One</string>
+	<string name="ch02"> Channel Two</string>
+	<string name="ch03"> Channel Three</string>
+	<string name="ch04"> Channel Four</string>
+	<string name="ch05"> Channel Five</string>
+	<string name="ch06"> Channel Six</string>
+	<string name="ch07"> Channel Seven</string>
+	<string name="ch08"> Channel Eight</string>
+	<string name="offline">Device had off-line</string>
+	<string name="nodevice">No device online</string>
+	<string name="onuser">Online device</string>
+	<string name="nouser">Havn\'t device online</string>
+	<string name="fail">Connect to server failure, please login again!</string>
+	<string name="quit">Are you sure that you want to exit?</string>
+	<string name="readme">Welcome to use 3Gmonitor!\n\n\t
+		3GMonitor is a smart phone video monitoring of the client software.
+		It used multithreading to decoding,
+		To ensure the speed and effectiveness of play.\n\t
+		After successful login to the main interface,
+		Click the screen below the menu bar of the device will show all the equipment online,
+		Click Device and then select the device channel to begin watching.\n\t
+		Images with the mobile phone screen anyway to switch auto-sensing,
+		Enjoy 3Gmonitor you perfect play experience brought.\n\n
+		Shortcut techniques:\n\n
+		help：\t click ?\n
+		Full screen：\tSingle-click the screen\n
+		Hide menu：\tClick the screen for a long time\n
+		Program exit：\tSingle-click the X\n\n
+		\t
+		\tThank you for your use!\n\n
+    				</string>
+	<string name="tip">Sorry! Without realizing function</string>
+</resources>
