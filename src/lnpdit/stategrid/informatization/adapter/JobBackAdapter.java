@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 public class JobBackAdapter extends BaseAdapter {
 	private class buttonViewHolder {
+		TextView appdate;
 		TextView apptime;
 		TextView appsender;
 		TextView appcontent;
@@ -75,6 +76,7 @@ public class JobBackAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.list_in_jobback, null);
 			holder = new buttonViewHolder();
 			holder.apptime = (TextView) convertView.findViewById(R.id.time_tv);
+			holder.appdate = (TextView) convertView.findViewById(R.id.date_tv);
 			holder.appsender = (TextView) convertView.findViewById(R.id.sender_tv);
 			holder.appcontent = (TextView) convertView.findViewById(R.id.content_tv);
 			holder.appimg = (ImageView) convertView.findViewById(R.id.pic_img);
@@ -91,9 +93,11 @@ public class JobBackAdapter extends BaseAdapter {
 			String Photo = (String) appInfo.get(keyString[6]);
 			String Type = (String) appInfo.get(keyString[7]);
 			String Crtime = (String) appInfo.get(keyString[8]);
+			String WorkTime[] = Crtime.split(" ");
 
-			holder.apptime.setText(Crtime);
-			holder.appsender.setText("发送人"+FromName);
+			holder.apptime.setText(WorkTime[0]);
+			holder.appdate.setText(WorkTime[1]);
+			holder.appsender.setText("发送人:"+FromName);
 			holder.appcontent.setText(Content);
 			
 			String img_url = MessengerService.PIC_JOB + Photo;
