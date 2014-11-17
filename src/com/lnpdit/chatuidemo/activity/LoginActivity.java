@@ -549,13 +549,15 @@ public class LoginActivity extends BaseActivity {
 				InputStream is = conn.getInputStream();
 				info = UpdataInfoParser.getUpdateInfo(is);
 				PackageManager packageManager = getPackageManager();  
-				PackageInfo localVersion = packageManager.getPackageInfo(getPackageName(), 0); 
+				PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0); 
+				localVersion = packageInfo.versionName;
 				System.out.println("VersionActivity            ----------->          info = " + info);
-				if (info.getVersion().equals(localVersion)) {
+				serVersion = info.getVersion();
+				if (serVersion.equals(localVersion)) {
 					init();
 				} else {
 					Looper.prepare();
-					String download_url = info.getUrl();
+					//String download_url = info.getUrl();
 					UpdateManager uManager = new UpdateManager(LoginActivity.this);
 					uManager.checkUpdateInfo(info.getDescription());
 					Looper.loop();

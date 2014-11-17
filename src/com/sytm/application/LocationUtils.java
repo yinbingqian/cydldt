@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.lnpdit.chatuidemo.CydlApplication;
 
 public class LocationUtils {
 	// 客户端定位
@@ -24,16 +25,16 @@ public class LocationUtils {
 	public static String TAG = "LocationUtils";
 
 	public void GetLocationNow(Context context, String tager, String data) {
-		mLocClient = ((VLCApplication) context).mLocationClient;
-		((VLCApplication) context).fData = data;
-		((VLCApplication) context).tager = tager;
+		mLocClient = ((CydlApplication) context.getApplicationContext()).mLocationClient;
+		((CydlApplication) context.getApplicationContext()).fData = data;
+		((CydlApplication) context.getApplicationContext()).tager = tager;
 		if (mLocClient == null || !mLocClient.isStarted()) {
 			setLocationOption();
 			mLocClient.start();
-		Log.i(TAG, "mLocClient.start()");
+			Log.i(TAG, "mLocClient.start()");
 			// mLocClient.requestLocation();//在线
 		} else {
-			//setLocationOption();
+			// setLocationOption();
 			mLocClient.requestLocation();// 在线
 			Log.i(TAG, "mLocClient.requestLocation()");
 		}

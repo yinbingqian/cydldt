@@ -38,17 +38,11 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/index_bg_on"/>
         </RelativeLayout>        
-    </RelativeLayout>    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_top_bar"
-        android:gravity="center_vertical"
-        android:focusable="true">
-
+    </RelativeLayout> 
         <TextView
-            android:layout_width="220dip" 
+            android:layout_width="220dip"
             android:id="@+id/marquee_title"
-            android:layout_height="wrap_content"
+            android:layout_height="30dip"
             android:layout_gravity="center"
             android:layout_centerInParent="true"
             android:text="提高效率，事半功倍；信息通信公司，祝工作顺利"
@@ -58,7 +52,6 @@
         	android:ellipsize="marquee"
         	android:focusable="true"  
         	android:focusableInTouchMode="true"  />
-    </LinearLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

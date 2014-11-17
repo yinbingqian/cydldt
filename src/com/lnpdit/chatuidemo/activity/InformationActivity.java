@@ -3,14 +3,11 @@ package com.lnpdit.chatuidemo.activity;
 import com.lnpdit.chatuidemo.R;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class InformationActivity extends Activity implements OnClickListener {
 
@@ -70,7 +67,7 @@ public class InformationActivity extends Activity implements OnClickListener {
 				startActivity(new Intent(InformationActivity.this, PeixunQuestionActivity.class));
 				break;
 			case R.id.jiaoliu_bt:
-				startActivity(new Intent(InformationActivity.this, MainActivity.class).putExtra("from", "info"));
+				//startActivity(new Intent(InformationActivity.this, MainActivity.class).putExtra("from", "info"));
 				break;
 			case R.id.tupian_bt:
 				startActivity(new Intent(InformationActivity.this, PicActivity.class));

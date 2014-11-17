@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffffff" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/top_layout"
@@ -27,20 +28,115 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/backbutton_pressed"/>
     </RelativeLayout>
-    
-    <GridView
-        android:id="@+id/gridview_01"
+	 <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_layout"
-        android:columnWidth="60dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:paddingTop="80dip"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="30dp"
-        android:textColor="#000000">
-    </GridView>
+        android:layout_height="190dp"
+        android:background="#4e8177" >
 
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/banner_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cover_user_photo"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/information_bg_on" />
+        </RelativeLayout>        
+    </RelativeLayout>  
+	<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_layout"
+        android:layout_marginTop="10dp" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/mail_receive_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/mail_receive"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/mail_receive_bt"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="收件箱"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/mail_write_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/mail_write"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/mail_write_bt"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="撰写邮件"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/mail_send_bt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/mail_send"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_below="@+id/mail_send_bt"
+                        android:gravity="center"
+                        android:text="发件箱"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/dimgray"
+                        android:textSize="16dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="1dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" >
+
+                  
+                </RelativeLayout>
+            </LinearLayout>
+    </RelativeLayout>   
+</LinearLayout>

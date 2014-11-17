@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cover_user_photo"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/index_bg_on"/>
+                android:background="@drawable/information_bg_on" />
         </RelativeLayout>        
     </RelativeLayout>    
 

@@ -2,7 +2,7 @@ package com.sytm.application;
 
 import java.util.Date;
 
-import org.videolan.libvlc.VLCApplication;
+import com.lnpdit.chatuidemo.CydlApplication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -45,8 +45,8 @@ public class LocationTime {
 					pp = null;
 				}else {
 							su = new SystemUtils(contex.getApplicationContext());
-							mLocClient = ((VLCApplication) contex.getApplicationContext()).mLocationClient;
-							((VLCApplication) contex.getApplicationContext()).tager = "1";
+							mLocClient = ((CydlApplication) contex.getApplicationContext()).mLocationClient;
+							((CydlApplication) contex.getApplicationContext()).tager = "1";
 							if (su.getNetworkEnabled()) {
 								Log.d("tmtest","----在线定位请求！"+ DateTimeUtils.getDate("yyyy-MM-dd HH:mm:ss"));
 								if (mLocClient == null || !mLocClient.isStarted()) {
