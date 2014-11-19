@@ -124,6 +124,48 @@
             android:layout_height="1dp"
             android:layout_below="@+id/mobile_layout"
             android:background="@color/state_grid_green" />
+        
+        <RelativeLayout
+            android:id="@+id/phone_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/second_line" >
+
+            <TextView
+                android:id="@+id/phone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="13812345678"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/call2_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/call_bt" />
+
+            <Button
+                android:id="@+id/msg2_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/call2_bt"
+                android:background="@drawable/msg_bt" />
         </RelativeLayout>
+        
+        <TextView
+            android:id="@+id/third_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/phone_layout"
+            android:background="@color/state_grid_green" />
+    </RelativeLayout>
 
 </RelativeLayout>

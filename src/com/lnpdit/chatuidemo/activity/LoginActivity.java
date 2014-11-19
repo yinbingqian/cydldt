@@ -244,12 +244,12 @@ public class LoginActivity extends BaseActivity {
 
 					if (!LoginActivity.this.isFinishing())
 						pd.dismiss();
-					// 进入主页面
+					// 主平台鉴权
 					MAdminLoginThread loginrunnable = new MAdminLoginThread();
 					loginrunnable.setLoginInfo(username, password);
 					Thread adminthread = new Thread(loginrunnable);
 					adminthread.start();
-					
+					// 进入主页面
 					startActivity(new Intent(LoginActivity.this, MainActivity.class));
 					finish();
 				}
