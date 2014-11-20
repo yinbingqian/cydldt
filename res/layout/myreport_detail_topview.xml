@@ -10,7 +10,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/kbg_10"
+        android:background="@drawable/bgs_01"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/time_bule" />
+                android:text="@string/myreport"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/report_detail_date"
@@ -47,40 +48,54 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@drawable/shuline_06" />
+            android:background="@drawable/bgs_11" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" >
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/report_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/report_detail_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/report_detail_title"
+                android:layout_margin="10dp"
                 android:lineSpacingExtra="0.5dp"
                 android:minLines="4"
                 android:text="@string/loading_reply"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/report_detail_content"
+                android:background="@drawable/bgs_11" />
 
             <LinearLayout
                 android:id="@+id/report_attach"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/report_detail_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
                     android:id="@+id/report_attach1_rel"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal" >
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" 
+                        android:layout_weight="1"
                         android:orientation="horizontal" >
 
                         <ImageView
@@ -96,16 +111,16 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:background="@drawable/report_cancel_in"
-                            android:textColor="@android:color/white"
-                            android:maxEms="20"/>
+                            android:maxEms="20"
+                            android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/report_attach1_btn"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.7" 
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"
                         android:background="@drawable/down_btn"
                         android:drawableLeft="@drawable/down_img"
                         android:paddingLeft="13dp"
@@ -139,18 +154,18 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:background="@drawable/report_cancel_in"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/report_attach2_btn"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1.7"
                         android:background="@drawable/down_btn"
                         android:drawableLeft="@drawable/down_img"
                         android:paddingLeft="13dp"
-                        android:layout_gravity="center_vertical"
                         android:text="@string/clickdown"
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
@@ -181,18 +196,18 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:background="@drawable/report_cancel_in"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/report_attach3_btn"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-						android:layout_weight="1.7"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"
                         android:background="@drawable/down_btn"
                         android:drawableLeft="@drawable/down_img"
                         android:paddingLeft="13dp"
-                        android:layout_gravity="center_vertical"
                         android:text="@string/clickdown"
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
@@ -206,7 +221,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/report_attach"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/hb_03"
                 android:gravity="center"
                 android:text="@string/reply"

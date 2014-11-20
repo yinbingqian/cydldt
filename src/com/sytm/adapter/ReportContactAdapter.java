@@ -35,7 +35,7 @@ public class ReportContactAdapter extends BaseAdapter {
 	public ReportContactAdapter(Context context, ImageLoader imageLoader) {
 		this.context = context;
 		this.mImageLoader = imageLoader;
-		int defaultImageId = R.drawable.nan_04;
+		int defaultImageId = R.drawable.contact_icon;
 		mDisplayImageOptions = new DisplayImageOptions.Builder()
 				.showStubImage(defaultImageId)
 				.showImageForEmptyUri(defaultImageId)
@@ -125,10 +125,10 @@ public class ReportContactAdapter extends BaseAdapter {
 					if (!TextUtils.isEmpty(gender)) {
 						if (gender.equals("1")) {
 							holder.imageView
-									.setImageResource(R.drawable.nan_04);
+									.setImageResource(R.drawable.contact_icon);
 						} else {
 							holder.imageView
-									.setImageResource(R.drawable.nv_04);
+									.setImageResource(R.drawable.contact_icon);
 						}
 					}
 				} else {

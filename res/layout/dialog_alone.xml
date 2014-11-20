@@ -8,11 +8,12 @@
             android:id="@+id/dialog_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/kbg_03"
             android:lineSpacingExtra="8dp"
             android:gravity="center"
             android:padding="15dp"
             android:text="@string/sure"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/dialog_button"

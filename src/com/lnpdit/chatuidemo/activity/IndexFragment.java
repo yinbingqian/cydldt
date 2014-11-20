@@ -31,6 +31,7 @@ public class IndexFragment extends Fragment{
 	private Button btn_mic;
 	private Button btn_mail;
 	private Button btn_control;
+	private SharedPreferences sp;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			
@@ -53,8 +54,7 @@ public class IndexFragment extends Fragment{
 		btn_mail = (Button) getView().findViewById(R.id.btn_mail);
 		btn_control = (Button) getView().findViewById(R.id.btn_control);
 
-		// SharedPreferences sp = this.getSharedPreferences("user_info",
-		// MODE_APPEND);
+		sp = getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
 		// String username = sp.getString("RealName", "");
 		//username_text = (TextView) this.findViewById(R.id.user_name_text);
 		// username_text.setText("您好，" + username);
@@ -83,27 +83,35 @@ public class IndexFragment extends Fragment{
 				startActivity(new Intent(getActivity(), InformationActivity.class));
 				break;
 			case R.id.btn_meeting:
-				try {
-					SharedPreferences sp = getActivity().getSharedPreferences("user_info", Context.MODE_APPEND);
-					String meeting_username = sp.getString("RealName", "");
-					String meeting_pwd = sp.getString("Pwd", "");
-					String url = "FLVURI://?view=LoginPanel&ip=211.140.246.114:8080/NetMeetingJava&username="
-							+ meeting_username + "&password=" + meeting_pwd;
-//					String url = "FLVURI://?view=LoginPanel&ip=211.140.246.114:8080/NetMeetingJava&username=1&password=1";
-					// String url = "FLVURI://?view=LoginPanel&ip=www.3gln.cn&username=aa&password=aa";
-					Uri uri = Uri.parse(url);
-					Intent _intent = new Intent(Intent.ACTION_VIEW, uri);
-					startActivity(_intent);
-				} catch (Exception e) {
-					// TODO: handle exception
-					Toast.makeText(getActivity(), "未安装视频会议系统", Toast.LENGTH_SHORT).show();
-					MeetingUpdate mManager = new MeetingUpdate(getActivity());
-					mManager.downloadmeeting();
-				}
+				if(sp.getString("meeting", "").equals("1"))
+				{
+					try {
+						String meeting_username = sp.getString("RealName", "");
+						String meeting_pwd = sp.getString("Pwd", "");
+						String url = "FLVURI://?view=LoginPanel&ip=211.140.246.114:8080/NetMeetingJava&username="
+								+ meeting_username + "&password=" + meeting_pwd;
+//						String url = "FLVURI://?view=LoginPanel&ip=211.140.246.114:8080/NetMeetingJava&username=1&password=1";
+						// String url = "FLVURI://?view=LoginPanel&ip=www.3gln.cn&username=aa&password=aa";
+						Uri uri = Uri.parse(url);
+						Intent _intent = new Intent(Intent.ACTION_VIEW, uri);
+						startActivity(_intent);
+					} catch (Exception e) {
+						// TODO: handle exception
+						Toast.makeText(getActivity(), "未安装视频会议系统", Toast.LENGTH_SHORT).show();
+						MeetingUpdate mManager = new MeetingUpdate(getActivity());
+						mManager.downloadmeeting();
+					}
+				}else
+					Toast.makeText(getActivity(), "您没有权限使用该功能", Toast.LENGTH_SHORT).show();
+				
 				break;
 			case R.id.btn_message:
-				Toast.makeText(getActivity(), "点击了短信发送",Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(getActivity(), MASActivity.class));
+				if(sp.getString("message", "").equals("1"))
+				{
+					Toast.makeText(getActivity(), "点击了短信发送",Toast.LENGTH_SHORT).show();
+					startActivity(new Intent(getActivity(), MASActivity.class));
+				}else
+					Toast.makeText(getActivity(), "您没有权限使用该功能",Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.btn_location:
 				Toast.makeText(getActivity(), "点击了位置管理",	Toast.LENGTH_SHORT).show();

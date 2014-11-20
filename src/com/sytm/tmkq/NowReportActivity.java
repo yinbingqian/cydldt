@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lnpdit.chatuidemo.R;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
@@ -38,7 +40,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lnpdit.chatuidemo.R;
 import com.sytm.bean.TelBookModel;
 import com.sytm.common.Constant;
 import com.sytm.db.SendReportDBManager;
@@ -53,6 +54,8 @@ import com.sytm.view.LoadingDialog;
 public class NowReportActivity extends Activity implements OnClickListener {
 	private Button back;
 	private LinearLayout send, cancel_report;
+	private EditText title;
+	private String titleString;
 	private EditText content;
 	private String conString;
 	private InputMethodManager manager;
@@ -106,6 +109,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 		flowLayout = (FlowLayout) findViewById(R.id.send_name);
 		send = (LinearLayout) findViewById(R.id.send_report);
 		cancel_report = (LinearLayout) findViewById(R.id.cancel_report);
+		title = (EditText) findViewById(R.id.report_title);
 		content = (EditText) findViewById(R.id.report_content);
 		send_weizhi = (ImageView) findViewById(R.id.send_weizhi);
 		send_bg_name = (TextView) findViewById(R.id.send_bg_name);
@@ -214,12 +218,16 @@ public class NowReportActivity extends Activity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-//				if (!ServiceUtils.isServiceRunning(NowReportActivity.this, Constant.Locationservice)) {
-//					myDialog(getResources().getString(R.string.servicesclosetips));
-//					return;
-//				}
+				// if (!ServiceUtils.isServiceRunning(NowReportActivity.this,
+				// Constant.Locationservice)) {
+				// myDialog(getResources().getString(R.string.servicesclosetips));
+				// return;
+				// }
+				titleString = title.getText().toString();
 				conString = content.getText().toString();
-				if (conString == null || conString.equals("")) {
+				if (titleString == null || titleString.equals("")) {
+					myDialog("请输入标题");
+				} else if (conString == null || conString.equals("")) {
 					myDialog(getResources().getString(
 							R.string.Please_enter_description));
 				} else {
@@ -241,7 +249,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						}
 						dialog2 = new LoadingDialog().createLoadingDialog(
 								NowReportActivity.this, getResources()
-										.getString(R.string.sending),true);
+										.getString(R.string.sending), true);
 						dialog2.show();
 						for (int j = 0; j < list.size(); j++) {
 							if (j == list.size() - 1) {
@@ -422,7 +430,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		super.onActivityResult(requestCode, resultCode, data);
+		// super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode != RESULT_OK) {
 			return;
 		}
@@ -445,11 +453,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt1)) {
 						imageView.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt1)) {
+					} else if (Constant.PptFormat.contains(filefromt1)) {
 						imageView.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt1)) {
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
 						imageView.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt1)) {
+					} else if (Constant.WordFormat.contains(filefromt1)) {
 						imageView.setImageResource(R.drawable.word_icon);
 					}
 					filename1.setText(path111.substring(path111
@@ -465,11 +473,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView1.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt1)) {
 						imageView1.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt1)) {
+					} else if (Constant.PptFormat.contains(filefromt1)) {
 						imageView1.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt1)) {
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
 						imageView.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt1)) {
+					} else if (Constant.WordFormat.contains(filefromt1)) {
 						imageView1.setImageResource(R.drawable.word_icon);
 					}
 					filename2.setText(path111.substring(path111
@@ -483,13 +491,13 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						smallBitmap = BitmapFactory
 								.decodeFile(path111, options);
 						imageView2.setImageBitmap(smallBitmap);
-					}  else if (Constant.TxtFormat.contains(filefromt1)) {
+					} else if (Constant.TxtFormat.contains(filefromt1)) {
 						imageView2.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt1)) {
+					} else if (Constant.PptFormat.contains(filefromt1)) {
 						imageView2.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt1)) {
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
 						imageView2.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt1)) {
+					} else if (Constant.WordFormat.contains(filefromt1)) {
 						imageView2.setImageResource(R.drawable.word_icon);
 					}
 					filename3.setText(path111.substring(path111
@@ -508,11 +516,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt2)) {
 						imageView.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt2)) {
+					} else if (Constant.PptFormat.contains(filefromt2)) {
 						imageView.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt2)) {
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
 						imageView.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt2)) {
+					} else if (Constant.WordFormat.contains(filefromt2)) {
 						imageView.setImageResource(R.drawable.word_icon);
 					}
 					filename1.setText(path222.substring(path222
@@ -528,11 +536,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView1.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt2)) {
 						imageView1.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt2)) {
+					} else if (Constant.PptFormat.contains(filefromt2)) {
 						imageView1.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt2)) {
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
 						imageView1.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt2)) {
+					} else if (Constant.WordFormat.contains(filefromt2)) {
 						imageView1.setImageResource(R.drawable.word_icon);
 					}
 					filename2.setText(path222.substring(path222
@@ -548,11 +556,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView2.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt2)) {
 						imageView2.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt2)) {
+					} else if (Constant.PptFormat.contains(filefromt2)) {
 						imageView2.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt2)) {
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
 						imageView2.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt2)) {
+					} else if (Constant.WordFormat.contains(filefromt2)) {
 						imageView2.setImageResource(R.drawable.word_icon);
 					}
 					filename3.setText(path222.substring(path222
@@ -571,11 +579,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt3)) {
 						imageView.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt3)) {
+					} else if (Constant.PptFormat.contains(filefromt3)) {
 						imageView.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt3)) {
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
 						imageView.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt3)) {
+					} else if (Constant.WordFormat.contains(filefromt3)) {
 						imageView.setImageResource(R.drawable.word_icon);
 					}
 					filename1.setText(path333.substring(path333
@@ -589,13 +597,13 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						smallBitmap = BitmapFactory
 								.decodeFile(path333, options);
 						imageView1.setImageBitmap(smallBitmap);
-					}  else if (Constant.TxtFormat.contains(filefromt3)) {
+					} else if (Constant.TxtFormat.contains(filefromt3)) {
 						imageView1.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt3)) {
+					} else if (Constant.PptFormat.contains(filefromt3)) {
 						imageView1.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt3)) {
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
 						imageView1.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt3)) {
+					} else if (Constant.WordFormat.contains(filefromt3)) {
 						imageView1.setImageResource(R.drawable.word_icon);
 					}
 					filename2.setText(path333.substring(path333
@@ -611,11 +619,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView2.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt3)) {
 						imageView2.setImageResource(R.drawable.txt_icon);
-					}else if (Constant.PptFormat.contains(filefromt3)) {
+					} else if (Constant.PptFormat.contains(filefromt3)) {
 						imageView2.setImageResource(R.drawable.ppt_icon);
-					}else if (Constant.XlsFormat.contains(filefromt3)) {
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
 						imageView2.setImageResource(R.drawable.xls_icon);
-					}else if (Constant.WordFormat.contains(filefromt3)) {
+					} else if (Constant.WordFormat.contains(filefromt3)) {
 						imageView2.setImageResource(R.drawable.word_icon);
 					}
 					filename3.setText(path333.substring(path333
@@ -961,7 +969,9 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					sc.addStringPart("lat", lat);
 					sc.addStringPart("loctype", GetType);
 					sc.addStringPart("ids", ids.toString());
+					sc.addStringPart("title", titleString);
 					sc.addStringPart("device", "android");
+					Log.i("发送汇报", "empid="+sp.getString("empid", "")+",report="+conString+",lng="+lng+",lat="+lat+",loctype="+GetType+",ids="+ids.toString()+",title="+titleString+",device="+"android");
 					if (!path1.equals("")) {
 						Log.i("上传文件路径1", path1);
 						File file = new File(path1);
@@ -1075,6 +1085,11 @@ public class NowReportActivity extends Activity implements OnClickListener {
 		View v = View.inflate(this, R.layout.dialog_alone, null);
 		TextView textView = (TextView) v.findViewById(R.id.dialog_title);
 		Button btn = (Button) v.findViewById(R.id.dialog_button);
+		if (dialog!=null) {
+			if(dialog.isShowing()){
+				dialog.dismiss();
+			}
+		}
 		dialog = new Dialog(this, R.style.dialog_style);
 		dialog.setContentView(v);
 		dialog.setCancelable(true);

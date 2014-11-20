@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/kbg_10"
+        android:background="@drawable/bgs_01"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -32,7 +32,7 @@
                 android:focusable="false"
                 android:lineSpacingExtra="0.5dp"
                 android:text="@string/loading_reply"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -60,14 +60,13 @@
                 android:text="@string/reply"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
-
     </LinearLayout>
 
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/shuline_06" />
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="@drawable/bgs_11" />
 
 </LinearLayout>

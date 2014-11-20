@@ -8,9 +8,12 @@
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="@color/state_grid_green" >
+        android:layout_height="wrap_content" >
 
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/state_grid_green" />
 
         <TextView
             android:id="@+id/title"
@@ -19,9 +22,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/myreport"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"  />
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/report_left"
@@ -46,7 +48,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
-
         <com.sytm.widget.RTPullListView
             android:id="@+id/report_listview"
             android:layout_width="fill_parent"
@@ -54,7 +55,6 @@
             android:cacheColorHint="#00000000"
             android:clickable="false"
             android:divider="@null"
-            android:listSelector="@null"
             android:scrollbars="none" >
         </com.sytm.widget.RTPullListView>
     </RelativeLayout>

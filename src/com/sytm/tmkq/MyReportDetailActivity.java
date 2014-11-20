@@ -2,7 +2,6 @@ package com.sytm.tmkq;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -25,11 +24,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.lnpdit.chatuidemo.R;
 import com.sytm.adapter.MyReportDetailAdapter;
 import com.sytm.bean.AttachFileModel;
-import com.sytm.bean.ReportDetailModel;
 import com.sytm.bean.ReportDetail_ReplyModel;
 import com.sytm.common.Constant;
 import com.sytm.netcore.AttachmentDownUtils;
@@ -43,7 +40,7 @@ import com.sytm.view.LoadingDialog;
 public class MyReportDetailActivity extends Activity {
 	private TextView report_detail_date, report_detail_time,
 			report_detail_content, report_detail_huifu, title, nei_title,
-			reportreply_name, report_attach1, report_attach2, report_attach3;
+			reportreply_name, report_attach1, report_attach2, report_attach3,report_detail_title;
 	private ListView listView;
 	private InputMethodManager manager;
 	private View top;
@@ -93,6 +90,8 @@ public class MyReportDetailActivity extends Activity {
 				.findViewById(R.id.report_detail_time);
 		report_detail_content = (TextView) top
 				.findViewById(R.id.report_detail_content);
+		report_detail_title = (TextView) top
+				.findViewById(R.id.report_detail_title);
 		report_detail_huifu = (TextView) top.findViewById(R.id.report_detail_huifu);
 		report_attach =(LinearLayout) top.findViewById(R.id.report_attach);
 		report_attach1 = (TextView) top.findViewById(R.id.report_attach1);
@@ -336,6 +335,7 @@ public class MyReportDetailActivity extends Activity {
 					}
 					report_detail_content.setText(detailModel.getReport());
 					report_detail_time.setText(detailModel.getAdddate());
+					report_detail_title.setText(detailModel.getTitle());
 					if (fileModels.size()!=0) {
 						report_attach.setVisibility(View.VISIBLE);
 					}

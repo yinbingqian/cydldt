@@ -1,9 +1,13 @@
 package com.sytm.adapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,42 +55,37 @@ public class ToReportAdapter extends BaseAdapter {
 					.findViewById(R.id.toreport_title);
 			holder.report_sheng = (TextView) convertView
 					.findViewById(R.id.toreport_sheng);
-			holder.report_shi = (TextView) convertView
-					.findViewById(R.id.toreport_shi);
 			holder.report_reply_num = (TextView) convertView
 					.findViewById(R.id.toreport_reply_num);
-			holder.report_time = (TextView) convertView
-					.findViewById(R.id.toreport_time);
 
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		if (!list.get(position).getDay().equals("")) {
-			holder.lin_top.setVisibility(View.VISIBLE);
-			holder.report_top_day.setText(list.get(position).getDay());
-			holder.report_top_date.setText(list.get(position).getYear() + "."
-					+ list.get(position).getMonth());
-			holder.lin_top.setBackgroundResource(R.drawable.hb_02);
-		}else {
-			holder.lin_top.setVisibility(View.GONE);
+		if (!list.get(position).getAdddate().equals("")) {
+			holder.report_top_date.setText(getDate(list.get(position).getAdddate()));
+			holder.report_top_day.setText(getTimeTypeHm(list.get(position).getAdddate()));
 		}
-		if (list.get(position).getAddempname().equals("")) {
-			
-			holder.report_title.setText(context.getResources().getString(R.string.work_report));
+		if (list.get(position).getTitle().equals("")) {
+			if (list.get(position).getAddempname().equals("")) {
+				holder.report_title.setText(context.getResources().getString(R.string.work_report));
+			}else {
+				holder.report_title.setText(list.get(position).getAddempname()+context.getResources().getString(R.string.work_report_to));
+			}
 		}else {
-			holder.report_title.setText(list.get(position).getAddempname()+context.getResources().getString(R.string.work_report_to));
+			if (list.get(position).getAddempname().equals("")) {
+				holder.report_title.setText(list.get(position).getTitle());
+			}else {
+				holder.report_title.setText(list.get(position).getAddempname()+":"+list.get(position).getTitle());
+			}
 		}
-		holder.report_sheng.setText(list.get(position).getProvince());
-		holder.report_shi.setText(list.get(position).getCity());
+		holder.report_sheng.setText(list.get(position).getProvince()+" "+list.get(position).getCity()+" "+list.get(position).getDistrict());
 			holder.report_reply_num.setText(list.get(position).getReplycount());
 			if (list.get(position).getIsread().equals("1")) {
 				holder.report_reply_num.setBackgroundResource(R.drawable.ty_05);
 			}else {
 				holder.report_reply_num.setBackgroundResource(R.drawable.hb2_05);
 			}
-		holder.report_time.setText(list.get(position).getAdddate()
-				.substring(list.get(position).getAdddate().indexOf(" ") + 1));
 		return convertView;
 	}
 	class ViewHolder {
@@ -95,13 +94,30 @@ public class ToReportAdapter extends BaseAdapter {
 		TextView report_top_date;
 		TextView report_title;
 		TextView report_sheng;
-		TextView report_shi;
 		TextView report_reply_num;
-		TextView report_time;
 	}
 
 	@Override
 	public Object getItem(int position) {
 		return list.get(position);
+	}
+	public String getTimeTypeHm(String formatdate) {
+		SimpleDateFormat formatBuilder = new SimpleDateFormat("HH:mm:ss");
+		return formatBuilder.format(StringToDate(formatdate));
+	}
+	public String getDate(String formatdate) {
+		SimpleDateFormat formatBuilder = new SimpleDateFormat("yyyy-MM-dd");
+		return formatBuilder.format(StringToDate(formatdate));
+	}
+	public Date StringToDate(String dateStr){
+		String formatStr = "yyyy/MM/dd HH:mm:ss";
+		SimpleDateFormat dd=new SimpleDateFormat(formatStr);
+		Date date=null;
+		try {
+			date = dd.parse(dateStr);
+		} catch (ParseException e) {
+			return null;
+		}
+		return date;
 	}
 }

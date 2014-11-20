@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#F9F9F9"
     android:orientation="vertical" >
 
    <RelativeLayout
@@ -12,7 +13,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="@color/top_bar_normal_bg"/>
+            android:background="@color/state_grid_green" />
 
         <TextView
             android:id="@+id/title"
@@ -21,9 +22,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/tomyreport"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"  />
+            android:textSize="18sp"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/toreport_left"
@@ -38,8 +38,8 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
+        android:layout_height="fill_parent"
+        >
         <com.sytm.widget.RTPullListView
             android:id="@+id/toreport_listview"
             android:layout_width="fill_parent"
@@ -47,7 +47,6 @@
             android:cacheColorHint="#00000000"
             android:clickable="false"
             android:divider="@null"
-            android:listSelector="@null"
             android:scrollbars="none" >
         </com.sytm.widget.RTPullListView>
     </RelativeLayout>

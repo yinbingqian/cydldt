@@ -1,63 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_contactdept_bg" >
 
     <TextView
-        android:id="@+id/fenxian"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/hengline_11"
-         />
-
-    <TextView
-        android:id="@+id/first_alpha"
+        android:id="@+id/tm_dept"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/namebg_03"
-        android:paddingLeft="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="2014/9/8 18:37:57"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal" >
-
-        
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="15sp" />
-
-               
-            </LinearLayout>
-
-           
-        </LinearLayout>
-
-       
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

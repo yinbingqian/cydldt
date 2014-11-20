@@ -15,7 +15,8 @@ public class Constant {
 	/**
 	 * 服务平台地址
 	 */
-	 public final static String Service_Domain = "http://211.140.246.117/check/";
+	 //public final static String Service_Domain = "http://xj.sytm.net/";
+	public final static String Service_Domain = "http://211.140.246.117/check/";
 	public final static String Service_Url = Service_Domain
 			+ "ServiceCenter.axd";
 	/**
@@ -31,11 +32,11 @@ public class Constant {
 	/**
 	 * 测试
 	 */
-	 public final static String Service_AccessToken = "123456";
+//	 public final static String Service_AccessToken = "123456";
 	/**
 	 * 正式
 	 */
-//	public final static String Service_AccessToken = "654321";
+	public final static String Service_AccessToken = "654321";
 	/**
 	 * 百度Key
 	 */
