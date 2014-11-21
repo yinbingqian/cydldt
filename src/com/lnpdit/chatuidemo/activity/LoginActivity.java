@@ -166,7 +166,7 @@ public class LoginActivity extends BaseActivity {
 		
 		final String username = usernameEditText.getText().toString();
 		final String password = passwordEditText.getText().toString();
-		CydlApplication.currentUserNick=username;
+		
 		
 		if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
 			progressShow = true;
@@ -249,6 +249,9 @@ public class LoginActivity extends BaseActivity {
 					loginrunnable.setLoginInfo(username, password);
 					Thread adminthread = new Thread(loginrunnable);
 					adminthread.start();
+//					
+//					SharedPreferences sp = context.getSharedPreferences("user_info", MODE_APPEND);
+//					CydlApplication.currentUserNick=sp.getString("RealName", "");
 					// 进入主页面
 					startActivity(new Intent(LoginActivity.this, MainActivity.class));
 					finish();
@@ -451,6 +454,7 @@ public class LoginActivity extends BaseActivity {
 				if (RealName.startsWith("anyType")) {
 					RealName = "";
 				}
+				CydlApplication.currentUserNick=RealName;
 				String Sex = soapchilds.getProperty("Sex").toString();
 				if (Sex.startsWith("anyType")) {
 					Sex = "";
@@ -519,6 +523,7 @@ public class LoginActivity extends BaseActivity {
 				userdata.put("control", control);
 				userdata.put("AdrId", AdrId);
 
+				
 				Message msg = new Message();
 				msg.arg1 = 0;
 				msg.obj = userdata;
