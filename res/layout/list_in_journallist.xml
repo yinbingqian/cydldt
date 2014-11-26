@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bookshelf" >
+    android:background="@color/white" >
 
     <TextView
         android:id="@+id/list_in_journal_centerblank"

@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -15,6 +17,9 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.lnpdit.chatuidemo.R;
+import com.sytm.bean.TelBookModel;
+import com.sytm.tmkq.NowReportActivity;
+import com.sytm.tmkq.ReportDepContactsActivity;
 
 import lnpdit.stategrid.informatization.data.MessengerService;
 import lnpdit.stategrid.informatization.data.ToDoDB;
@@ -66,6 +71,9 @@ public class JobBackAddActivity extends Activity{
 	String picPath = "";
 	String uploadBuffer = "";
 
+	private int SCAN = 1;
+	private List<TelBookModel> list = new ArrayList<TelBookModel>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -169,7 +177,11 @@ public class JobBackAddActivity extends Activity{
 			// TODO Auto-generated method stub
 			switch (v.getId()) {
 			case R.id.choose_contact:
-				showContact();
+				
+					Intent intent = new Intent(JobBackAddActivity.this,
+							ReportDepContactsActivity.class);
+					startActivityForResult(intent, 10);
+				
 				break;
 			case R.id.send_bt:
 				// Toast.makeText(context, rcv_id_text.getText().toString(),
@@ -183,9 +195,9 @@ public class JobBackAddActivity extends Activity{
 				try {
 					if (Environment.MEDIA_MOUNTED.equals(Environment
 							.getExternalStorageState())) {
-						Intent intent = new Intent(
+						Intent intent1 = new Intent(
 								MediaStore.ACTION_IMAGE_CAPTURE);
-						startActivityForResult(intent, 1);
+						startActivityForResult(intent1, 1);
 					} else {
 						Toast.makeText(context, "未检测到SD卡，无法使用此功能。",
 								Toast.LENGTH_SHORT).show();
@@ -314,6 +326,22 @@ public class JobBackAddActivity extends Activity{
 				Log.v("TestFile", "SD card is not avaiable/writeable right now.");
 				return;
 			}
+			list.clear();
+			list = (List<TelBookModel>) data.getSerializableExtra("list");
+			
+			String selectedStr = "";
+			String selectedIdStr = "";
+			for (int i = 0; i < list.size(); i++) {
+				String name = list.get(i).getName();
+				int id = list.get(i).getId();
+				
+				selectedStr = selectedStr + "," + name;
+				selectedIdStr = selectedIdStr + "," + id;
+			}
+
+			rcv_text.setText("收件人：" + selectedStr);
+			rcv_id_text.setText(selectedIdStr);
+			
 			camera_img.setVisibility(MessengerService.VISIBILITY_TRUE);
 			camera_bt.setVisibility(MessengerService.VISIBILITY_FALSE);
 

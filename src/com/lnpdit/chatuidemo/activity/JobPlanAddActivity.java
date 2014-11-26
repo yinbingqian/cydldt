@@ -1,6 +1,8 @@
 package com.lnpdit.chatuidemo.activity;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -9,6 +11,8 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.lnpdit.chatuidemo.R;
+import com.sytm.bean.TelBookModel;
+import com.sytm.tmkq.ReportDepContactsActivity;
 
 import lnpdit.stategrid.informatization.data.MessengerService;
 import lnpdit.stategrid.informatization.data.ToDoDB;
@@ -47,7 +51,9 @@ public class JobPlanAddActivity extends Activity{
 	String[] contact_array;
 	String[] contact_id_array;
 	int contact_num = 0;
-
+	private int SCAN = 1;
+	private List<TelBookModel> list = new ArrayList<TelBookModel>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -90,7 +96,27 @@ public class JobPlanAddActivity extends Activity{
 		send_bt.setOnClickListener(btnListener);
 		return_bt.setOnClickListener(btnListener);
 	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		 super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode != RESULT_OK) {
+			return;
+		}
+		list.clear();
+		list = (List<TelBookModel>) data.getSerializableExtra("list");
+		
+		String selectedStr = "";
+		String selectedIdStr = "";
+		for (int i = 0; i < list.size(); i++) {
+			String name = list.get(i).getName();
+			int id = list.get(i).getId();
+			
+			selectedStr = selectedStr + "," + name;
+			selectedIdStr = selectedIdStr + "," + id;
+		}
 
+		rcv_text.setText("收件人：" + selectedStr);
+		rcv_id_text.setText(selectedIdStr);
+	}
 	private void sendMsg() {
 		String content = content_edit.getText().toString();
 		if (content.equals("")) {
@@ -131,7 +157,10 @@ public class JobPlanAddActivity extends Activity{
 			// TODO Auto-generated method stub
 			switch (v.getId()) {
 			case R.id.choose_contact:
-				showContact();
+//				showContact();
+				Intent intent = new Intent(JobPlanAddActivity.this,
+						ReportDepContactsActivity.class);
+				startActivityForResult(intent, 10);
 				break;
 			case R.id.send_bt:
 				// Toast.makeText(context, rcv_id_text.getText().toString(),
