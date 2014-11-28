@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="#F9F9F9">
+    android:background="#F9F9F9"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/top"
@@ -48,8 +48,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/state_grid_green"
-        android:orientation="horizontal" 
-        android:visibility="gone">
+        android:orientation="horizontal" >
         <EditText
             android:id="@+id/serveredit"
             android:layout_width="wrap_content"
@@ -57,15 +56,16 @@
             android:layout_toRightOf="@+id/img_top"
             android:layout_toLeftOf="@+id/img_down"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/search_bg"
+            android:background="#B1B9B9"
             android:layout_marginTop="7dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:hint="@string/Search_contacts"
             android:drawableRight="@drawable/searchicon"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:textSize="15sp" >
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp"
+            android:inputType="textNoSuggestions" >
         </EditText>
 
         <TextView
@@ -75,7 +75,7 @@
             android:layout_below="@+id/serveredit"
             android:layout_centerHorizontal="true"
             android:padding="4dp"
-            android:textColor="@color/text_blue"
+            android:textColor="@android:color/white"
             android:textSize="13sp" />
 
         <ImageView

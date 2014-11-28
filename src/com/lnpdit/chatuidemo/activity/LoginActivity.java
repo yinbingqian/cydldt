@@ -346,6 +346,7 @@ public class LoginActivity extends BaseActivity {
 				String mail = login_hash.get("mail");
 				String control = login_hash.get("control");
 				String AdrId = login_hash.get("AdrId");
+				String DeptId = login_hash.get("DeptId");
 
 				if (Id.equals("0")) {
 					Toast.makeText(context, "用户名或密码错误，请重新输入.", Toast.LENGTH_SHORT).show();
@@ -381,6 +382,7 @@ public class LoginActivity extends BaseActivity {
 					edit.putString("mail", mail);
 					edit.putString("control", control);
 					edit.putString("AdrId", AdrId);
+					edit.putString("DeptId", DeptId);
 					edit.putString("Pwd", passwordEditText.getText().toString());
 					edit.commit();
 
@@ -504,6 +506,10 @@ public class LoginActivity extends BaseActivity {
 				if (AdrId.startsWith("anyType")) {
 					AdrId = "";
 				}
+				String DeptId = soapchilds.getProperty("DeptId").toString();
+				if (DeptId.startsWith("anyType")) {
+					DeptId = "";
+				}
 
 				HashMap<String, String> userdata = new HashMap<String, String>();
 				userdata.put("Id", Id);
@@ -522,6 +528,7 @@ public class LoginActivity extends BaseActivity {
 				userdata.put("mail", mail);
 				userdata.put("control", control);
 				userdata.put("AdrId", AdrId);
+				userdata.put("DeptId", DeptId);
 
 				
 				Message msg = new Message();

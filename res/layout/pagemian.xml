@@ -55,7 +55,7 @@
             android:layout_width="250dip"
             android:layout_height="250dip"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/daka_button" >
 
             <TextView
@@ -93,29 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:textColor="@android:color/darker_gray" />
+         <TextView
+            android:id="@+id/main_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/dk_btn"
-        android:layout_marginTop="-25dip"
-        android:background="@color/state_grid_green" >
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/dk_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="50dip"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/dk_15"
-        android:text="打卡记录" />
-
 </RelativeLayout>

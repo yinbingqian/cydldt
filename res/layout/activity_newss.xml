@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_right"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="200dp"
+        android:orientation="vertical" >
+
+        <AbsoluteLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/state_grid_green"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="类别"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </AbsoluteLayout>
+
+        <com.lnpdit.chatuidemo.widget.RightMenuLinearLayout
+            android:id="@+id/mylaout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <ListView
+                android:id="@+id/lv_set"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:cacheColorHint="#00000000"
+                android:divider="@drawable/listview_line" >
+            </ListView>
+        </com.lnpdit.chatuidemo.widget.RightMenuLinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_left"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/state_grid_green" >
+
+            <ImageView
+                android:id="@+id/iv_set"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/icon_menu_down" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="员工风采"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/return_bt"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/backbutton_pressed" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/white" >
+
+            <RelativeLayout
+                android:id="@+id/dn_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp" >
+
+                <TextView
+                    android:id="@+id/dn_no_text"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/scrub_circle_down"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dn_content_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/dn_no_text"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/title_line_img"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/dn_layout"
+                android:background="@drawable/flyout_comment_box_top_shadow" />
+
+            <com.lnpdit.chatuidemo.widget.RightMenuLinearLayout
+                android:id="@+id/mywebviewlaout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_line_img" >
+
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title_line_img"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@drawable/listview_line4" >
+                </ListView>
+            </com.lnpdit.chatuidemo.widget.RightMenuLinearLayout>
+            <RelativeLayout
+                android:id="@+id/fengcai_display_progressbar_layout"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" >
+
+                <ProgressBar
+                    android:id="@+id/fengcai_display_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:indeterminateDrawable="@drawable/processbar_circle1" />
+
+                <TextView
+                    android:id="@+id/fengcai_display_progressbar_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fengcai_display_progressbar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text=""
+                    android:textColor="@color/darkgray"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@+id/layout_right"
+        android:background="@color/black" />
+
+</RelativeLayout>

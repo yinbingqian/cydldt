@@ -40,13 +40,7 @@ public class ReportContactAdapter extends BaseAdapter {
 				.showStubImage(defaultImageId)
 				.showImageForEmptyUri(defaultImageId)
 				.showImageOnFail(defaultImageId)
-				.preProcessor(new BitmapProcessor() {
-
-					@Override
-					public Bitmap process(Bitmap arg0) {
-						return ImageUtils.toRoundBitmap(arg0);
-					}
-				}).cacheInMemory().cacheOnDisc().resetViewBeforeLoading()
+				.cacheInMemory().cacheOnDisc().resetViewBeforeLoading()
 				.build();
 		mImageLoadingListenerImpl = new ImageLoadingListenerImpl();
 	}

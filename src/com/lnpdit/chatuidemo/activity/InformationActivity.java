@@ -61,7 +61,7 @@ public class InformationActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			switch (v.getId()) {
 			case R.id.yuangongfengcai_bt:
-				startActivity(new Intent(InformationActivity.this, NewsActivity.class));
+				startActivity(new Intent(InformationActivity.this, NewsActivity1.class));
 				break;
 			case R.id.yuangongpeixun_bt:
 				startActivity(new Intent(InformationActivity.this, PeixunQuestionActivity.class));

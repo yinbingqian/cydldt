@@ -294,7 +294,7 @@ public class KqPageMain extends Activity {
 		left = (Button) this.findViewById(R.id.main_left);
 		right = (Button) this.findViewById(R.id.main_right);
 		year = (TextView) this.findViewById(R.id.main_year);
-		dk_btn = (Button) this.findViewById(R.id.dk_btn);
+		//dk_btn = (Button) this.findViewById(R.id.dk_btn);
 //		day = (TextView) this.findViewById(R.id.main_day);
 //		way = (TextView) this.findViewById(R.id.main_way);
 		time = (TextView) this.findViewById(R.id.main_time);
@@ -307,7 +307,7 @@ public class KqPageMain extends Activity {
 		rel33 = (RelativeLayout) this.findViewById(R.id.rel33);
 		left.setOnClickListener(new MyOnClickListener());
 		right.setOnClickListener(new MyOnClickListener());
-		dk_btn.setOnClickListener(new MyOnClickListener());
+		//dk_btn.setOnClickListener(new MyOnClickListener());
 //		main_xinxigeshu.setOnClickListener(new MyOnClickListener());
 //		main_huibao.setOnClickListener(new MyOnClickListener());
 		MyOnClickListener listener = new MyOnClickListener();
@@ -327,7 +327,7 @@ public class KqPageMain extends Activity {
 			case R.id.main_left:
 				finish();
 				break;
-			case R.id.dk_btn:
+			//case R.id.dk_btn:
 			case R.id.main_right:
 				// Intent intent2 = new Intent("main");
 				// intent2.putExtra("TAGS", 0);

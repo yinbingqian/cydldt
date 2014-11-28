@@ -54,6 +54,7 @@ public class MessengerService {
 	public static final String METHOD_GetMagazinePicInfo = "GetMagazinePicInfo";
 	public static final String METHOD_GetVideoInfo = "GetVideoInfo";
 	public static final String METHOD_GetTikuRandom = "GetTikuRandom";
+	public static final String METHOD_GetNewsByDepartmentId = "GetNewsByDepartmentId";
 
 	public static final String WEEK = "week";
 

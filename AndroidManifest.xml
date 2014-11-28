@@ -126,6 +126,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/horizontal_slide" >
         </activity>
+        <activity
+            android:name=".activity.NewsActivity1"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
         <!-- 风采详情 -->
         <activity
             android:name=".activity.NewsContentActivity"

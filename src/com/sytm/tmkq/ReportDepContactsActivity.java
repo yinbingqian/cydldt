@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.lnpdit.chatuidemo.R;
 
 import org.json.JSONException;
 
@@ -25,13 +24,13 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lnpdit.chatuidemo.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sytm.adapter.ReportDepAdapter;
 import com.sytm.application.HanZiUtils;
@@ -42,22 +41,27 @@ import com.sytm.netcore.ServiceResult;
 import com.sytm.util.JsonUtils;
 import com.sytm.util.PinyinComparator;
 import com.sytm.widget.AlphabetListReportDepView;
-import com.sytm.widget.RTPullListView;
-import com.sytm.widget.RTPullListView.OnRefreshListener;
+import com.sytm.widget.AlphabetListReportDepView.OnItemClickListener;
+import com.sytm.widget.AlphabetListReportDepView.OnRefreshListener;
 
 @SuppressLint({ "HandlerLeak", "InlinedApi" })
 @SuppressWarnings("unused")
 public class ReportDepContactsActivity extends Activity implements
 OnItemClickListener, OnRefreshListener {
+	private ImageLoader mImageLoader;
 	private View mView;
-	private ArrayList<DepnameModel> menuList = new ArrayList<DepnameModel>();
-	private RTPullListView listView;
+	private ArrayList<DepnameModel> modes = new ArrayList<DepnameModel>();
+	private AlphabetListReportDepView listView;
+	private HashMap<String, Integer> alphaIndexer = null;
 	private ServiceResult sr = new ServiceResult();
+	private ArrayList<DepnameModel> menuList = new ArrayList<DepnameModel>();
 	private ReportDepAdapter adapter;
+	private EditText put_search;
 	private SharedPreferences sp;
 	private String empid = "";
 	private int TAG = 0;
 	private Button left;
+	private TextView number;
 	private RelativeLayout topLayout;
 	private int screenWidth;
 	private int screenHeight;
@@ -65,6 +69,7 @@ OnItemClickListener, OnRefreshListener {
 	private PopupWindow popupWindow;
 	private RelativeLayout contact_view_main;
 	private int NUM = 0;
+//	private ContactDBManager dbManager;
 	private Boolean open=true;
 	
 	@Override
@@ -75,18 +80,35 @@ OnItemClickListener, OnRefreshListener {
 		open=true;
 		manager = (InputMethodManager) getSystemService(
 				Context.INPUT_METHOD_SERVICE);
+//		dbManager = new ContactDBManager(ReportDepContactsActivity.this);
 		Intent intent = getIntent();
 		TAG = intent.getIntExtra("TAG", 0);
 		sp = getSharedPreferences("TMMTC", Context.MODE_PRIVATE);
+//		if (dbManager.isData("reportdep")) {
+//			menuList = dbManager.query("reportdep");
+//			dbManager.closeDB();
+//			setData();
+//		} else {
+			new Task().execute("reportdep");
+//		}
 		empid = sp.getString("empid", "");
-		new Task().execute("reportdep");
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		number.setText("总共" + modes.size() + "个部门");
 	}
 
 	public void initialize( ) {
-		listView = (RTPullListView) findViewById(R.id.mylistviewkq);
+		mImageLoader = ImageLoader.getInstance();
+		listView = (AlphabetListReportDepView) findViewById(R.id.mylistviewkq);
 		topLayout = (RelativeLayout) findViewById(R.id.top);
+		put_search = (EditText) findViewById(R.id.serveredit);
 		left = (Button) findViewById(R.id.left);
+		number = (TextView) findViewById(R.id.contactnumber);
 		left.setOnClickListener(new MyOnClickListener());
+		put_search.addTextChangedListener(new MyaddTextChangedListener());
 		topLayout.setOnTouchListener(new MyOnTouchListener());
 		listView.setOnTouchListener(new MyOnTouchListener());
 		listView.setOnItemClickListener(this);
@@ -126,8 +148,126 @@ OnItemClickListener, OnRefreshListener {
 
 	}
 
+	class MyaddTextChangedListener implements TextWatcher {
 
+		@Override
+		public void afterTextChanged(Editable s) {
 
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+
+		}
+
+		@SuppressLint("DefaultLocale")
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			String getname = put_search.getText().toString();
+			if (getname == null || getname.equals("")) {
+				setData();
+			} else {
+				modes.clear();
+				for (int i = 0; i < menuList.size(); i++) {
+					String pinyin = HanZiUtils.updateFormattedText(menuList
+							.get(i).getDepname());
+					if (menuList.get(i).getDepname().toLowerCase()
+							.contains(getname.toLowerCase())
+							|| pinyin.toLowerCase().contains(
+									getname.toLowerCase())) {
+
+						// 取出每一条数据
+						String id = menuList.get(i).getId();
+						String depname = menuList.get(i).getDepname();
+						String organid = menuList.get(i).getOrganid();
+						String remarks = menuList.get(i).getRemarks();
+						String tags = menuList.get(i).getTags();
+
+						// 把数据封装在实体中
+						DepnameModel mode = new DepnameModel();
+						mode.setId(id);
+						mode.setDepname(depname);
+						mode.setOrganid(organid);
+						mode.setRemarks(remarks);
+						mode.setTags(tags);
+						String firstAlpha = HanZiUtils.toPinYin(depname);
+						mode.setFirstAlpha(firstAlpha);
+						// 将封装的实体加到数组中
+						modes.add(mode);
+					}
+				}
+				PinyinComparator pinyinComparator = new PinyinComparator();
+				// 根据a-z进行排序源数据
+				//Collections.sort(modes, pinyinComparator);
+				listView.setAdapter(adapter);
+				number.setText("总共" + modes.size() + "个部门");
+			}
+		}
+
+	}
+
+	/**
+	 * 绑定数据
+	 * 
+	 * @param
+	 */
+
+	private void setData() {
+		modes.clear();
+		if (alphaIndexer != null) {
+			alphaIndexer.clear();
+			alphaIndexer = null;
+		}
+		if (menuList != null && menuList.size() > 0) {
+			if (alphaIndexer == null) {
+				alphaIndexer = new HashMap<String, Integer>();
+				for (int i = 0; i < menuList.size(); i++) {
+					// 取出每一条数据
+					String id = menuList.get(i).getId();
+					String depname = menuList.get(i).getDepname();
+					String organid = menuList.get(i).getOrganid();
+					String remarks = menuList.get(i).getRemarks();
+					String tags = menuList.get(i).getTags();
+
+					// 把数据封装在实体中
+					DepnameModel mode = new DepnameModel();
+					mode.setId(id);
+					mode.setDepname(depname);
+					mode.setOrganid(organid);
+					mode.setRemarks(remarks);
+					mode.setTags(tags);
+					String firstAlpha = HanZiUtils.toPinYin(depname);
+					mode.setFirstAlpha(firstAlpha);
+					// 将封装的实体加到数组中
+					modes.add(mode);
+
+				}
+				PinyinComparator pinyinComparator = new PinyinComparator();
+				// 根据a-z进行排序源数据
+				//Collections.sort(modes, pinyinComparator);
+				for (int i = 0; i < modes.size(); i++) {
+					// 处理当点击某一个字母后，其内容出现在屏幕可见状态下的最上面
+					DepnameModel conteactMode = modes.get(i);
+					String currentAlpha = conteactMode.getFirstAlpha();
+					DepnameModel mode = (i - 1) >= 0 ? modes.get(i - 1) : null;
+					String previewStr = "";
+					if (mode != null) {
+						previewStr = mode.getFirstAlpha();
+					}
+					if (!previewStr.equals(currentAlpha)) {
+						alphaIndexer.put(currentAlpha, i);}
+				}
+				// 把数据设置到adapter
+				adapter = new ReportDepAdapter(ReportDepContactsActivity.this);
+				adapter.setData(modes);
+				listView.setAlphabetIndex(alphaIndexer);
+				listView.setAdapter(adapter);
+				number.setText("总共" + modes.size() + "个部门");
+			}
+		}
+	}
 
 	/**
 	 * 异步线程
@@ -169,8 +309,18 @@ OnItemClickListener, OnRefreshListener {
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					adapter = new ReportDepAdapter(ReportDepContactsActivity.this, menuList);
-					listView.setAdapter(adapter);
+					setData();
+//					if (dbManager.isOpen()) {
+//						dbManager.clearTable("reportdep");
+//						dbManager.add(menuList, "reportdep");
+//						dbManager.closeDB();
+//					} else {
+//						dbManager = null;
+//						dbManager = new ContactDBManager(ReportDepContactsActivity.this);
+//						dbManager.clearTable("reportdep");
+//						dbManager.add(menuList, "reportdep");
+//						dbManager.closeDB();
+//					}
 				}
 			} else if (result.equals("ERROR")) {
 				myDialog(getResources().getString(R.string.please_error));
@@ -184,17 +334,28 @@ OnItemClickListener, OnRefreshListener {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		AlphabetListReportDepView.remove();
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
+		AlphabetListReportDepView.removetoadd();
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		open = false;
+		if (alphaIndexer != null) {
+			alphaIndexer.clear();
+			alphaIndexer = null;
+		}
+//		if (dbManager.isOpen()) {
+//			dbManager.closeDB();
+//		}
+//		dbManager = null;
+		modes.clear();
 		menuList.clear();
 		int TAG = 0;
 	}
@@ -235,8 +396,8 @@ OnItemClickListener, OnRefreshListener {
 		}
 		Intent intent  = new Intent(ReportDepContactsActivity.this,ReportContactActivity.class);
 //		startActivity(intent);
-		Log.i("获取:"+position, menuList.get(position-1).getId()+"::"+menuList.get(position-1).getDepname());
-		intent.putExtra("id", menuList.get(position-1).getId());
+		Log.i("获取:"+position, modes.get(position-1).getId()+"::"+modes.get(position-1).getDepname());
+		intent.putExtra("id", modes.get(position-1).getId());
 		startActivityForResult(intent, 5);
 //		popuWidow(position - 1);
 	}
