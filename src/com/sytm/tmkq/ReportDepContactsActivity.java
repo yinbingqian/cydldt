@@ -395,6 +395,7 @@ OnItemClickListener, OnRefreshListener {
 					android.view.inputmethod.InputMethodManager.HIDE_NOT_ALWAYS);
 		}
 		Intent intent  = new Intent(ReportDepContactsActivity.this,ReportContactActivity.class);
+		
 //		startActivity(intent);
 		Log.i("获取:"+position, modes.get(position-1).getId()+"::"+modes.get(position-1).getDepname());
 		intent.putExtra("id", modes.get(position-1).getId());

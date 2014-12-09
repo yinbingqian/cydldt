@@ -293,6 +293,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/horizontal_slide" >
         </activity>
+        <!--通讯录-->
+        <activity
+            android:name=".activity.ContactListSearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        
         <!--通讯录详细-->
         <activity
             android:name=".activity.ContactDisplayActivity"

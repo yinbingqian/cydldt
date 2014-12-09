@@ -774,7 +774,24 @@ public class ToDoDB extends SQLiteOpenHelper {
 				null, null);
 		return cursor;
 	}
-
+	public Cursor selectmobile() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
+				null, null);
+		return cursor;
+	}
+	public Cursor selectDeptcontact() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
+				null, null);
+		return cursor;
+	}
+	public Cursor selectMobilecontact() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
+				null, null);
+		return cursor;
+	}
 	public Cursor selectSetContactDept() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACT_DEPT, null, null, null, null,
@@ -940,7 +957,44 @@ public class ToDoDB extends SQLiteOpenHelper {
 		long row = db.insert(TABLE_URL, null, insertcv);
 		return row;
 	}
+	public Cursor selectcontact(String name){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String selectContactSql = "select * from contactemployees where " + EMP_NAME + " like %"+name+"%";
+//		db.execSQL(selectContactSql);
+		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+		return cursor;
 
+}
+	public Cursor selectmobile(String mobilephone){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String selectContactSql = "select * from contactemployees where " + EMP_MOBILEPHONE + " like %"+mobilephone+"%";
+//		db.execSQL(selectContactSql);
+		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+		return cursor;
+
+}
+	
+	public Cursor selectDeptcontact(String deptid,String name){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="+deptid+ "and EMP_NAME  like %"+name+"%";
+//		db.execSQL(selectContactSql);
+		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+		return cursor;
+
+}
+	public Cursor selectMobilecontact(String deptid,String mobilephone){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="+deptid+ "and EMP_MOBILEPHONE  like %"+mobilephone+"%";
+//		db.execSQL(selectContactSql);
+		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+		return cursor;
+
+}
+	
 	public void updateuser(String id, ContentValues cv) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		String where = USER_WEBID + " =?";

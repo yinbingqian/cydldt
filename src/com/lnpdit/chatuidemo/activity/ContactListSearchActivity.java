@@ -2,6 +2,7 @@ package com.lnpdit.chatuidemo.activity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -23,7 +24,8 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.lnpdit.chatuidemo.R;
-import com.lnpdit.chatuidemo.activity.ContactListSearchActivity.MyaddTextChangedListener;
+import com.sytm.application.HanZiUtils;
+import com.sytm.bean.ReportContactModel;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -33,6 +35,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.PixelFormat;
@@ -57,7 +60,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ContactActivity extends Activity {
+public class ContactListSearchActivity extends Activity {
 
 	Context context;
 	Resources resources;
@@ -82,7 +85,7 @@ public class ContactActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_contact);
+		setContentView(R.layout.activity_contact_seach);
 		context = this;
 		resources = this.getResources();
 
@@ -94,7 +97,7 @@ public class ContactActivity extends Activity {
 
 		personList = (ListView) findViewById(R.id.list_view_contact);
 		put_search = (EditText) findViewById(R.id.serveredit);
-		return_bt = (Button) this.findViewById(R.id.return_bt);
+		return_bt = (Button) this.findViewById(R.id.left);
 		return_bt.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -109,9 +112,9 @@ public class ContactActivity extends Activity {
 
 		asyncQuery = new MyAsyncQueryHandler(getContentResolver());
 		ToDoDB tdd = new ToDoDB(context);
-		Cursor cursor = tdd.selectDeptcontact();
+		Cursor cursor = tdd.selectcontact();
 		if(cursor.getCount()==0){
-			dialog = new ProgressDialog(ContactActivity.this);
+			dialog = new ProgressDialog(ContactListSearchActivity.this);
 			dialog.setMessage("正在更新联系人列表,请稍等.");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(true);
@@ -123,6 +126,7 @@ public class ContactActivity extends Activity {
 			cursor.close();
 			tdd.close();
 		}
+		
 	}
 
 	@Override
@@ -134,15 +138,16 @@ public class ContactActivity extends Activity {
 				null);
 	}
 
+
 	Handler threadMessageHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			try {
 				dialog.dismiss();
+               List<ContentValues> list = (List<ContentValues>) msg.obj;
+               ListAdapter listadapter = new ListAdapter(context,list);
+               personList.setAdapter(listadapter);
 //				asyncQuery = new MyAsyncQueryHandler(getContentResolver());
-				List<ContentValues> list = (List<ContentValues>) msg.obj;
-				ListAdapter listadapter = new ListAdapter(context, list);
-				personList.setAdapter(listadapter);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -167,12 +172,13 @@ public class ContactActivity extends Activity {
 			List<ContentValues> list = new ArrayList<ContentValues>();
 			ToDoDB tdd = new ToDoDB(context);
 			try {
-				Cursor cursor_contact = tdd.selectDeptcontact();
-				if (cursor_contact.getCount() != 0 ) {
+				Cursor cursor_contact = tdd.selectcontact();
+				if (cursor_contact.getCount() != 0) {
 					cursor_contact.moveToFirst();
 					for (int i = 0; i < cursor_contact.getCount(); i++) {
-						if(cursor_contact.getString(3).equals(dept_Id) && cursor_contact.getString(2).contains(put_search.getText().toString())){
+						if(cursor_contact.getString(2).contains(put_search.getText().toString())){
 							String name = cursor_contact.getString(2);
+//							String name_pinyin = getPingYin(name);
 							ContentValues cv = new ContentValues();
 							cv.put(ID, cursor_contact.getString(1));
 							cv.put(NAME, cursor_contact.getString(2));
@@ -181,6 +187,7 @@ public class ContactActivity extends Activity {
 							cv.put(PHONE, cursor_contact.getString(5));
 							cv.put(MAIL, cursor_contact.getString(6));
 							cv.put(DEPTNAME, cursor_contact.getString(7));
+//							cv.put(SORT_KEY, name_pinyin);
 							list.add(cv);
 						}
 						cursor_contact.moveToNext();
@@ -189,33 +196,33 @@ public class ContactActivity extends Activity {
 						setAdapter(list);
 					}
 				}
-				Cursor cursor_contact1 = tdd.selectMobilecontact();
-				if (cursor_contact1.getCount() != 0 ) {
-					cursor_contact1.moveToFirst();
-					for (int i = 0; i < cursor_contact1.getCount(); i++) {
-						if(cursor_contact1.getString(3).equals(dept_Id) && cursor_contact1.getString(4).contains(put_search.getText().toString())){
-							ContentValues cv = new ContentValues();
-							cv.put(ID, cursor_contact1.getString(1));
-							cv.put(NAME, cursor_contact1.getString(2));
-							cv.put(DEPTID, cursor_contact1.getString(3));
-							cv.put(MOBILEPHONE, cursor_contact1.getString(4));
-							cv.put(PHONE, cursor_contact1.getString(5));
-							cv.put(MAIL, cursor_contact1.getString(6));
-							cv.put(DEPTNAME, cursor_contact1.getString(7));
-							list.add(cv);
+				Cursor cursor_contact1 = tdd.selectmobile();
+					if (cursor_contact1.getCount() != 0) {
+						cursor_contact1.moveToFirst();
+						for (int i = 0; i < cursor_contact1.getCount(); i++) {
+							if(cursor_contact1.getString(4).contains(put_search.getText().toString())){
+								ContentValues cv = new ContentValues();
+								cv.put(ID, cursor_contact1.getString(1));
+								cv.put(NAME, cursor_contact1.getString(2));
+								cv.put(DEPTID, cursor_contact1.getString(3));
+								cv.put(MOBILEPHONE, cursor_contact1.getString(4));
+								cv.put(PHONE, cursor_contact1.getString(5));
+								cv.put(MAIL, cursor_contact1.getString(6));
+								cv.put(DEPTNAME, cursor_contact1.getString(7));
+								list.add(cv);
+							}
+							cursor_contact1.moveToNext();
 						}
-						cursor_contact1.moveToNext();
+						if (list.size() > 0) {
+							setAdapter(list);
+						}
 					}
-					if (list.size() > 0) {
-						setAdapter(list);
-					}
-				}
-				
-				} catch (Exception e) {
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
 	}
+
 	private class MyAsyncQueryHandler extends AsyncQueryHandler {
 
 		public MyAsyncQueryHandler(ContentResolver cr) {
@@ -226,12 +233,14 @@ public class ContactActivity extends Activity {
 		protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
 			List<ContentValues> list = new ArrayList<ContentValues>();
 			ToDoDB tdd = new ToDoDB(context);
-			Cursor cursor_contact = tdd.selectDeptcontact();
+			Cursor cursor_contact = tdd.selectcontact();
 			try {
 				if (cursor_contact.getCount() != 0) {
 					cursor_contact.moveToFirst();
 					for (int i = 0; i < cursor_contact.getCount(); i++) {
 						if(cursor_contact.getString(3).equals(dept_Id)){
+							String name = cursor_contact.getString(2);
+//							String name_pinyin = getPingYin(name);
 							ContentValues cv = new ContentValues();
 							cv.put(ID, cursor_contact.getString(1));
 							cv.put(NAME, cursor_contact.getString(2));
@@ -240,6 +249,7 @@ public class ContactActivity extends Activity {
 							cv.put(PHONE, cursor_contact.getString(5));
 							cv.put(MAIL, cursor_contact.getString(6));
 							cv.put(DEPTNAME, cursor_contact.getString(7));
+//							cv.put(SORT_KEY, name_pinyin);
 							list.add(cv);
 						}
 						cursor_contact.moveToNext();
@@ -267,7 +277,6 @@ public class ContactActivity extends Activity {
 		public ListAdapter(Context context, List<ContentValues> list) {
 			this.inflater = LayoutInflater.from(context);
 			this.list = list;
-		
 		}
 
 		@Override
@@ -301,9 +310,9 @@ public class ContactActivity extends Activity {
 			}
 			ContentValues cv = list.get(position);
 			String user_name = cv.getAsString(NAME);
-			String user_number = cv.getAsString(MOBILEPHONE);
+			String user_number = cv.getAsString(PHONE);
 			holder.name.setText(user_name);
-			holder.number.setText(user_number);
+			holder.number.setText(cv.getAsString(MOBILEPHONE));
 			String user_id_list = cv.getAsString(ID);
 			convertView.setOnClickListener(new mmContactAdapterListener(
 					position, user_id_list, user_name, cv.getAsString(DEPTID),
@@ -369,11 +378,11 @@ public class ContactActivity extends Activity {
 
 	}
 
-	
+
 	public void refreshContact(View v) {
 		try {
 
-			dialog = new ProgressDialog(ContactActivity.this);
+			dialog = new ProgressDialog(ContactListSearchActivity.this);
 			dialog.setMessage("正在更新联系人列表,请稍等...");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(true);
@@ -397,12 +406,12 @@ public class ContactActivity extends Activity {
 			ToDoDB tdd = new ToDoDB(context);
 			// tdd.clearcontact();
 			String curl = MessengerService.URL_WITHOUT_WSDL;
-			String cmethodname = MessengerService.METHOD_GetAddressBookListByID;
+			String cmethodname = MessengerService.METHOD_GetAddressBookList;
 			String cnamespace = MessengerService.NAMESPACE;
 			String csoapaction = cnamespace + "/" + cmethodname;
 
 			SoapObject rpc = new SoapObject(cnamespace, cmethodname);
-			rpc.addProperty("deptid", dept_Id);
+			// rpc.addProperty("userid", userId);
 			// rpc.addProperty("pagesize", 1000);
 			// rpc.addProperty("pageindex", 1);
 			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
@@ -412,7 +421,7 @@ public class ContactActivity extends Activity {
 			envelope.setOutputSoapObject(rpc);
 			HttpTransportSE ht = new HttpTransportSE(curl);
 			ht.debug = true;
-			
+
 			List<ContentValues> list = new ArrayList<ContentValues>();
 			try {
 				ht.call(csoapaction, envelope);
@@ -461,11 +470,44 @@ public class ContactActivity extends Activity {
 			}
 			Message msg = new Message();
 			msg.arg1 = 1;
-			msg.obj = list;
+			msg.obj=list;
 			threadMessageHandler.sendMessage(msg);
 
 		}
 	}
 
 
+//	private String getPingYin(String inputString) {
+//		HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+//		format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+//		format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+//		format.setVCharType(HanyuPinyinVCharType.WITH_V);
+//
+//		char[] input = inputString.trim().toCharArray();//把字符串转化成字符数组
+//		String output = "";
+//
+//		try {
+//			for (int i = 0; i < input.length; i++) {
+//				// \\u4E00是unicode编码，判断是不是中文
+//				if (java.lang.Character.toString(input[i]).matches(
+//						"[\\u4E00-\\u9FA5]+")) {
+//					// 将汉语拼音的全拼存到temp数组
+//					String[] temp = PinyinHelper.toHanyuPinyinStringArray(
+//							input[i], format);
+//					//  取拼音的第一个读音
+//					output += temp[0];
+//				}
+//				// 大写字母转化成小写字母
+//				else if (input[i] > 'A' && input[i] < 'Z') {
+//					output += java.lang.Character.toString(input[i]);
+//					output = output.toLowerCase();
+//				}
+//				output += java.lang.Character.toString(input[i]);
+//			}
+//		} catch (Exception e) {
+//			Log.e("Exception", e.toString());
+//		}
+//		return output;
+//	}
+	
 }

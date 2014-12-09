@@ -21,6 +21,8 @@ import com.lnpdit.chatuidemo.R;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -34,6 +36,7 @@ public class ContactDeptActivity extends Activity {
 
 	ListView listview;
 	Button return_bt;
+	Button search_bt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class ContactDeptActivity extends Activity {
 	private void viewInit() {
 		listview = (ListView) this.findViewById(R.id.listview);
 		return_bt = (Button) this.findViewById(R.id.return_bt);
+		search_bt = (Button) this.findViewById(R.id.search_bt);
 
 		return_bt.setOnClickListener(new View.OnClickListener() {
 
@@ -60,6 +64,27 @@ public class ContactDeptActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				finish();
+			}
+		});
+		search_bt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			Intent intent = new Intent();
+			intent.setClass(ContactDeptActivity.this,ContactListSearchActivity.class);
+			
+			SharedPreferences sharedPreferences = getSharedPreferences(
+					"user_info", Activity.MODE_PRIVATE);
+			String DeptId = sharedPreferences.getString("DeptId", "");
+			
+			intent.putExtra("Id", DeptId);
+			intent.putExtra("Grade", "");
+			intent.putExtra("Class", "我的部门");
+			intent.putExtra("Remark", "");
+			
+			startActivity(intent);
 			}
 		});
 	}

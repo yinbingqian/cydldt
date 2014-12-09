@@ -3,22 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/alpha"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#333333"
-        android:paddingLeft="13dip"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/dimgray"
-        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/alpha"
         android:layout_marginRight="5.0dip"
         android:src="@drawable/contact_icon" />
 

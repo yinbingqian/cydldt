@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lnpdit.chatuidemo.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -232,7 +233,6 @@ public class ReportContactActivity extends Activity implements
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count,
 				int after) {
-
 		}
 
 		@SuppressLint("DefaultLocale")
