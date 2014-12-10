@@ -1,12 +1,16 @@
 package com.sytm.tmkq;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
-
+import org.json.JSONArray;
 import org.json.JSONException;
-
+import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
@@ -22,7 +26,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,7 +34,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,33 +47,33 @@ import com.sytm.bean.CountModel;
 import com.sytm.bean.PersonalInformationMode;
 import com.sytm.bean.PunchStateModel;
 import com.sytm.common.Constant;
-import com.sytm.netcore.ImageURL;
+import com.sytm.netcore.HttpUtils;
 import com.sytm.netcore.Network;
 import com.sytm.netcore.ServiceContent;
 import com.sytm.netcore.ServiceResult;
-import com.sytm.util.DataCleanManager;
-import com.sytm.util.DateTimeUtils;
 import com.sytm.util.JsonUtils;
 import com.sytm.util.SystemUtils;
 import com.sytm.view.LoadingDialog;
 
 @SuppressLint("HandlerLeak")
 public class KqPageMain extends Activity {
-	private String empid = "";
+	private String empid = "", strweather = "", todaydate = "",
+			tadayweather = "", tadaycity = "";
 	private SharedPreferences sp;
-	private TextView year, time;
+	private TextView year, time, temperature;
+	private ImageView imgweather;
 	private ServiceResult sr = new ServiceResult();
 	private ServiceResult srlogin = new ServiceResult();
 	private ServiceResult srpun = new ServiceResult();
-	private Button left, right,dk_btn;
+	private Button left, right;
 	private RelativeLayout rel33;
 	private String mYear;
 	private String mMonth;
 	private String mDay;
 	private String mWay;
 	private CountModel countModel;
-	private String lng = "", lat = "", tishi = "", GetType = "",getAddrStr="",
-			wifiaddress = "";
+	private String lng = "", lat = "", tishi = "", GetType = "",
+			getAddrStr = "", wifiaddress = "";
 	private Calendar c;
 	private Dialog dialog2;
 	private boolean running = true, running2 = true, open = true;
@@ -84,6 +86,8 @@ public class KqPageMain extends Activity {
 	private Dialog dialog;
 	private Thread thread;
 	private String imei;
+	private List<Baidu2> baidu2s = new ArrayList<Baidu2>();
+	private List<Baidu3> list = new ArrayList<Baidu3>();
 	private SystemUtils su = new SystemUtils(this);
 	Runnable sendable = new Runnable() {
 		@Override
@@ -117,6 +121,16 @@ public class KqPageMain extends Activity {
 		running = true;
 		thread = new Thread(sendable);
 		thread.start();
+		Date date = new Date(System.currentTimeMillis());
+		long fortime = sp.getLong("weather", 0);
+		long time = date.getTime() - fortime;
+		if (Math.abs(time) >=60 * 1000) {
+			Editor edit2 = sp.edit();
+			edit2.putLong("weather", date.getTime());
+			edit2.commit();
+			LocationUtils lu = new LocationUtils();
+			lu.GetLocationNow(KqPageMain.this, "20", "");
+		}
 	}
 
 	@Override
@@ -177,23 +191,27 @@ public class KqPageMain extends Activity {
 					popuWidow(3);
 				} else if (intent.getIntExtra("TAGS", 0) == 10) {
 					new Task().execute("count");
+				} else if (intent.getIntExtra("TAGS", 0) == 20) {
+					tadaycity = intent.getStringExtra("getAddrStr");
+					Log.i("定位获取地址", getAddrStr);
+					new Task().execute("getweather");
 				}
 			}
 
 		};
 		this.registerReceiver(myReceiver, filter);
+
 	}
 
-//	@Override
-//	protected void onRestart() {
-//		super.onRestart();
-//		// if (!su.getNetworkEnabled()) {
-//		// // myDialog(getResources().getString(R.string.network_error));
-//		// } else {
-//		new Task().execute("restart");
-//		// }
-//
-//	}
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		// if (!su.getNetworkEnabled()) {
+		// // myDialog(getResources().getString(R.string.network_error));
+		// } else {
+		new Task().execute("restart");
+
+	}
 
 	@SuppressLint("InlinedApi")
 	@SuppressWarnings("deprecation")
@@ -244,7 +262,8 @@ public class KqPageMain extends Activity {
 				public void onClick(View v) {
 					popupWindow.dismiss();
 					isshow = true;
-					Intent intent = new Intent(KqPageMain.this,MapActivity.class);
+					Intent intent = new Intent(KqPageMain.this,
+							MapActivity.class);
 					intent.putExtra("Lng", lng);
 					intent.putExtra("Lat", lat);
 					intent.putExtra("GetType", GetType);
@@ -274,42 +293,44 @@ public class KqPageMain extends Activity {
 
 	private void iniOnCreate() {
 		Configuration();
-//		new Task().execute("restart");
+		new Task().execute("restart");
 	}
 
 	public void Configuration() {
 		StringData();
 		empid = sp.getString("empid", "");
-		year.setText(mYear + "-" + mMonth
-				+ "-"+mDay+" "+getResources().getString(R.string.way) + mWay);
+		year.setText(mYear + "年" + mMonth + "月" + mDay + "日 "
+				+ getResources().getString(R.string.way) + mWay);
 		time.setText(getTimeTypeHms());
-//		day.setText(mDay);
-//		way.setText(getResources().getString(R.string.way) + mWay);
+		// day.setText(mDay);
+		// way.setText(getResources().getString(R.string.way) + mWay);
 	}
-	public  String getTimeTypeHms() {
+
+	public String getTimeTypeHms() {
 		SimpleDateFormat formatBuilder = new SimpleDateFormat("HH:mm:ss");
 		return formatBuilder.format(new Date());
 	}
+
 	public void initialize() {
 		left = (Button) this.findViewById(R.id.main_left);
 		right = (Button) this.findViewById(R.id.main_right);
 		year = (TextView) this.findViewById(R.id.main_year);
-		//dk_btn = (Button) this.findViewById(R.id.dk_btn);
-//		day = (TextView) this.findViewById(R.id.main_day);
-//		way = (TextView) this.findViewById(R.id.main_way);
+		temperature = (TextView) this.findViewById(R.id.temperature);
+		imgweather = (ImageView) this.findViewById(R.id.weather);
+		// day = (TextView) this.findViewById(R.id.main_day);
+		// way = (TextView) this.findViewById(R.id.main_way);
 		time = (TextView) this.findViewById(R.id.main_time);
 		// main_company = (LinearLayout) this.findViewById(R.id.main_company);
-//		main_xinxigeshu = (TextView) this.findViewById(R.id.main_xinxigeshu);
-//		main_huibao = (TextView) this.findViewById(R.id.main_huibao);
+		// main_xinxigeshu = (TextView) this.findViewById(R.id.main_xinxigeshu);
+		// main_huibao = (TextView) this.findViewById(R.id.main_huibao);
 		// main_myreport = (LinearLayout) this.findViewById(R.id.main_myreport);
 		// main_dakarecord = (LinearLayout) this
 		// .findViewById(R.id.main_dakarecord);
 		rel33 = (RelativeLayout) this.findViewById(R.id.rel33);
 		left.setOnClickListener(new MyOnClickListener());
 		right.setOnClickListener(new MyOnClickListener());
-		//dk_btn.setOnClickListener(new MyOnClickListener());
-//		main_xinxigeshu.setOnClickListener(new MyOnClickListener());
-//		main_huibao.setOnClickListener(new MyOnClickListener());
+		// main_xinxigeshu.setOnClickListener(new MyOnClickListener());
+		// main_huibao.setOnClickListener(new MyOnClickListener());
 		MyOnClickListener listener = new MyOnClickListener();
 		rel33.setOnClickListener(listener);
 		rel33.setOnTouchListener(listener);
@@ -327,32 +348,28 @@ public class KqPageMain extends Activity {
 			case R.id.main_left:
 				finish();
 				break;
-			//case R.id.dk_btn:
 			case R.id.main_right:
-				// Intent intent2 = new Intent("main");
-				// intent2.putExtra("TAGS", 0);
-				// sendBroadcast(intent2);
 				Intent intentdaka = new Intent(KqPageMain.this,
 						NowPunchWorkActivity.class);
 				startActivity(intentdaka);
 				break;
-			
+
 			// case R.id.main_company:
 			// Intent intentcompany = new Intent(KqPageMain.this,
 			// CompanyAnnouncementsActivity.class);
 			// startActivity(intentcompany);
 			// break;
-//			case R.id.main_xinxigeshu:
-//				Intent intent = new Intent(KqPageMain.this, NewsActivity.class);
-//				intent.putExtra("an", gong);
-//				intent.putExtra("report", hui);
-//				startActivityForResult(intent, 1);
-//				break;
-//			case R.id.main_huibao:
-//				Intent intent8 = new Intent(KqPageMain.this,
-//						NowReportActivity.class);
-//				startActivity(intent8);
-//				break;
+			// case R.id.main_xinxigeshu:
+			// Intent intent = new Intent(KqPageMain.this, NewsActivity.class);
+			// intent.putExtra("an", gong);
+			// intent.putExtra("report", hui);
+			// startActivityForResult(intent, 1);
+			// break;
+			// case R.id.main_huibao:
+			// Intent intent8 = new Intent(KqPageMain.this,
+			// NowReportActivity.class);
+			// startActivity(intent8);
+			// break;
 			// case R.id.main_myreport:
 			// Intent intents = new Intent(KqPageMain.this,
 			// MyReportActivity.class);
@@ -497,6 +514,17 @@ public class KqPageMain extends Activity {
 					sc.addParameter("wifimac", wifiaddress);
 					sc.addParameter("loctype", GetType);
 					srpun = Network.postDataService(sc);
+				} else if (exeParam.equals("getweather")) {
+					// http://api.map.baidu.com/telematics/v3/weather?location=沈阳&output=json&ak=7iB2uomi3NHKO5WDXPaSIgFu
+					Map<String, String> map = new HashMap<String, String>();
+					map.put("location", tadaycity);
+					map.put("ak", Constant.BaiDu_weather);
+					strweather = HttpUtils
+							.post("http://api.map.baidu.com/telematics/v3/weather?output=json",
+									map);
+					if (sr == null) {
+						exeParam = "ERROR";
+					}
 				}
 			} catch (Exception e) {
 				exeParam = "ERROR";
@@ -543,12 +571,31 @@ public class KqPageMain extends Activity {
 								loginModel.getIsasktravelaudit());
 						edit.commit();
 						new Task().execute("count");
+						// Intent intent1 = new Intent("leftmenu");
+						// intent1.putExtra("TAGS", 5);
+						// intent1.putExtra("isboss", loginModel.getIsboss());
+						// intent1.putExtra("isdephead",
+						// loginModel.getIsdephead());
+						// sendBroadcast(intent1);
+						// Intent intent2 = new Intent("pagemain");
+						// intent2.putExtra("TAGS", 2);
+						// sendBroadcast(intent2);
+						// Date date = new Date(System.currentTimeMillis());
+						// long fortime = sp.getLong("contactlasttime", 0);
+						// long time = date.getTime() - fortime;
+						// if (Math.abs(time) >= 5 * 60 * 1000) {
+						// Editor edit2 = sp.edit();
+						// edit2.putLong("contactlasttime", date.getTime());
+						// edit2.commit();
+						// Intent intent = new Intent("contact");
+						// sendBroadcast(intent);
+						// }
 
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
-			}  else if (result.equals("pagePunch")) {
+			} else if (result.equals("pagePunch")) {
 				if (dialog2.isShowing()) {
 					dialog2.dismiss();
 				}
@@ -583,6 +630,27 @@ public class KqPageMain extends Activity {
 						district = punchStateModel.getDistrict();
 					}
 					popuWidow(tager);
+				}
+			} else if (result.equals("getweather")) {
+				Baidu1 baidu1 = new Baidu1();
+				try {
+					baidu1 = (Baidu1) JsonUtils.parseObject(strweather,
+							Baidu1.class);
+					Log.i("百度1", baidu1.getResults());
+					baidu2s = (List<Baidu2>) JsonUtils.parseCollection(
+							baidu1.getResults(), List.class, Baidu2.class);
+					Log.i("百度2", baidu2s.get(0).getWeather_data());
+					JSONArray arr = new JSONArray(baidu2s.get(0)
+							.getWeather_data());
+					if (0 < arr.length()) {
+						JSONObject temp = (JSONObject) arr.get(0);
+						todaydate = temp.getString("date");
+						tadayweather = temp.getString("weather");
+						Log.i("百度3", todaydate + ">>" + tadayweather);
+					}
+					selectWeather(todaydate, tadayweather);
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
 			} else if (result.equals("ERROR")) {
 				myDialog(getResources().getString(R.string.please_error));
@@ -641,6 +709,17 @@ public class KqPageMain extends Activity {
 			@Override
 			public void onClick(View v) {
 				dialog3.dismiss();
+				// if (str.equals("-1")) {
+				// Intent newIntent = new Intent(KqPageMain.this,
+				// LoginActivity.class);
+				// DataCleanManager.cleanApplicationData(
+				// getApplicationContext(), true);
+				// sp.edit().clear().commit();
+				// startActivity(newIntent);
+				// Intent intent = new Intent("main");
+				// intent.putExtra("TAGS", 2);
+				// sendBroadcast(intent);
+				// }
 			}
 		});
 		if (dialog3.isShowing()) {
@@ -648,6 +727,49 @@ public class KqPageMain extends Activity {
 		}
 		if (open) {
 			dialog3.show();
+		}
+	}
+
+	private void selectWeather(String temp, String weather) {
+		temperature.setText(temp.substring(temp.indexOf("：") + 1,
+				temp.indexOf("℃")));
+		if (weather.equals("晴")) {
+			imgweather.setImageResource(R.drawable.tianqi_01);
+		} else if (weather.equals("多云转晴")) {
+			imgweather.setImageResource(R.drawable.tianqi_02);
+		} else if (weather.equals("阴")) {
+			imgweather.setImageResource(R.drawable.tianqi_03);
+		} else if (weather.equals("大雨")) {
+			imgweather.setImageResource(R.drawable.tianqi_04);
+		} else if (("阵雨").contains(weather)) {
+			imgweather.setImageResource(R.drawable.tianqi_05);
+		} else if (weather.equals("小雨")) {
+			imgweather.setImageResource(R.drawable.tianqi_06);
+		} else if (("雷阵雨").contains(weather)) {
+			imgweather.setImageResource(R.drawable.tianqi_07);
+		} else
+		// if (weather.equals("晴")) {
+		// imgweather.setImageResource(R.drawable.tianqi_08);
+		// }else
+		// if (weather.equals("晴")) {
+		// imgweather.setImageResource(R.drawable.tianqi_09);
+		// }else if (weather.equals("晴")) {
+		// imgweather.setImageResource(R.drawable.tianqi_10);
+		// }else
+		if (weather.equals("雨夹雪")) {
+			imgweather.setImageResource(R.drawable.tianqi_11);
+		} else if (weather.equals("小雪")) {
+			imgweather.setImageResource(R.drawable.tianqi_12);
+		} else if (weather.equals("多云")) {
+			imgweather.setImageResource(R.drawable.tianqi_13);
+		} else
+		// if (weather.equals("晴")) {
+		// imgweather.setImageResource(R.drawable.tianqi_14);
+		// }else
+		if (("雪").contains(weather)) {
+			imgweather.setImageResource(R.drawable.tianqi_15);
+		} else if (("雾").contains(weather)) {
+			imgweather.setImageResource(R.drawable.tianqi_16);
 		}
 	}
 }

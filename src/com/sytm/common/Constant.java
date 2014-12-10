@@ -15,8 +15,8 @@ public class Constant {
 	/**
 	 * 服务平台地址
 	 */
-	 //public final static String Service_Domain = "http://xj.sytm.net/";
-	public final static String Service_Domain = "http://211.140.246.117/check/";
+	 public final static String Service_Domain = "http://xj.sytm.net/";
+//	 public final static String Service_Domain = "http://192.168.0.36:100/";
 	public final static String Service_Url = Service_Domain
 			+ "ServiceCenter.axd";
 	/**
@@ -41,6 +41,7 @@ public class Constant {
 	 * 百度Key
 	 */
 //	 public final static String BaiDu_Key1 ="0Cbfbb850cbf43dd103961220c6000d6";
+	public final static String BaiDu_weather="7iB2uomi3NHKO5WDXPaSIgFu";
 
 	public final static String BaiDu_Key1 = "tTrYcwb0BT1I0v6fiykcMyCL";
 	/**
