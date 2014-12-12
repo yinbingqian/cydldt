@@ -25,7 +25,7 @@ public class ToDoDB extends SQLiteOpenHelper {
 	private final static String TABLE_VIDEO_INFO = "videoinfo";
 	private final static String TABLE_COLUMNINFO = "columninfo";
 	private final static String TABLE_CONTACT_DEPT = "contactdept";
-	private final static String TABLE_CONTACT_EMPLOYEES = "contactemployees";
+//	private final static String TABLE_CONTACT_EMPLOYEES = "contactemployees";
 	public final static String TABLE_MSG = "msg";
 
 	public static final String TYPE_PRIMARY_KEY = "INTEGER PRIMARY KEY AUTOINCREMENT";
@@ -140,14 +140,28 @@ public class ToDoDB extends SQLiteOpenHelper {
 	public static final String USER_PUSHID = "USER_PUSHID";
 	public static final String USER_REFRESH_RATE = "USER_REFRESH_RATE";
 
-	public static final String CONTACT_ID = "CONTACT_ID";
-	public static final String CONTACT_WEBID = "CONTACT_WEBID";
-	public static final String CONTACT_NAME = "CONTACT_NAME";
-	public static final String CONTACT_DEPTID = "CONTACT_DEPTID";
-	public static final String CONTACT_MOBILEPHONE = "CONTACT_MOBILEPHONE";
-	public static final String CONTACT_PHONE = "CONTACT_PHONE";
-	public static final String CONTACT_MAIL = "CONTACT_MAIL";
-	public static final String CONTACT_DEPTNAME = "CONTACT_DEPTNAME";
+	// public static final String CONTACT_ID = "CONTACT_ID";
+	// public static final String CONTACT_WEBID = "CONTACT_WEBID";
+	// public static final String CONTACT_NAME = "CONTACT_NAME";
+	// public static final String CONTACT_DEPTID = "CONTACT_DEPTID";
+	// public static final String CONTACT_MOBILEPHONE = "CONTACT_MOBILEPHONE";
+	// public static final String CONTACT_PHONE = "CONTACT_PHONE";
+	// public static final String CONTACT_MAIL = "CONTACT_MAIL";
+	// public static final String CONTACT_DEPTNAME = "CONTACT_DEPTNAME";
+	public static final String CON_ID = "CON_ID";
+	public static final String CON_NAME = "CON_NAME";
+	public static final String CON_DEPTID = "CON_DEPTID";
+	public static final String CON_DEPTNAME = "CON_DEPTNAME";
+	public static final String CON_MAIL = "CON_MAIL";
+	public static final String CON_ORDERS = "CON_ORDERS";
+	public static final String CON_PHONENO1 = "CON_PHONENO1";
+	public static final String CON_PHONENO2 = "CON_PHONENO2";
+	public static final String CON_PHONENO3 = "CON_PHONENO3";
+	public static final String CON_PHONENO4 = "CON_PHONENO4";
+	public static final String CON_PHONENAME1 = "CON_PHONENAME1";
+	public static final String CON_PHONENAME2 = "CON_PHONENAME2";
+	public static final String CON_PHONENAME3 = "CON_PHONENAME3";
+	public static final String CON_PHONENAME4 = "CON_PHONENAME4";
 
 	public static final String DEPT_ID = "DEPT_ID";
 	public static final String DEPT_WEBID = "DEPT_WEBID";
@@ -157,28 +171,36 @@ public class ToDoDB extends SQLiteOpenHelper {
 	public static final String DEPT_REMARK = "DEPT_REMARK";
 
 	public static final String EMP_ID = "EMP_ID";
-	public static final String EMP_WEBID = "EMP_WEBID";
+//	public static final String EMP_WEBID = "EMP_WEBID";
 	public static final String EMP_NAME = "EMP_NAME";
-	public static final String EMP_DEPTID = "EMP_DEPTID";
-	public static final String EMP_MOBILEPHONE = "EMP_MOBILEPHONE";
-	public static final String EMP_PHONE = "PHONE";
 	public static final String EMP_MAIL = "EMP_MAIL";
-	
-	public static final String MSG_ID = "MSG_ID";//0
-	public static final String MSG_WEBID = "MSG_WEBID";//1
-	public static final String MSG_NAMELIST = "MSG_NAMELIST";//2
-	public static final String MSG_DEVTYPE = "MSG_DEVTYPE";//3
-	public static final String MSG_FROMUSER = "MSG_FROMUSER";//4
-	public static final String MSG_TOUSER = "MSG_TOUSER";//5
-	public static final String MSG_PHOTO = "MSG_PHOTO";//6
-	public static final String MSG_ISREAD = "MSG_ISREAD";//7
-	public static final String MSG_CRTIME = "MSG_CRTIME";//8
-	public static final String MSG_AUDIO = "MSG_AUDIO";//9
-	public static final String MSG_BLOGTITLE = "MSG_BLOGTITLE";//10
-	public static final String MSG_BLOGABSTRACT = "MSG_BLOGABSTRACT";//11
-	public static final String MSG_CONTENT = "MSG_CONTENT";//12
-	public static final String MSG_INFOTYPE = "MSG_INFOTYPE";//13
-	public static final String MSG_INFODIRECTION = "MSG_INFODIRECTION";//14
+	public static final String EMP_DEPTID = "EMP_DEPTID";
+	private static final String EMP_ORDERS = "EMP_ORDERS";
+	public static final String EMP_PHONENO1 = "EMP_PHONENO1";
+	public static final String EMP_PHONENO2 = "EMP_PHONENO2";
+	public static final String EMP_PHONENO3 = "EMP_PHONENO3";
+	public static final String EMP_PHONENO4 = "EMP_PHONENO4";
+	public static final String EMP_PHONENAME1 = "EMP_PHONENAME1";
+	public static final String EMP_PHONENAME2 = "EMP_PHONENAME2";
+	public static final String EMP_PHONENAME3 = "EMP_PHONENAME3";
+	public static final String EMP_PHONENAME4 = "EMP_PHONENAME4";
+
+
+	public static final String MSG_ID = "MSG_ID";// 0
+	public static final String MSG_WEBID = "MSG_WEBID";// 1
+	public static final String MSG_NAMELIST = "MSG_NAMELIST";// 2
+	public static final String MSG_DEVTYPE = "MSG_DEVTYPE";// 3
+	public static final String MSG_FROMUSER = "MSG_FROMUSER";// 4
+	public static final String MSG_TOUSER = "MSG_TOUSER";// 5
+	public static final String MSG_PHOTO = "MSG_PHOTO";// 6
+	public static final String MSG_ISREAD = "MSG_ISREAD";// 7
+	public static final String MSG_CRTIME = "MSG_CRTIME";// 8
+	public static final String MSG_AUDIO = "MSG_AUDIO";// 9
+	public static final String MSG_BLOGTITLE = "MSG_BLOGTITLE";// 10
+	public static final String MSG_BLOGABSTRACT = "MSG_BLOGABSTRACT";// 11
+	public static final String MSG_CONTENT = "MSG_CONTENT";// 12
+	public static final String MSG_INFOTYPE = "MSG_INFOTYPE";// 13
+	public static final String MSG_INFODIRECTION = "MSG_INFODIRECTION";// 14
 
 	public ToDoDB(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -233,15 +255,20 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ TYPE_TEXT + "," + USER_PUSHID + " " + TYPE_TEXT + ","
 				+ USER_REFRESH_RATE + " " + TYPE_TEXT + ")";
 
-		String create_table_contactinfo = "CREATE TABLE" + " "
-				+ TABLE_CONTACTINFO + "(" + CONTACT_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				CONTACT_WEBID + " " + TYPE_TEXT + "," + 
-				CONTACT_NAME + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTID + " " + TYPE_TEXT + "," + 
-				CONTACT_MOBILEPHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_PHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_MAIL + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTNAME + " " + TYPE_TEXT + ")";
+		String create_table_contactinfo = "CREATE TABLE" + " " + TABLE_CONTACTINFO + "(" + 
+		        CON_ID + " " + TYPE_PRIMARY_KEY + "," + //0
+				CON_NAME + " " + TYPE_TEXT + "," + //1
+		        CON_MAIL + " " + TYPE_TEXT + "," + //2
+				CON_DEPTID + " " + TYPE_TEXT + "," + //3
+		        CON_ORDERS + " " + TYPE_TEXT + "," + //4
+				CON_PHONENO1 + " " + TYPE_TEXT + "," + //5
+		        CON_PHONENO2 + " " + TYPE_TEXT + "," + //6
+				CON_PHONENO3 + " " + TYPE_TEXT + "," + //7
+		        CON_PHONENO4 + " " + TYPE_TEXT + "," + //8
+				CON_PHONENAME1 + " " + TYPE_TEXT + "," + //9
+		        CON_PHONENAME2 + " " + TYPE_TEXT + "," + //10
+				CON_PHONENAME3 + " " + TYPE_TEXT + "," + //11
+				CON_PHONENAME4 + " " + TYPE_TEXT + ")";//12
 
 		String create_table_contactdept = "CREATE TABLE" + " "
 				+ TABLE_CONTACT_DEPT + "(" + DEPT_ID + " " + TYPE_PRIMARY_KEY
@@ -250,13 +277,24 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ DEPT_CRTIME + " " + TYPE_TEXT + "," + DEPT_REMARK + " "
 				+ TYPE_TEXT + ")";
 
-		String create_table_contactemp = "CREATE TABLE" + " "
-				+ TABLE_CONTACT_EMPLOYEES + "(" + EMP_ID + " "
-				+ TYPE_PRIMARY_KEY + "," + EMP_WEBID + " " + TYPE_TEXT + ","
-				+ EMP_NAME + " " + TYPE_TEXT + "," + EMP_DEPTID + " "
-				+ TYPE_TEXT + "," + EMP_MOBILEPHONE + " " + TYPE_TEXT + ","
-				+ EMP_PHONE + " " + TYPE_TEXT + "," + EMP_MAIL + " "
-				+ TYPE_TEXT + ")";
+		// String create_table_contactemp = "CREATE TABLE" + " "
+		// + TABLE_CONTACT_EMPLOYEES + "(" + EMP_ID + " "
+		// + TYPE_PRIMARY_KEY + "," + EMP_WEBID + " " + TYPE_TEXT + ","
+		// + EMP_NAME + " " + TYPE_TEXT + "," + EMP_DEPTID + " "
+		// + TYPE_TEXT + "," + EMP_MOBILEPHONE + " " + TYPE_TEXT + ","
+		// + EMP_PHONE + " " + TYPE_TEXT + "," + EMP_MAIL + " "
+		// + TYPE_TEXT + ")";
+
+//		String create_table_contactemp = "CREATE TABLE" + " "
+//				+ TABLE_CONTACT_EMPLOYEES + "(" + EMP_ID + " " + TYPE_PRIMARY_KEY + "," 
+//				+ EMP_NAME + " " + TYPE_TEXT + "," + EMP_MAIL + " " + TYPE_TEXT
+//				+ "," + EMP_DEPTID + " " + TYPE_TEXT + "," + EMP_ORDERS + " "
+//				+ TYPE_TEXT + "," + EMP_PHONENO1 + " " + TYPE_TEXT + ","
+//				+ EMP_PHONENO2 + " " + TYPE_TEXT + "," + EMP_PHONENO3 + " "
+//				+ TYPE_TEXT + "," + EMP_PHONENO4 + " " + TYPE_TEXT + ","
+//				+ EMP_PHONENAME1 + " " + TYPE_TEXT + "," + EMP_PHONENAME2 + " "
+//				+ TYPE_TEXT + "," + EMP_PHONENAME3 + " " + TYPE_TEXT + ","
+//				+ EMP_PHONENAME4 + " " + TYPE_TEXT + ")";
 
 		String create_table_push = "CREATE TABLE" + " " + TABLE_PUSH + "("
 				+ PUSH_ID + " " + TYPE_PRIMARY_KEY + "," + PUSH_WEBID + " "
@@ -305,23 +343,18 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ TYPE_TEXT + "," + COL_PARENTID + " " + TYPE_TEXT + ","
 				+ COL_TEMPLATE + " " + TYPE_TEXT + "," + COL_REMARK + " "
 				+ TYPE_TEXT + ")";
-		
-		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "(" + 
-				MSG_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				MSG_WEBID + " "+ TYPE_TEXT + "," + 
-				MSG_NAMELIST + " " + TYPE_TEXT + "," + 
-				MSG_DEVTYPE + " " + TYPE_TEXT + "," + 
-				MSG_FROMUSER + " " + TYPE_TEXT + "," + 
-				MSG_TOUSER + " " + TYPE_TEXT + "," + 
-				MSG_PHOTO + " " + TYPE_TEXT + "," + 
-				MSG_ISREAD + " " + TYPE_TEXT + "," + 
-				MSG_CRTIME + " " + TYPE_TEXT + "," + 
-				MSG_AUDIO + " " + TYPE_TEXT + "," + 
-				MSG_BLOGTITLE + " " + TYPE_TEXT + "," + 
-				MSG_BLOGABSTRACT + " " + TYPE_TEXT + "," + 
-				MSG_CONTENT + " " + TYPE_TEXT + "," + 
-				MSG_INFOTYPE + " " + TYPE_TEXT + "," + 
-				MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
+
+		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "("
+				+ MSG_ID + " " + TYPE_PRIMARY_KEY + "," + MSG_WEBID + " "
+				+ TYPE_TEXT + "," + MSG_NAMELIST + " " + TYPE_TEXT + ","
+				+ MSG_DEVTYPE + " " + TYPE_TEXT + "," + MSG_FROMUSER + " "
+				+ TYPE_TEXT + "," + MSG_TOUSER + " " + TYPE_TEXT + ","
+				+ MSG_PHOTO + " " + TYPE_TEXT + "," + MSG_ISREAD + " "
+				+ TYPE_TEXT + "," + MSG_CRTIME + " " + TYPE_TEXT + ","
+				+ MSG_AUDIO + " " + TYPE_TEXT + "," + MSG_BLOGTITLE + " "
+				+ TYPE_TEXT + "," + MSG_BLOGABSTRACT + " " + TYPE_TEXT + ","
+				+ MSG_CONTENT + " " + TYPE_TEXT + "," + MSG_INFOTYPE + " "
+				+ TYPE_TEXT + "," + MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
 
 		db.execSQL(create_table_news);
 		db.execSQL(create_table_qa);
@@ -337,7 +370,7 @@ public class ToDoDB extends SQLiteOpenHelper {
 		db.execSQL(create_table_video);
 		db.execSQL(create_table_col);
 		db.execSQL(create_table_contactdept);
-		db.execSQL(create_table_contactemp);
+//		db.execSQL(create_table_contactemp);
 		db.execSQL(create_table_msg);
 	}
 
@@ -422,15 +455,15 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ "," + PUSH_SENDER_ID + " " + TYPE_TEXT + ")";
 
 		String create_table_contactinfo = "CREATE TABLE" + " "
-				+ TABLE_CONTACTINFO + "(" + CONTACT_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				CONTACT_WEBID + " " + TYPE_TEXT + "," + 
-				CONTACT_NAME + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTID + " " + TYPE_TEXT + "," + 
-				CONTACT_MOBILEPHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_PHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_MAIL + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTNAME + " " + TYPE_TEXT + ")";
-
+				+ TABLE_CONTACTINFO + "(" + CON_ID + " " + TYPE_PRIMARY_KEY
+				+ "," + CON_NAME + " " + TYPE_TEXT + "," + CON_MAIL + " "
+				+ TYPE_TEXT + "," + CON_DEPTID + " " + TYPE_TEXT + ","
+				+ CON_ORDERS + " " + TYPE_TEXT + "," + CON_PHONENO1 + " "
+				+ TYPE_TEXT + "," + CON_PHONENO2 + " " + TYPE_TEXT + ","
+				+ CON_PHONENO3 + " " + TYPE_TEXT + "," + CON_PHONENO4 + " "
+				+ TYPE_TEXT + "," + CON_PHONENAME1 + " " + TYPE_TEXT + ","
+				+ CON_PHONENAME2 + " " + TYPE_TEXT + "," + CON_PHONENAME3 + " "
+				+ TYPE_TEXT + "," + CON_PHONENAME4 + " " + TYPE_TEXT + ")";
 		String create_table_journal = "CREATE TABLE" + " " + TABLE_JOURNAL
 				+ "(" + JOURNAL_ID + " " + TYPE_PRIMARY_KEY + ","
 				+ JOURNAL_WEBID + " " + TYPE_TEXT + "," + JOURNAL_TITLE + " "
@@ -453,22 +486,17 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ VIDEO_SIZE + " " + TYPE_TEXT + "," + VIDEO_CONTENT + " "
 				+ TYPE_TEXT + "," + VIDEO_CRTIME + " " + TYPE_TEXT + ")";
 
-		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "(" + 
-				MSG_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				MSG_WEBID + " "+ TYPE_TEXT + "," + 
-				MSG_NAMELIST + " " + TYPE_TEXT + "," + 
-				MSG_DEVTYPE + " " + TYPE_TEXT + "," + 
-				MSG_FROMUSER + " " + TYPE_TEXT + "," + 
-				MSG_TOUSER + " " + TYPE_TEXT + "," + 
-				MSG_PHOTO + " " + TYPE_TEXT + "," + 
-				MSG_ISREAD + " " + TYPE_TEXT + "," + 
-				MSG_CRTIME + " " + TYPE_TEXT + "," + 
-				MSG_AUDIO + " " + TYPE_TEXT + "," + 
-				MSG_BLOGTITLE + " " + TYPE_TEXT + "," + 
-				MSG_BLOGABSTRACT + " " + TYPE_TEXT + "," + 
-				MSG_CONTENT + " " + TYPE_TEXT + "," + 
-				MSG_INFOTYPE + " " + TYPE_TEXT + "," + 
-				MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
+		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "("
+				+ MSG_ID + " " + TYPE_PRIMARY_KEY + "," + MSG_WEBID + " "
+				+ TYPE_TEXT + "," + MSG_NAMELIST + " " + TYPE_TEXT + ","
+				+ MSG_DEVTYPE + " " + TYPE_TEXT + "," + MSG_FROMUSER + " "
+				+ TYPE_TEXT + "," + MSG_TOUSER + " " + TYPE_TEXT + ","
+				+ MSG_PHOTO + " " + TYPE_TEXT + "," + MSG_ISREAD + " "
+				+ TYPE_TEXT + "," + MSG_CRTIME + " " + TYPE_TEXT + ","
+				+ MSG_AUDIO + " " + TYPE_TEXT + "," + MSG_BLOGTITLE + " "
+				+ TYPE_TEXT + "," + MSG_BLOGABSTRACT + " " + TYPE_TEXT + ","
+				+ MSG_CONTENT + " " + TYPE_TEXT + "," + MSG_INFOTYPE + " "
+				+ TYPE_TEXT + "," + MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
 
 		db.execSQL(create_table_news);
 		db.execSQL(create_table_qa);
@@ -548,7 +576,7 @@ public class ToDoDB extends SQLiteOpenHelper {
 		db.execSQL(sqlcol);
 		db.execSQL(create_table_col);
 	}
-	
+
 	public void clearvideo() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String sqlcol = "DROP TABLE IF EXISTS " + TABLE_VIDEO_INFO;
@@ -578,7 +606,7 @@ public class ToDoDB extends SQLiteOpenHelper {
 	public void clearSetContact() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String drop_dept = "DROP TABLE IF EXISTS " + TABLE_CONTACT_DEPT;
-		String drop_emp = "DROP TABLE IF EXISTS " + TABLE_CONTACT_EMPLOYEES;
+		String drop_emp = "DROP TABLE IF EXISTS " + TABLE_CONTACTINFO;
 		String create_table_contactdept = "CREATE TABLE" + " "
 				+ TABLE_CONTACT_DEPT + "(" + DEPT_ID + " " + TYPE_PRIMARY_KEY
 				+ "," + DEPT_WEBID + " " + TYPE_TEXT + "," + DEPT_GRADE + " "
@@ -586,17 +614,33 @@ public class ToDoDB extends SQLiteOpenHelper {
 				+ DEPT_CRTIME + " " + TYPE_TEXT + "," + DEPT_REMARK + " "
 				+ TYPE_TEXT + ")";
 
-		String create_table_contactemp = "CREATE TABLE" + " "
-				+ TABLE_CONTACT_EMPLOYEES + "(" + EMP_ID + " "
-				+ TYPE_PRIMARY_KEY + "," + EMP_WEBID + " " + TYPE_TEXT + ","
-				+ EMP_NAME + " " + TYPE_TEXT + "," + EMP_DEPTID + " "
-				+ TYPE_TEXT + "," + EMP_MOBILEPHONE + " " + TYPE_TEXT + ","
-				+ EMP_PHONE + " " + TYPE_TEXT + "," + EMP_MAIL + " "
-				+ TYPE_TEXT + ")";
+		// String create_table_contactemp = "CREATE TABLE" + " "
+		// + TABLE_CONTACT_EMPLOYEES + "(" + EMP_ID + " "
+		// + TYPE_PRIMARY_KEY + "," + EMP_WEBID + " " + TYPE_TEXT + ","
+		// + EMP_NAME + " " + TYPE_TEXT + "," + EMP_DEPTID + " "
+		// + TYPE_TEXT + "," + EMP_MOBILEPHONE + " " + TYPE_TEXT + ","
+		// + EMP_PHONE + " " + TYPE_TEXT + "," + EMP_MAIL + " "
+		// + TYPE_TEXT + ")";
+
+		String create_table_contactinfo = "CREATE TABLE" + " " + TABLE_CONTACTINFO + "(" + 
+		        CON_ID + " " + TYPE_PRIMARY_KEY + "," + 
+				CON_NAME + " " + TYPE_TEXT + "," + 
+		        CON_MAIL + " " + TYPE_TEXT + "," + 
+				CON_DEPTID + " " + TYPE_TEXT + "," + 
+		        CON_ORDERS + " " + TYPE_TEXT + "," + 
+				CON_PHONENO1 + " " + TYPE_TEXT + "," + 
+		        CON_PHONENO2 + " " + TYPE_TEXT + "," + 
+				CON_PHONENO3 + " " + TYPE_TEXT + "," + 
+		        CON_PHONENO4 + " " + TYPE_TEXT + "," + 
+				CON_PHONENAME1 + " " + TYPE_TEXT + "," + 
+		        CON_PHONENAME2 + " " + TYPE_TEXT + "," + 
+				CON_PHONENAME3 + " " + TYPE_TEXT + "," + 
+				CON_PHONENAME4 + " " + TYPE_TEXT + ")";
+
 		db.execSQL(drop_dept);
 		db.execSQL(drop_emp);
 		db.execSQL(create_table_contactdept);
-		db.execSQL(create_table_contactemp);
+		db.execSQL(create_table_contactinfo);
 	}
 
 	public void clearjournalinfo() {
@@ -650,47 +694,43 @@ public class ToDoDB extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String clear_contact_info = "DROP TABLE IF EXISTS " + TABLE_CONTACTINFO;
 		String create_table_contactinfo = "CREATE TABLE" + " "
-				+ TABLE_CONTACTINFO + "(" + CONTACT_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				CONTACT_WEBID + " " + TYPE_TEXT + "," + 
-				CONTACT_NAME + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTID + " " + TYPE_TEXT + "," + 
-				CONTACT_MOBILEPHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_PHONE + " " + TYPE_TEXT + "," + 
-				CONTACT_MAIL + " " + TYPE_TEXT + "," + 
-				CONTACT_DEPTNAME + " " + TYPE_TEXT + ")";
+				+ TABLE_CONTACTINFO + "(" + CON_ID + " " + TYPE_PRIMARY_KEY
+				+ "," + CON_NAME + " " + TYPE_TEXT + "," + CON_MAIL + " "
+				+ TYPE_TEXT + "," + CON_DEPTID + " " + TYPE_TEXT + ","
+				+ CON_ORDERS + " " + TYPE_TEXT + "," + CON_PHONENO1 + " "
+				+ TYPE_TEXT + "," + CON_PHONENO2 + " " + TYPE_TEXT + ","
+				+ CON_PHONENO3 + " " + TYPE_TEXT + "," + CON_PHONENO4 + " "
+				+ TYPE_TEXT + "," + CON_PHONENAME1 + " " + TYPE_TEXT + ","
+				+ CON_PHONENAME2 + " " + TYPE_TEXT + "," + CON_PHONENAME3 + " "
+				+ TYPE_TEXT + "," + CON_PHONENAME4 + " " + TYPE_TEXT + ")";
 		db.execSQL(clear_contact_info);
 		db.execSQL(create_table_contactinfo);
 	}
-	
+
 	public void clearmsg() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String drop_msg = "DROP TABLE IF EXISTS " + TABLE_MSG;
-		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "(" + 
-				MSG_ID + " " + TYPE_PRIMARY_KEY + "," + 
-				MSG_WEBID + " "+ TYPE_TEXT + "," + 
-				MSG_NAMELIST + " " + TYPE_TEXT + "," + 
-				MSG_DEVTYPE + " " + TYPE_TEXT + "," + 
-				MSG_FROMUSER + " " + TYPE_TEXT + "," + 
-				MSG_TOUSER + " " + TYPE_TEXT + "," + 
-				MSG_PHOTO + " " + TYPE_TEXT + "," + 
-				MSG_ISREAD + " " + TYPE_TEXT + "," + 
-				MSG_CRTIME + " " + TYPE_TEXT + "," + 
-				MSG_AUDIO + " " + TYPE_TEXT + "," + 
-				MSG_BLOGTITLE + " " + TYPE_TEXT + "," + 
-				MSG_BLOGABSTRACT + " " + TYPE_TEXT + "," + 
-				MSG_CONTENT + " " + TYPE_TEXT + "," + 
-				MSG_INFOTYPE + " " + TYPE_TEXT + "," + 
-				MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
+		String create_table_msg = "CREATE TABLE" + " " + TABLE_MSG + "("
+				+ MSG_ID + " " + TYPE_PRIMARY_KEY + "," + MSG_WEBID + " "
+				+ TYPE_TEXT + "," + MSG_NAMELIST + " " + TYPE_TEXT + ","
+				+ MSG_DEVTYPE + " " + TYPE_TEXT + "," + MSG_FROMUSER + " "
+				+ TYPE_TEXT + "," + MSG_TOUSER + " " + TYPE_TEXT + ","
+				+ MSG_PHOTO + " " + TYPE_TEXT + "," + MSG_ISREAD + " "
+				+ TYPE_TEXT + "," + MSG_CRTIME + " " + TYPE_TEXT + ","
+				+ MSG_AUDIO + " " + TYPE_TEXT + "," + MSG_BLOGTITLE + " "
+				+ TYPE_TEXT + "," + MSG_BLOGABSTRACT + " " + TYPE_TEXT + ","
+				+ MSG_CONTENT + " " + TYPE_TEXT + "," + MSG_INFOTYPE + " "
+				+ TYPE_TEXT + "," + MSG_INFODIRECTION + " " + TYPE_TEXT + ")";
 		db.execSQL(drop_msg);
 		db.execSQL(create_table_msg);
 	}
-	
+
 	public Cursor selectmsg() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_MSG, null, null, null, null, null, null);
 		return cursor;
 	}
-	
+
 	public long insertdata(ContentValues cv, String tablename) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		ContentValues insertcv = cv;
@@ -700,8 +740,8 @@ public class ToDoDB extends SQLiteOpenHelper {
 
 	public Cursor selectnews() {
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db
-				.query(TABLE_NEWS, null, null, null, null, null, "NEWS_CREATETIME desc");
+		Cursor cursor = db.query(TABLE_NEWS, null, null, null, null, null,
+				"NEWS_CREATETIME desc");
 		return cursor;
 	}
 
@@ -768,41 +808,45 @@ public class ToDoDB extends SQLiteOpenHelper {
 		return cursor;
 	}
 
+//	public Cursor selectcontact() {
+//		SQLiteDatabase db = this.getReadableDatabase();
+//		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
+//				null, null);
+//		return cursor;
+//	}
+
 	public Cursor selectcontact() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
 				null, null);
 		return cursor;
 	}
+	
 	public Cursor selectmobile() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
 				null, null);
 		return cursor;
 	}
+
 	public Cursor selectDeptcontact() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
 				null, null);
 		return cursor;
 	}
+
 	public Cursor selectMobilecontact() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACTINFO, null, null, null, null,
 				null, null);
 		return cursor;
 	}
+
 	public Cursor selectSetContactDept() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CONTACT_DEPT, null, null, null, null,
 				null, null);
-		return cursor;
-	}
-
-	public Cursor selectSetContactEmp() {
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_CONTACT_EMPLOYEES, null, null, null,
-				null, null, null);
 		return cursor;
 	}
 
@@ -944,57 +988,91 @@ public class ToDoDB extends SQLiteOpenHelper {
 		return row;
 	}
 
-	public long insertSetContactEmp(ContentValues cv) {
-		SQLiteDatabase db = this.getReadableDatabase();
-		ContentValues insertcv = cv;
-		long row = db.insert(TABLE_CONTACT_EMPLOYEES, null, insertcv);
-		return row;
-	}
-
 	public long inserturl(ContentValues cv) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		ContentValues insertcv = cv;
 		long row = db.insert(TABLE_URL, null, insertcv);
 		return row;
 	}
-	public Cursor selectcontact(String name){
+
+	// public Cursor selectcontact(String name) {
+	// SQLiteDatabase db = this.getReadableDatabase();
+	// String selectContactSql = "select * from contactemployees where "
+	// + EMP_NAME + " like %" + name + "%";
+	// // db.execSQL(selectContactSql);
+	// String[] selectionArgs = new String[] { EMP_ID, EMP_WEBID, EMP_NAME,
+	// EMP_DEPTID, EMP_MOBILEPHONE, EMP_PHONE, EMP_MAIL };
+	// Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+	// return cursor;
+	//
+	// }
+	public Cursor selectcontact(String name) {
 		SQLiteDatabase db = this.getReadableDatabase();
-		String selectContactSql = "select * from contactemployees where " + EMP_NAME + " like %"+name+"%";
-//		db.execSQL(selectContactSql);
-		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		String selectContactSql = "select * from contactemployees where "
+				+ EMP_NAME + " like %" + name + "%";
+		// db.execSQL(selectContactSql);
+		String[] selectionArgs = new String[] { EMP_ID, EMP_NAME,
+				EMP_MAIL, EMP_DEPTID, EMP_ORDERS, EMP_PHONENO1, EMP_PHONENO2,
+				EMP_PHONENO3, EMP_PHONENO4, EMP_PHONENAME1, EMP_PHONENAME2,
+				EMP_PHONENAME3, EMP_PHONENAME4 };
 		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
 		return cursor;
 
-}
-	public Cursor selectmobile(String mobilephone){
+	}
+
+	// public Cursor selectmobile(String mobilephone) {
+	// SQLiteDatabase db = this.getReadableDatabase();
+	// String selectContactSql = "select * from contactemployees where "
+	// + EMP_MOBILEPHONE + " like %" + mobilephone + "%";
+	// // db.execSQL(selectContactSql);
+	// String[] selectionArgs = new String[] { EMP_ID, EMP_WEBID, EMP_NAME,
+	// EMP_DEPTID, EMP_MOBILEPHONE, EMP_PHONE, EMP_MAIL };
+	// Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+	// return cursor;
+	//
+	// }
+	public Cursor selectmobile(String phoneNo1) {
 		SQLiteDatabase db = this.getReadableDatabase();
-		String selectContactSql = "select * from contactemployees where " + EMP_MOBILEPHONE + " like %"+mobilephone+"%";
-//		db.execSQL(selectContactSql);
-		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		String selectContactSql = "select * from contactemployees where "
+				+ EMP_PHONENO1 + " like %" + phoneNo1 + "%";
+		// db.execSQL(selectContactSql);
+		String[] selectionArgs = new String[] { EMP_ID, EMP_NAME,
+				EMP_MAIL, EMP_DEPTID, EMP_ORDERS, EMP_PHONENO1, EMP_PHONENO2,
+				EMP_PHONENO3, EMP_PHONENO4, EMP_PHONENAME1, EMP_PHONENAME2,
+				EMP_PHONENAME3, EMP_PHONENAME4 };
 		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
 		return cursor;
 
-}
-	
-	public Cursor selectDeptcontact(String deptid,String name){
+	}
+
+//	public Cursor selectDeptcontact(String deptid, String name) {
+//		SQLiteDatabase db = this.getReadableDatabase();
+//		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="
+//				+ deptid + "and EMP_NAME  like %" + name + "%";
+//		// db.execSQL(selectContactSql);
+//		String[] selectionArgs = new String[] { EMP_ID,  EMP_NAME,
+//				EMP_MAIL, EMP_DEPTID, EMP_ORDERS, EMP_PHONENO1, EMP_PHONENO2,
+//				EMP_PHONENO3, EMP_PHONENO4, EMP_PHONENAME1, EMP_PHONENAME2,
+//				EMP_PHONENAME3, EMP_PHONENAME4 };
+//		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
+//		return cursor;
+//
+//	}
+
+	public Cursor selectMobilecontact(String deptid, String phoneNo1) {
 		SQLiteDatabase db = this.getReadableDatabase();
-		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="+deptid+ "and EMP_NAME  like %"+name+"%";
-//		db.execSQL(selectContactSql);
-		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
+		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="
+				+ deptid + "and EMP_PHONENO1  like %" + phoneNo1 + "%";
+		// db.execSQL(selectContactSql);
+		String[] selectionArgs = new String[] { EMP_ID, EMP_NAME,
+				EMP_MAIL, EMP_DEPTID, EMP_ORDERS, EMP_PHONENO1, EMP_PHONENO2,
+				EMP_PHONENO3, EMP_PHONENO4, EMP_PHONENAME1, EMP_PHONENAME2,
+				EMP_PHONENAME3, EMP_PHONENAME4 };
 		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
 		return cursor;
 
-}
-	public Cursor selectMobilecontact(String deptid,String mobilephone){
-		SQLiteDatabase db = this.getReadableDatabase();
-		String selectContactSql = "select * from contactemployees where EMP_DEPTID ="+deptid+ "and EMP_MOBILEPHONE  like %"+mobilephone+"%";
-//		db.execSQL(selectContactSql);
-		String [] selectionArgs  = new String[]{EMP_ID,EMP_WEBID,EMP_NAME,EMP_DEPTID,EMP_MOBILEPHONE,EMP_PHONE,EMP_MAIL}; 
-		Cursor cursor = db.rawQuery(selectContactSql, selectionArgs);
-		return cursor;
+	}
 
-}
-	
 	public void updateuser(String id, ContentValues cv) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		String where = USER_WEBID + " =?";

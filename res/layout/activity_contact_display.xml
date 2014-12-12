@@ -19,13 +19,13 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <Button 
+        <Button
             android:id="@+id/return_bt"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/backbutton_pressed"/>
+            android:background="@drawable/backbutton_pressed" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -85,16 +85,26 @@
         android:background="#eeeeee" >
 
         <RelativeLayout
-            android:id="@+id/mobile_layout"
+            android:id="@+id/phone1_layout"
             android:layout_width="fill_parent"
             android:layout_height="70dp" >
 
             <TextView
-                android:id="@+id/mobilephone_text"
+                android:id="@+id/phoneName1_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
+                android:text="手机号："
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/phoneNo1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
                 android:text="13812345678"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -122,21 +132,31 @@
             android:id="@+id/second_line"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/mobile_layout"
+            android:layout_below="@+id/phone1_layout"
             android:background="@color/state_grid_green" />
-        
+
         <RelativeLayout
-            android:id="@+id/phone_layout"
+            android:id="@+id/phone2_layout"
             android:layout_width="fill_parent"
             android:layout_height="70dp"
             android:layout_below="@+id/second_line" >
 
             <TextView
-                android:id="@+id/phone_text"
+                android:id="@+id/phoneName2_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
+                android:text="手机号："
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/phoneNo2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
                 android:text="13812345678"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -159,12 +179,116 @@
                 android:layout_toLeftOf="@+id/call2_bt"
                 android:background="@drawable/msg_bt" />
         </RelativeLayout>
-        
+
         <TextView
             android:id="@+id/third_line"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/phone_layout"
+            android:layout_below="@+id/phone2_layout"
+            android:background="@color/state_grid_green" />
+
+        <RelativeLayout
+            android:id="@+id/phone3_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/third_line" >
+
+            <TextView
+                android:id="@+id/phoneName3_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="手机号："
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/phoneNo3_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
+                android:text="13812345678"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/call3_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/call_bt" />
+
+            <Button
+                android:id="@+id/msg3_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/call3_bt"
+                android:background="@drawable/msg_bt" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/fourth_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/phone3_layout"
+            android:background="@color/state_grid_green" />
+
+        <RelativeLayout
+            android:id="@+id/phone4_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/fourth_line" >
+
+            <TextView
+                android:id="@+id/phoneName4_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="手机号："
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/phoneNo4_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
+                android:text="13812345678"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/call4_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/call_bt" />
+
+            <Button
+                android:id="@+id/msg4_bt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/call4_bt"
+                android:background="@drawable/msg_bt" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/fifth_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/phone4_layout"
             android:background="@color/state_grid_green" />
     </RelativeLayout>
 

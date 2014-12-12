@@ -53,6 +53,7 @@ public class PeixunQuestionActivity extends Activity {
 	RadioGroup rg;
 	Button answer_bt;
 	Button next_bt;
+	Button return_bt;
 	LinearLayout cb_layout;
 	CheckBox cb_a;
 	CheckBox cb_b;
@@ -93,7 +94,8 @@ public class PeixunQuestionActivity extends Activity {
 		content_text = (TextView) this.findViewById(R.id.question_content_text);
 		answer_bt = (Button) this.findViewById(R.id.question_answer_bt);
 		next_bt = (Button) this.findViewById(R.id.question_next_bt);
-
+		return_bt = (Button) this.findViewById(R.id.return_bt);
+		
 		rg = (RadioGroup) this.findViewById(R.id.question_rg);
 		rb_a = (RadioButton) this.findViewById(R.id.question_rb_a);
 		rb_b = (RadioButton) this.findViewById(R.id.question_rb_b);
@@ -108,7 +110,15 @@ public class PeixunQuestionActivity extends Activity {
 		cb_c = (CheckBox) this.findViewById(R.id.question_cb_c);
 		cb_d = (CheckBox) this.findViewById(R.id.question_cb_d);
 		cb_e = (CheckBox) this.findViewById(R.id.question_cb_e);
+		
+		return_bt.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		next_bt.setOnClickListener(new View.OnClickListener() {
 
 			@Override

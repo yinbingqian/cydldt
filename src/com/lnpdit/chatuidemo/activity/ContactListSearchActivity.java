@@ -51,8 +51,9 @@ public class ContactListSearchActivity extends Activity {
 	private EditText put_search;
 	private ProgressBar progressbar;
 	private static final String ID = "id", NAME = "name",
-			MOBILEPHONE = "mobilephone", PHONE = "phone", DEPTID = "deptid",
-			MAIL = "mail", DEPTNAME = "deptname";
+			PHONENO1 = "phoneNo1", PHONENO2 = "phoneNo2",PHONENO3 = "phoneNo3",PHONENO4 = "phoneNo4",
+			PHONENAME1 = "phoneName1",PHONENAME2 = "phoneName2",PHONENAME3 = "phoneName3",PHONENAME4 = "phoneName4",
+			DEPTID = "deptid",MAIL = "mail", DEPTNAME = "deptname";
 	String userId;
 	private ProgressDialog dialog;
 
@@ -157,17 +158,25 @@ public class ContactListSearchActivity extends Activity {
 					if (cursor_contact1.getCount() != 0) {
 						cursor_contact1.moveToFirst();
 						for (int i = 0; i < cursor_contact1.getCount(); i++) {
-							if (cursor_contact1.getString(4).contains(
+							if (cursor_contact1.getString(5).contains(
 									put_search.getText().toString())) {
 								ContentValues cv = new ContentValues();
-								cv.put(ID, cursor_contact1.getString(1));
-								cv.put(NAME, cursor_contact1.getString(2));
+								cv.put(ID, cursor_contact1.getString(0));
+								cv.put(NAME, cursor_contact1.getString(1));
+								cv.put(MAIL, cursor_contact1.getString(2));
 								cv.put(DEPTID, cursor_contact1.getString(3));
-								cv.put(MOBILEPHONE,
-										cursor_contact1.getString(4));
-								cv.put(PHONE, cursor_contact1.getString(5));
-								cv.put(MAIL, cursor_contact1.getString(6));
-								cv.put(DEPTNAME, cursor_contact1.getString(7));
+								cv.put(PHONENO1,
+										cursor_contact1.getString(5));
+								cv.put(PHONENO2,
+										cursor_contact1.getString(6));
+								cv.put(PHONENO3,
+										cursor_contact1.getString(7));
+								cv.put(PHONENO4,
+										cursor_contact1.getString(8));
+								cv.put(PHONENAME1, cursor_contact1.getString(9));
+								cv.put(PHONENAME2, cursor_contact1.getString(10));
+								cv.put(PHONENAME3, cursor_contact1.getString(11));
+								cv.put(PHONENAME4, cursor_contact1.getString(12));
 								list.add(cv);
 							}
 							cursor_contact1.moveToNext();
@@ -185,19 +194,25 @@ public class ContactListSearchActivity extends Activity {
 					if (cursor_contact.getCount() != 0) {
 						cursor_contact.moveToFirst();
 						for (int i = 0; i < cursor_contact.getCount(); i++) {
-							if (cursor_contact.getString(2).contains(
-									put_search.getText().toString())) {
-								String name = cursor_contact.getString(2);
-								// String name_pinyin = getPingYin(name);
+							if (cursor_contact.getString(1).contains(
+											put_search.getText().toString())) {
 								ContentValues cv = new ContentValues();
-								cv.put(ID, cursor_contact.getString(1));
-								cv.put(NAME, cursor_contact.getString(2));
+								cv.put(ID, cursor_contact.getString(0));
+								cv.put(NAME, cursor_contact.getString(1));
+								cv.put(MAIL, cursor_contact.getString(2));
 								cv.put(DEPTID, cursor_contact.getString(3));
-								cv.put(MOBILEPHONE, cursor_contact.getString(4));
-								cv.put(PHONE, cursor_contact.getString(5));
-								cv.put(MAIL, cursor_contact.getString(6));
-								cv.put(DEPTNAME, cursor_contact.getString(7));
-								// cv.put(SORT_KEY, name_pinyin);
+								cv.put(PHONENO1,
+										cursor_contact.getString(5));
+								cv.put(PHONENO2,
+										cursor_contact.getString(6));
+								cv.put(PHONENO3,
+										cursor_contact.getString(7));
+								cv.put(PHONENO4,
+										cursor_contact.getString(8));
+								cv.put(PHONENAME1, cursor_contact.getString(9));
+								cv.put(PHONENAME2, cursor_contact.getString(10));
+								cv.put(PHONENAME3, cursor_contact.getString(11));
+								cv.put(PHONENAME4, cursor_contact.getString(12));
 								list.add(cv);
 							}
 							cursor_contact.moveToNext();
@@ -256,67 +271,84 @@ public class ContactListSearchActivity extends Activity {
 			}
 			ContentValues cv = list.get(position);
 			String user_name = cv.getAsString(NAME);
-			String user_number = cv.getAsString(PHONE);
+			String user_number = cv.getAsString(PHONENO1);
 			holder.name.setText(user_name);
-			holder.number.setText(cv.getAsString(MOBILEPHONE));
+//			holder.number.setText(user_number);
+			
+			if (user_number.startsWith("anyType")) {
+				holder.number.setText("");
+			} else {
+				holder.number.setText(user_number);
+			}
+			
 			String user_id_list = cv.getAsString(ID);
 			convertView.setOnClickListener(new mmContactAdapterListener(
-					position, user_id_list, user_name, cv.getAsString(DEPTID),
-					cv.getAsString(MOBILEPHONE), cv.getAsString(PHONE), cv
-							.getAsString(MAIL), cv.getAsString(DEPTNAME)));
+					position, user_id_list, user_name, cv.getAsString(DEPTID),cv.getAsString(MAIL), cv.getAsString(DEPTNAME),
+					cv.getAsString(PHONENO1),cv.getAsString(PHONENO2),cv.getAsString(PHONENO3),cv.getAsString(PHONENO4),
+					cv.getAsString(PHONENAME1),cv.getAsString(PHONENAME2), cv.getAsString(PHONENAME3), cv.getAsString(PHONENAME4) 
+					));
 			return convertView;
 		}
-
 		private class ViewHolder {
 			TextView name;
 			TextView number;
 		}
+		
 
 		class mmContactAdapterListener implements OnClickListener {
 			private int position;
 			private String mm_id;
 			private String mm_name;
 			private String mm_deptid;
-			private String mm_mobilephone;
-			private String mm_phone;
+			private String mm_phoneNo1;
+			private String mm_phoneNo2;
+			private String mm_phoneNo3;
+			private String mm_phoneNo4;
 			private String mm_mail;
 			private String mm_deptname;
+			private String mm_phoneName1;
+			private String mm_phoneName2;
+			private String mm_phoneName3;
+			private String mm_phoneName4;
 
 			public mmContactAdapterListener(int pos, String _id, String _name,
-					String _deptid, String _mobilephone, String _phone,
-					String _mail, String _deptname) {
+					String _deptid,String _mail,String _deptname, String _phoneNo1,
+					String _phoneNo2, String _phoneNo3, String _phoneNo4, String _phoneName1, 
+					String _phoneName2, String _phoneName3, String _phoneName4) {
 				// TODO Auto-generated constructor stub
 				position = pos;
 				this.mm_id = _id;
 				this.mm_name = _name;
 				this.mm_deptid = _deptid;
-				this.mm_mobilephone = _mobilephone;
-				this.mm_phone = _phone;
 				this.mm_mail = _mail;
 				this.mm_deptname = _deptname;
+				this.mm_phoneNo1 = _phoneNo1;
+				this.mm_phoneNo2 = _phoneNo2;
+				this.mm_phoneNo3 = _phoneNo3;
+				this.mm_phoneNo4 = _phoneNo4;
+				this.mm_phoneName1 = _phoneName1;
+				this.mm_phoneName2 = _phoneName2;
+				this.mm_phoneName3 = _phoneName3;
+				this.mm_phoneName4 = _phoneName4;
 			}
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				// Intent intent_contact = new Intent();
-				// intent_contact
-				// .setAction(MessengerService.CONTACT_CHOOSE_CONTACT);
-				// intent_contact.putExtra("USRID", mm_id);
-				// intent_contact.putExtra("USRNAME", mm_name);
-				// intent_contact.putExtra("USRTEL", mm_tel);
-				// intent_contact.putExtra("USRTYPE", mm_type);
-				// context.sendBroadcast(intent_contact);
-				// finish();
 				Intent intent = new Intent();
 				intent.setClass(context, ContactDisplayActivity.class);
 				intent.putExtra("id", mm_id);
 				intent.putExtra("name", mm_name);
 				intent.putExtra("deptid", mm_deptid);
-				intent.putExtra("mobilephone", mm_mobilephone);
-				intent.putExtra("phone", mm_phone);
 				intent.putExtra("mail", mm_mail);
 				intent.putExtra("deptname", mm_deptname);
+				intent.putExtra("phoneNo1", mm_phoneNo1);
+				intent.putExtra("phoneNo2", mm_phoneNo2);
+				intent.putExtra("phoneNo3", mm_phoneNo3);
+				intent.putExtra("phoneNo4", mm_phoneNo4);
+				intent.putExtra("phoneName1", mm_phoneName1);
+				intent.putExtra("phoneName2", mm_phoneName2);
+				intent.putExtra("phoneName3", mm_phoneName3);
+				intent.putExtra("phoneName4", mm_phoneName4);
 				startActivity(intent);
 			}
 
@@ -370,24 +402,42 @@ public class ContactListSearchActivity extends Activity {
 						String Id = soapchildsson.getProperty("Id").toString();
 						String Name = soapchildsson.getProperty("Name")
 								.toString();
+						String mail = soapchildsson.getProperty("mail")
+								.toString();
 						String Dept_id = soapchildsson.getProperty("Dept_id")
 								.toString();
-						String Mobilephone = soapchildsson.getProperty(
-								"mobilephone").toString();
-						String Phone = soapchildsson.getProperty("phone")
+//						String orders = soapchildsson.getProperty("orders")
+//								.toString();
+						String phoneNo1 = soapchildsson.getProperty(
+								"phoneNo1").toString();
+						String phoneNo2 = soapchildsson.getProperty(
+								"phoneNo2").toString();
+						String phoneNo3 = soapchildsson.getProperty(
+								"phoneNo3").toString();
+						String phoneNo4 = soapchildsson.getProperty(
+								"phoneNo4").toString();
+						String phoneName1 = soapchildsson.getProperty("phoneName1")
 								.toString();
-						String Mail = soapchildsson.getProperty("mail")
+						String phoneName2 = soapchildsson.getProperty("phoneName2")
 								.toString();
-						// String Dept_name = soapchildsson.getProperty(
-						// "Dept_name").toString();
+						String phoneName3 = soapchildsson.getProperty("phoneName3")
+								.toString();
+						String phoneName4 = soapchildsson.getProperty("phoneName4")
+								.toString();
 
 						ContentValues cv = new ContentValues();
 						cv.put(ID, Id);
 						cv.put(NAME, Name);
+						cv.put(MAIL, mail);
 						cv.put(DEPTID, Dept_id);
-						cv.put(MOBILEPHONE, Mobilephone);
-						cv.put(PHONE, Phone);
-						cv.put(MAIL, Mail);
+						cv.put(PHONENO1, phoneNo1);
+						cv.put(PHONENO2, phoneNo2);
+						cv.put(PHONENO3, phoneNo3);
+						cv.put(PHONENO4, phoneNo4);
+						cv.put(PHONENAME1, phoneName1);
+						cv.put(PHONENAME2, phoneName2);
+						cv.put(PHONENAME3, phoneName3);
+						cv.put(PHONENAME4, phoneName4);
 						list.add(cv);
 
 					}
@@ -450,32 +500,44 @@ public class ContactListSearchActivity extends Activity {
 						String Id = soapchildsson.getProperty("Id").toString();
 						String Name = soapchildsson.getProperty("Name")
 								.toString();
+						String mail = soapchildsson.getProperty("mail")
+								.toString();
 						String Dept_id = soapchildsson.getProperty("Dept_id")
 								.toString();
-						String Mobilephone = soapchildsson.getProperty(
-								"mobilephone").toString();
-						String Phone = soapchildsson.getProperty("phone")
+						String orders = soapchildsson.getProperty("orders")
 								.toString();
-						String Mail = soapchildsson.getProperty("mail")
+						String phoneNo1 = soapchildsson.getProperty(
+								"phoneNo1").toString();
+						String phoneNo2 = soapchildsson.getProperty(
+								"phoneNo2").toString();
+						String phoneNo3 = soapchildsson.getProperty(
+								"phoneNo3").toString();
+						String phoneNo4 = soapchildsson.getProperty(
+								"phoneNo4").toString();
+						String phoneName1 = soapchildsson.getProperty("phoneName1")
 								.toString();
-						// String Dept_name = soapchildsson.getProperty(
-						// "Dept_name").toString();
-
-						// ContentValues cv = new ContentValues();
-						// cv.put(ID, Id);
-						// cv.put(NAME, Name);
-						// cv.put(DEPTID, Dept_id);
-						// cv.put(MOBILEPHONE, Mobilephone);
-						// cv.put(PHONE, Phone);
-						// cv.put(MAIL, Mail);
-						// list.add(cv);
-
+						String phoneName2 = soapchildsson.getProperty("phoneName2")
+								.toString();
+						String phoneName3 = soapchildsson.getProperty("phoneName3")
+								.toString();
+						String phoneName4 = soapchildsson.getProperty("phoneName4")
+								.toString();
+						
+						
 						ContentValues cv = new ContentValues();
-						cv.put(tdd.CONTACT_NAME, Name);
-						cv.put(tdd.CONTACT_DEPTID, Dept_id);
-						cv.put(tdd.CONTACT_MOBILEPHONE, Mobilephone);
-						cv.put(tdd.CONTACT_PHONE, Phone);
-						cv.put(tdd.CONTACT_MAIL, Mail);
+						cv.put(tdd.CON_ID, Id);
+						cv.put(tdd.CON_NAME, Name);
+						cv.put(tdd.CON_MAIL, mail);
+						cv.put(tdd.CON_DEPTID, Dept_id);
+						cv.put(tdd.CON_ORDERS, orders);
+						cv.put(tdd.CON_PHONENO1, phoneNo1);
+						cv.put(tdd.CON_PHONENO2, phoneNo2);
+						cv.put(tdd.CON_PHONENO3, phoneNo3);
+						cv.put(tdd.CON_PHONENO4, phoneNo4);
+						cv.put(tdd.CON_PHONENAME1, phoneName1);
+						cv.put(tdd.CON_PHONENAME2, phoneName2);
+						cv.put(tdd.CON_PHONENAME3, phoneName3);
+						cv.put(tdd.CON_PHONENAME4, phoneName4);
 
 						tdd.insertcontact(cv);
 

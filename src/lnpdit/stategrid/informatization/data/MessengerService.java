@@ -19,6 +19,7 @@ public class MessengerService {
 	 * Webservice
 	 */
 	public static final String NAMESPACE = "MobileNewspaper";
+//	public static final String IP = "http://200.20.30.160:82";
 	public static final String IP = "http://211.140.246.117";
 //	public static final String IP = "http://219.148.199.62/dianli";
 	public static final String URL = IP + "/phoneinvoke.asmx?wsdl";
