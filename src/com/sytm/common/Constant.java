@@ -15,7 +15,8 @@ public class Constant {
 	/**
 	 * 服务平台地址
 	 */
-	 public final static String Service_Domain = "http://xj.sytm.net/";
+	 public final static String Service_Domain = "http://211.140.246.117/check/";
+//	 public final static String Service_Domain = "http://xj.sytm.net/";
 //	 public final static String Service_Domain = "http://192.168.0.36:100/";
 	public final static String Service_Url = Service_Domain
 			+ "ServiceCenter.axd";

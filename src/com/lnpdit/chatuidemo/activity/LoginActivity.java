@@ -347,6 +347,7 @@ public class LoginActivity extends BaseActivity {
 				String control = login_hash.get("control");
 				String AdrId = login_hash.get("AdrId");
 				String DeptId = login_hash.get("DeptId");
+				Toast.makeText(context, Id+"|"+DeptId, Toast.LENGTH_SHORT).show();
 
 				if (Id.equals("0")) {
 					Toast.makeText(context, "用户名或密码错误，请重新输入.", Toast.LENGTH_SHORT).show();
