@@ -1,7 +1,7 @@
 /*****************************************************************************
  * VLCApplication.java
  *****************************************************************************
- * Copyright 漏 2010-2013 VLC authors and VideoLAN
+ * Copyright © 2010-2013 VLC authors and VideoLAN
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,11 +55,12 @@ import android.preference.PreferenceManager;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.Toast;
 
 public class VLCApplication extends Application {
     public final static String TAG = "VLC/VLCApplication";
     private static VLCApplication instance;
-	// 授权是否校验通过
+	// ��Ȩ�Ƿ�У��ͨ��
 	public boolean m_bKeyRight = true;
 	public LocationClient mLocationClient = null;
 	// public GeofenceClient mGeofenceClient;
@@ -84,9 +85,9 @@ public class VLCApplication extends Application {
         mLocationClient = new LocationClient(getApplicationContext()); 
 		mLocationClient.registerLocationListener(myListener);
 		/**
-		 * ——————————————————————————————————————————————————————————————————
-		 * 这里的AK和应用签名包名绑定，为申请的百度Key
-		 * ——————————————————————————————————————————————————————————————————
+		 * ������������������������������������������������������������������������������������������������������������������������������������
+		 * �����AK��Ӧ��ǩ�����󶨣�Ϊ����İٶ�Key
+		 * ������������������������������������������������������������������������������������������������������������������������������������
 		 */
 		mLocationClient.setAK(Constant.BaiDu_Key1);
 		SDKInitializer.initialize(getApplicationContext());  
@@ -96,11 +97,11 @@ public class VLCApplication extends Application {
 		tm = (TelephonyManager) getApplicationContext()
 				.getSystemService(Context.TELEPHONY_SERVICE);
 
-//		// 全局Crash异常捕获
+//		// ȫ��Crash�쳣����
 //		CrashHandler crashHandler = CrashHandler.getInstance();
 //		crashHandler.init(getApplicationContext());
 		instance = this;
-		// 图片加载器
+		// ͼƬ������
 		initImageLoader(getApplicationContext());
         // Are we using advanced debugging - locale?
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -173,7 +174,7 @@ public class VLCApplication extends Application {
         return instance.getResources();
     }
     /**
-	 * 监听函数，有更新位置的时候，格式化成字符串，输出到屏幕中
+	 * �������и���λ�õ�ʱ�򣬸�ʽ�����ַ������Ļ��
 	 */
 	public class MyLocationListenner implements BDLocationListener {
 		@Override
@@ -198,7 +199,7 @@ public class VLCApplication extends Application {
 				imei = "0";
 
 			}
-			// 成功在线定位的时候
+			// �ɹ����߶�λ��ʱ��
 			if (location.getLocType() == 61 || location.getLocType() == 65 || location.getLocType() == 161||location.getLocType() == 66 || location.getLocType() == 68) {
 				sc.reset();
 				Lng = StringUtils.convertScienceNum(location.getLongitude());
@@ -288,11 +289,25 @@ public class VLCApplication extends Application {
 					su=null;
 					return;
 				}
-				// 发送数据
+				else if (tager.equals("20")) {
+					Intent intent2 = new Intent("pagemain");
+					intent2.putExtra("TAGS", 20);
+					intent2.putExtra("Lng", Lng);
+					intent2.putExtra("Lat", Lat);
+					intent2.putExtra("GetType", GetType);
+					intent2.putExtra("getAddrStr", location.getCity());
+					sendBroadcast(intent2);
+					Log.d("getAddrStr", "9999");
+					su=null;
+					return;
+					
+					
+				}
+				// �������
 				new Task().execute("SEND");
 			}else {
 				if (tager.equals("1")) {
-//					// 关闭wifi
+//					// �ر�wifi
 //					WifiUtils wifi = new WifiUtils(BaseApplication.this);
 //					if (wifi.wifiEnabled() && autoOpenWifi) {
 //						wifi.closeNetCard();
@@ -336,13 +351,13 @@ public class VLCApplication extends Application {
 		}
 	}
 	/**
-	 * 异步线程
+	 * �첽�߳�
 	 * 
 	 * @author wyq
 	 * 
 	 */
 	class Task extends AsyncTask<String, String, String> {
-		// 开启另外一个线程执行任务
+		// ��������һ���߳�ִ������
 		@Override
 		protected String doInBackground(String... params) {
 			String exeParam = params[0];
@@ -405,10 +420,10 @@ public class VLCApplication extends Application {
 			return exeParam;
 		}
 
-		// 执行完成后传送结果给UI线程 此方法最后执行
+		// ִ����ɺ��ͽ���UI�߳� �˷������ִ��
 		protected void onPostExecute(String result) {
 
-			// 关闭wifi
+			// �ر�wifi
 //			WifiUtils wifi = new WifiUtils(BaseApplication.this);
 			if (result.equals("SEND")) {
 //				openStatus1 = true;
@@ -419,9 +434,9 @@ public class VLCApplication extends Application {
 //					}
 //				}
 				if (sr.GetIsError()) {
-//					Log.e(TAG, "服务端处理失败!" + sr.getMessage());
+//					Log.e(TAG, "����˴���ʧ��!" + sr.getMessage());
 				} else {
-//					Log.i(TAG, "传输成功！");
+//					Log.i(TAG, "����ɹ���");
 				}
 			} else if (result.equals("cellinfo")) {
 //				openStatus2 = true;
@@ -431,14 +446,14 @@ public class VLCApplication extends Application {
 //					}
 //				}
 				if (sr.GetIsError()) {
-//					Log.e(TAG, "服务端处理失败!" + sr.getMessage());
+//					Log.e(TAG, "����˴���ʧ��!" + sr.getMessage());
 				} else {
-//					Log.i(TAG, "离线传输成功！");
+//					Log.i(TAG, "���ߴ���ɹ���");
 				}
 			} else if (result.equals("ERROR")) {
-//				Log.e(TAG, "网络错误！发送失败！");
+//				Log.e(TAG, "������󣡷���ʧ�ܣ�");
 			} else {
-//				Log.w(TAG, "未知方式！");
+//				Log.w(TAG, "δ֪��ʽ��");
 			}
 		}
 	}

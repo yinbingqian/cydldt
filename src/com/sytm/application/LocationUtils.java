@@ -5,6 +5,7 @@ import org.videolan.libvlc.VLCApplication;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
@@ -18,7 +19,7 @@ public class LocationUtils {
 	// 定位坐标类型
 	private String coolType = "bd09ll";
 	// 设置发起定位请求的间隔(ms) 设置定位模式，小于1秒则一次定位;大于等于1秒则定时定位
-	private Integer timeSpan = 500;
+	private Integer timeSpan = 1000;
 	// 是否需要地址信息
 	private boolean mIsAddrInfo = true;
 	// 日志tag
@@ -39,7 +40,6 @@ public class LocationUtils {
 			Log.i(TAG, "mLocClient.requestLocation()");
 		}
 		mLocClient.stop();
-
 	}
 
 	// 设置定位相关参数

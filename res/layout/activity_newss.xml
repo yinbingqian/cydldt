@@ -64,6 +64,7 @@
                 android:src="@drawable/icon_menu_down" />
 
             <TextView
+                android:id="@+id/fengcai_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -72,6 +73,14 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/add_bt"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/fengcai_bt"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/addbutton_pressed" />
             <Button
                 android:id="@+id/return_bt"
                 android:layout_width="35dp"

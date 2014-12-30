@@ -566,6 +566,19 @@ public class CydlApplication extends Application {
 					sendBroadcast(intent2);
 					su = null;
 					return;
+				}else if (tager.equals("20")) {
+					Intent intent2 = new Intent("pagemain");
+					intent2.putExtra("TAGS", 20);
+					intent2.putExtra("Lng", Lng);
+					intent2.putExtra("Lat", Lat);
+					intent2.putExtra("GetType", GetType);
+					intent2.putExtra("getAddrStr", location.getCity());
+					sendBroadcast(intent2);
+					Log.d("getAddrStr", "9999");
+					su=null;
+					return;
+					
+					
 				}
 				// 发送数据
 				new Task().execute("SEND");

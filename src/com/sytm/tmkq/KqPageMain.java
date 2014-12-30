@@ -41,6 +41,8 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.lnpdit.chatuidemo.R;
 import com.sytm.application.LocationUtils;
 import com.sytm.bean.CountModel;
@@ -160,6 +162,7 @@ public class KqPageMain extends Activity {
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
+//				Toast.makeText(context, "broadcast", Toast.LENGTH_SHORT).show();
 				if (intent.getIntExtra("TAGS", 0) == 2) {
 					iniOnCreate();
 				} else if (intent.getIntExtra("TAGS", 0) == 3) {
@@ -168,6 +171,7 @@ public class KqPageMain extends Activity {
 					GetType = intent.getStringExtra("GetType");
 					getAddrStr = intent.getStringExtra("getAddrStr");
 					wifiaddress = intent.getStringExtra("wifimac");
+//					Toast.makeText(context, "11111", Toast.LENGTH_SHORT).show();
 					if (wifiaddress.equals("") || wifiaddress.equals("null")) {
 						wifiaddress = " ";
 					}
@@ -192,6 +196,7 @@ public class KqPageMain extends Activity {
 				} else if (intent.getIntExtra("TAGS", 0) == 10) {
 					new Task().execute("count");
 				} else if (intent.getIntExtra("TAGS", 0) == 20) {
+//					Toast.makeText(context, "broadcast tag = 20", Toast.LENGTH_SHORT).show();
 					tadaycity = intent.getStringExtra("getAddrStr");
 					Log.i("定位获取地址", getAddrStr);
 					new Task().execute("getweather");

@@ -63,7 +63,8 @@
             android:hint="用户名/手机号"
             android:background="@null"
             android:singleLine="true"
-            android:textSize="18sp" />
+            android:textSize="18sp" 
+            android:inputType="textNoSuggestions"/>
         
         <View 
             android:background="#b3b3b3"

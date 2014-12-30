@@ -55,7 +55,8 @@
         android:hint="群聊名称"
         android:paddingLeft="5dp"
         android:singleLine="true"
-        android:textSize="18sp" />
+        android:textSize="18sp" 
+        android:inputType="textNoSuggestions"/>
 
     <EditText
         android:id="@+id/edit_group_introduction"
@@ -70,7 +71,8 @@
         android:lines="5"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
-        android:textSize="18sp" />
+        android:textSize="18sp" 
+        android:inputType="textNoSuggestions"/>
     
     
     <LinearLayout 

@@ -19,6 +19,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,6 +55,8 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	Context context;
 	Button return_bt;
+	Button add_bt;
+	
 
 	private boolean hasMeasured = false;// 是否Measured.
 	private LinearLayout layout_left;// 左边布局
@@ -114,6 +117,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	void InitView() {
 		return_bt = (Button) this.findViewById(R.id.return_bt);
+		add_bt = (Button) this.findViewById(R.id.add_bt);
 		layout_left = (LinearLayout) findViewById(R.id.layout_left);
 		layout_right = (LinearLayout) findViewById(R.id.layout_right);
 		lv_set = (ListView) findViewById(R.id.lv_set);
@@ -138,6 +142,16 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				finish();
+			}
+		});
+		add_bt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent1 = new Intent();
+				intent1.setClass(NewsActivity1.this,NewsPhotoActivity.class);
+				startActivity(intent1);
 			}
 		});
 		mylaout.setOnScrollListener(new OnScrollListener() {
