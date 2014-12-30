@@ -52,7 +52,7 @@ public class ImageAndTextNewsListAdapter extends ArrayAdapter<ImageAndTextNewsLi
 		ImageAndTextNewsList imageAndText = getItem(position);
 
 		// Load the image and set it on the ImageView
-		String imageUrl = MessengerService.PIC_FILE + imageAndText.getImageUrl();
+		String imageUrl = MessengerService.PIC_FILE_FC + imageAndText.getImageUrl();
 		ImageView imageView = viewCache.getImageView();
 		imageView.setTag(imageUrl);
 		Drawable cachedImage1 = asyncImageLoader.loadDrawable(imageUrl,

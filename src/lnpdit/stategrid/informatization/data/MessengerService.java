@@ -25,6 +25,7 @@ public class MessengerService {
 	public static final String URL = IP + "/phoneinvoke.asmx?wsdl";
 	public static final String URL_WITHOUT_WSDL = IP + "/phoneinvoke.asmx";
 	public static final String PIC_FILE = IP + "/manage/pic/";
+	public static final String PIC_FILE_FC = IP + "/pic/";
 	public static final String PIC_JOURNAL = IP + "/manage/magpic/";
 	public static final String PIC_PUSH = IP + "/upload/";
 	public static final String PIC_JOB = IP + "/upload/job/";
