@@ -222,7 +222,7 @@ public class NewsPhotoActivity extends Activity {
 				e.printStackTrace(); 
 			}
 			Message msg = new Message();
-			if (res.equals("true")) {
+			if (res.equals("success")) {
 				msg.arg1 = 1;
 			} else {
 				msg.arg1 = 0;
