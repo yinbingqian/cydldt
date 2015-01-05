@@ -54,33 +54,16 @@
             android:layout_height="50dp"
             android:background="@color/state_grid_green" >
 
-            <ImageView
-                android:id="@+id/iv_set"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/icon_menu_down" />
-
             <TextView
-                android:id="@+id/fengcai_bt"
+                android:id="@+id/iv_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="员工风采"
+                android:text="全部风采"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/add_bt"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/fengcai_bt"
-                android:layout_marginLeft="60dp"
-                android:background="@drawable/addbutton_pressed" />
             <Button
                 android:id="@+id/return_bt"
                 android:layout_width="35dp"
@@ -122,8 +105,8 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@+id/dn_no_text"
-                    android:textSize="15dp"
                     android:textColor="@color/black"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -149,6 +132,7 @@
                     android:divider="@drawable/listview_line4" >
                 </ListView>
             </com.lnpdit.chatuidemo.widget.RightMenuLinearLayout>
+
             <RelativeLayout
                 android:id="@+id/fengcai_display_progressbar_layout"
                 android:layout_width="400dp"

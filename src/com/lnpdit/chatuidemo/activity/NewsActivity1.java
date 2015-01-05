@@ -55,13 +55,13 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	Context context;
 	Button return_bt;
-	Button add_bt;
+//	Button add_bt;
 	
 
 	private boolean hasMeasured = false;// 是否Measured.
 	private LinearLayout layout_left;// 左边布局
 	private LinearLayout layout_right;// 右边布局
-	private ImageView iv_set;// 图片
+	private TextView iv_set;// 图片
 	private ListView lv_set;// 设置菜单
 	private ListView lv_news;
 	private TextView dn_text;
@@ -117,12 +117,12 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	void InitView() {
 		return_bt = (Button) this.findViewById(R.id.return_bt);
-		add_bt = (Button) this.findViewById(R.id.add_bt);
+//		add_bt = (Button) this.findViewById(R.id.add_bt);
 		layout_left = (LinearLayout) findViewById(R.id.layout_left);
 		layout_right = (LinearLayout) findViewById(R.id.layout_right);
 		lv_set = (ListView) findViewById(R.id.lv_set);
 		lv_news = (ListView) findViewById(R.id.listview);
-		iv_set = (ImageView) findViewById(R.id.iv_set);
+		iv_set = (TextView) findViewById(R.id.iv_set);
 		dn_text = (TextView) this.findViewById(R.id.dn_content_text);
 		title_text = (TextView) this.findViewById(R.id.item_text);
 		mylaout = (RightMenuLinearLayout) findViewById(R.id.mylaout);
@@ -144,16 +144,16 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 				finish();
 			}
 		});
-		add_bt.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent1 = new Intent();
-				intent1.setClass(NewsActivity1.this,NewsPhotoActivity.class);
-				startActivity(intent1);
-			}
-		});
+//		add_bt.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				Intent intent1 = new Intent();
+//				intent1.setClass(NewsActivity1.this,NewsPhotoActivity.class);
+//				startActivity(intent1);
+//			}
+//		});
 		mylaout.setOnScrollListener(new OnScrollListener() {
 			@Override
 			public void doScroll(float distanceX) {
