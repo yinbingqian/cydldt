@@ -154,6 +154,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/horizontal_slide" >
         </activity>
+        <activity
+            android:name=".activity.PeixunListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
         <!-- 图片 -->
         <activity
             android:name=".activity.PicActivity"

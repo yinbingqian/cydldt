@@ -5,6 +5,7 @@ import lnpdit.stategrid.informatization.tools.MeetingUpdate;
 import com.lnpdit.chatuidemo.R;
 import com.sytm.tmkq.KqPageMain;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

@@ -1,6 +1,7 @@
 package com.lnpdit.chatuidemo.activity;
 
 import com.lnpdit.chatuidemo.R;
+import com.lnpdit.chatuidemo.utils.CommonUtils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,16 +19,18 @@ public class InformationActivity extends Activity implements OnClickListener {
 	Button jiaoliu_bt;
 	Button tupian_bt;
 	Button shipin_bt;
-
+	Button[] mTabs;
+//	private ChatAllHistoryFragment chatHistoryFragment;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_information);
 		viewInit();
+//		chatHistoryFragment = new ChatAllHistoryFragment();
 	}
 
 	private void viewInit() {
-		return_bt = (Button)findViewById(R.id.return_bt);
+		return_bt = (Button) findViewById(R.id.return_bt);
 		return_bt.setOnClickListener(this);
 		return_bt.setOnClickListener(new View.OnClickListener() {
 
@@ -58,26 +61,33 @@ public class InformationActivity extends Activity implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-			// TODO Auto-generated method stub
-			switch (v.getId()) {
-			case R.id.yuangongfengcai_bt:
-				startActivity(new Intent(InformationActivity.this, NewsActivity1.class));
-				break;
-			case R.id.yuangongpeixun_bt:
-				startActivity(new Intent(InformationActivity.this, PeixunQuestionActivity.class));
-				break;
-			case R.id.jiaoliu_bt:
-				//startActivity(new Intent(InformationActivity.this, MainActivity.class).putExtra("from", "info"));
-				break;
-			case R.id.tupian_bt:
-				startActivity(new Intent(InformationActivity.this, PicActivity.class));
-				break;
-			case R.id.shipin_bt:
-				startActivity(new Intent(InformationActivity.this, VideoActivity.class));
-				break;
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.yuangongfengcai_bt:
+			startActivity(new Intent(InformationActivity.this,
+					NewsActivity1.class));
+			break;
+		case R.id.yuangongpeixun_bt:
+			startActivity(new Intent(InformationActivity.this,
+					PeixunListActivity.class));
+			break;
+		case R.id.jiaoliu_bt:
+//			 startActivity(new Intent(InformationActivity.this,
+//			 MainActivity.class).putExtra("from", "info"));
+			MainActivity.isJiaoliu = 1;
+			finish();
+			break;
+		case R.id.tupian_bt:
+			startActivity(new Intent(InformationActivity.this,
+					PicActivity.class));
+			break;
+		case R.id.shipin_bt:
+			startActivity(new Intent(InformationActivity.this,
+					VideoActivity.class));
+			break;
 
-			default:
-				break;
-			}
+		default:
+			break;
+		}
 	}
 }

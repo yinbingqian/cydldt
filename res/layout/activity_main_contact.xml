@@ -62,7 +62,8 @@
             android:drawableRight="@drawable/searchicon"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
-            android:textSize="15sp" >
+            android:textSize="15sp" 
+            android:inputType="textNoSuggestions">
         </EditText>
 
         <TextView

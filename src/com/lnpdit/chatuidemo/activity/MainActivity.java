@@ -70,6 +70,8 @@ public class MainActivity extends FragmentActivity {
 	private TextView unreadLabel;
 	// 未读通讯录textview
 	private TextView unreadAddressLable;
+	
+	public static int isJiaoliu = 0;//0-不切换交流    1-切换交流
 
 	private Button[] mTabs;
 	private ContactlistFragment contactListFragment;
@@ -687,6 +689,18 @@ public class MainActivity extends FragmentActivity {
 			updateUnreadLabel();
 			updateUnreadAddressLable();
 			EMChatManager.getInstance().activityResumed();
+		}
+		
+		if(isJiaoliu == 1){
+//			Toast.makeText(MainActivity.this, "1111", Toast.LENGTH_SHORT).show();
+			
+			mTabs[0].setSelected(true);
+			mTabs[3].setSelected(false);
+			currentTabIndex = 0;
+			
+			getSupportFragmentManager().beginTransaction().hide(indexFragment).show(chatHistoryFragment).commit();
+			
+			isJiaoliu = 0;
 		}
 
 	}

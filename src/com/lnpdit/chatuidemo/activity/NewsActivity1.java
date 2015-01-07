@@ -64,7 +64,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 	private TextView iv_set;// 图片
 	private ListView lv_set;// 设置菜单
 	private ListView lv_news;
-	private TextView dn_text;
+//	private TextView dn_text;
 	private TextView title_text;
 	private ProgressBar progressbar;
 	// private RelativeLayout progressbar_layout;
@@ -105,7 +105,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 		Thread thread = new Thread(runnable);
 		thread.start();
 		
-		dn_text.setText("全部风采");
+//		dn_text.setText("按部门浏览");
 		
 		dept_id="0";
 		mGetTopicDataThread runnable_news = new mGetTopicDataThread();
@@ -123,7 +123,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 		lv_set = (ListView) findViewById(R.id.lv_set);
 		lv_news = (ListView) findViewById(R.id.listview);
 		iv_set = (TextView) findViewById(R.id.iv_set);
-		dn_text = (TextView) this.findViewById(R.id.dn_content_text);
+//		dn_text = (TextView) this.findViewById(R.id.dn_content_text);
 		title_text = (TextView) this.findViewById(R.id.item_text);
 		mylaout = (RightMenuLinearLayout) findViewById(R.id.mylaout);
 		mywebviewlayout = (RightMenuLinearLayout) findViewById(R.id.mywebviewlaout);
@@ -445,7 +445,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 		// 只要没有滑动则都属于点击
 		// Toast.makeText(context, title[position], 1).show();
 
-		dn_text.setText(remoteWindowItem.get(position).get("Class").toString());
+//		dn_text.setText(remoteWindowItem.get(position).get("Class").toString());
 		dept_id = remoteWindowItem.get(position).get("Id").toString();
 		mGetTopicDataThread runnable = new mGetTopicDataThread();
 		Thread thread = new Thread(runnable);

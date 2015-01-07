@@ -64,6 +64,17 @@ public class PeixunQuestionActivity extends Activity {
 	String answer_str = "";
 	String type_str = "";
 
+//	private static final String Type = "Type", Title = "Title",ChooseA = "ChooseA",
+//			ChooseB = "ChooseB",ChooseC = "ChooseC",ChooseD = "ChooseD",Answer = "Answer",
+//					Colid = "Colid",Id = "Id";
+	String list_id;
+	String list_deptid;
+	String list_title;
+	String list_remark1;
+	String list_remark2;
+	String list_remark3;
+	String list_crtime;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -79,7 +90,15 @@ public class PeixunQuestionActivity extends Activity {
 //		zhang = intent.getStringExtra("zhang");
 //		jie = intent.getStringExtra("jie");
 //		id = intent.getStringExtra("id");
-
+		Intent intent = this.getIntent();
+		list_id = intent.getStringExtra("id");
+		list_deptid = intent.getStringExtra("deptid");
+		list_title = intent.getStringExtra("title");
+		list_remark1 = intent.getStringExtra("remark1");
+		list_remark2 = intent.getStringExtra("remark2");
+		list_remark3 = intent.getStringExtra("remark3");
+		list_crtime = intent.getStringExtra("crtime");
+		
 		viewInit();
 		mGetQuestionDataThread questionRunnable = new mGetQuestionDataThread();
 		Thread thread = new Thread(questionRunnable);
@@ -264,11 +283,13 @@ public class PeixunQuestionActivity extends Activity {
 			// TODO Auto-generated method stub
 			String qurl = MessengerService.URL;
 			String qmethodname = "";
-			qmethodname = MessengerService.METHOD_GetTikuRandom;
+			qmethodname = MessengerService.METHOD_GetTikuRandomById;
 			String qnamespace = MessengerService.NAMESPACE;
 			String qsoapaction = qnamespace + "/" + qmethodname;
 
 			SoapObject rpc = new SoapObject(qnamespace, qmethodname);
+//			rpc.addProperty("title", title);
+			rpc.addProperty("colid", list_id);
 //			if (type.equals("pian")) {
 //				rpc.addProperty("c_id", id);
 //				rpc.addProperty("pian", pian);
@@ -304,6 +325,8 @@ public class PeixunQuestionActivity extends Activity {
 				String ChooseC = soapchildsson.getProperty("ChooseC").toString();
 				String ChooseD = soapchildsson.getProperty("ChooseD").toString();
 				String Answer = soapchildsson.getProperty("Answer").toString();
+				String Colid = soapchildsson.getProperty("Colid").toString();
+				String Id = soapchildsson.getProperty("Id").toString();
 
 				HashMap<String, Object> mapdevinfo = new HashMap<String, Object>();
 				mapdevinfo.put("Type", Type);
@@ -313,6 +336,8 @@ public class PeixunQuestionActivity extends Activity {
 				mapdevinfo.put("ChooseC", ChooseC);
 				mapdevinfo.put("ChooseD", ChooseD);
 				mapdevinfo.put("Answer", Answer);
+				mapdevinfo.put("Colid", Colid);
+				mapdevinfo.put("Id", Id);
 				remoteWindowItem.add(mapdevinfo);
 
 				Message msg = new Message();

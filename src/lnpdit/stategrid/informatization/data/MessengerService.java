@@ -19,7 +19,8 @@ public class MessengerService {
 	 * Webservice
 	 */
 	public static final String NAMESPACE = "MobileNewspaper";
-	public static final String IP = "http://200.20.30.145:82";
+//	public static final String IP = "http://200.20.30.145:82";
+	public static final String IP = "http://200.20.30.201:82";
 //	public static final String IP = "http://211.140.246.117";
 //	public static final String IP = "http://219.148.199.62/dianli";
 	public static final String URL = IP + "/phoneinvoke.asmx?wsdl";
@@ -57,6 +58,8 @@ public class MessengerService {
 	public static final String METHOD_GetMagazinePicInfo = "GetMagazinePicInfo";
 	public static final String METHOD_GetVideoInfo = "GetVideoInfo";
 	public static final String METHOD_GetTikuRandom = "GetTikuRandom";
+	public static final String METHOD_GetTikuRandomById = "GetTikuRandomById";
+	public static final String METHOD_GetTikuColumn = "GetTikuColumn";
 	public static final String METHOD_GetNewsByDepartmentId = "GetNewsByDepartmentId";
 
 	public static final String WEEK = "week";

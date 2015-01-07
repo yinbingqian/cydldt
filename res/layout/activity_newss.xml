@@ -55,11 +55,10 @@
             android:background="@color/state_grid_green" >
 
             <TextView
-                android:id="@+id/iv_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="全部风采"
+                android:text="员工风采"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -89,22 +88,23 @@
 
                 <TextView
                     android:id="@+id/dn_no_text"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/scrub_circle_down"
+                    android:background="@drawable/icon_menu_down"
                     android:gravity="center"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/dn_content_text"
+                    android:id="@+id/iv_set"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@+id/dn_no_text"
+                    android:text="按部门浏览"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold" />
