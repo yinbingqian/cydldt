@@ -44,6 +44,7 @@ public class MessengerService {
 	public static final String METHOD_GetAddressBookList = "GetAddressBookList";
 	public static final String METHOD_MAS = "MAS";
 	public static final String METHOD_GetWeather = "GetWeather";
+	public static final String METHOD_WeatherSender = "WeatherSender";
 	public static final String METHOD_WeatherAdd = "WeatherAdd";
 	public static final String METHOD_GetJobPlan = "GetJobPlan";
 	public static final String METHOD_JobPlanAdd = "JobPlanAdd";

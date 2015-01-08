@@ -47,6 +47,8 @@ public class WeatherActivity extends Activity implements OnPullDownListener {
 	private PullDownView mPullDownView;
 	public boolean sync_state;
 	int pagesize;
+	String userid;
+	String WeatherSender;
 	WeatherAdapter topicAdapter;
 
 	@Override
@@ -56,9 +58,14 @@ public class WeatherActivity extends Activity implements OnPullDownListener {
 		setContentView(R.layout.activity_weather);
 		context = this;
 
+		SharedPreferences sp = this.getSharedPreferences("user_info",
+				MODE_APPEND);
+		userid = sp.getString("Id", "");
+		WeatherSender = sp.getString("WeatherSender", "");
 		viewInit();
 		pagesize = 1;
 		
+	
 //		getNewData();
 	}
 
@@ -68,9 +75,9 @@ public class WeatherActivity extends Activity implements OnPullDownListener {
 
 		return_bt.setOnClickListener(btnListener);
 		add_bt.setOnClickListener(btnListener);
-		
-		add_bt.setVisibility(8);
-
+		if(WeatherSender.equals("0")){
+			add_bt.setVisibility(8);
+		}
 		progressbar = (ProgressBar) this.findViewById(R.id.progressbar);
 
 		mPullDownView = (PullDownView) this.findViewById(R.id.weather_list);
@@ -192,6 +199,7 @@ public class WeatherActivity extends Activity implements OnPullDownListener {
 			SoapObject rpc = new SoapObject(comnamespace, commethodname);
 			rpc.addProperty("pagesize", 10);
 			rpc.addProperty("pageindex", pagesize);
+			rpc.addProperty("userid", userid);
 			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
 					SoapEnvelope.VER11);
 			envelope.bodyOut = rpc;
@@ -286,6 +294,7 @@ public class WeatherActivity extends Activity implements OnPullDownListener {
 			case R.id.weather_add:
 				Intent intent = new Intent();
 				intent.setClass(WeatherActivity.this, WeatherAddActivity.class);
+				intent.putExtra("userid", userid);
 				startActivity(intent);
 				break;
 

@@ -34,8 +34,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="7dp"
-            android:background="@drawable/contact_list_refresh_bt_on"
-            android:onClick="refreshContact" />
+            android:background="@drawable/addbutton_pressed"/>
     </RelativeLayout>
 
     <RelativeLayout

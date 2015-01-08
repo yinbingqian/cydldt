@@ -345,6 +345,7 @@ public class LoginActivity extends BaseActivity {
 				String mic = login_hash.get("mic");
 				String mail = login_hash.get("mail");
 				String control = login_hash.get("control");
+				String WeatherSender = login_hash.get("WeatherSender");
 				String AdrId = login_hash.get("AdrId");
 				String DeptId = login_hash.get("DeptId");
 				Toast.makeText(context, Id+"|"+DeptId, Toast.LENGTH_SHORT).show();
@@ -382,6 +383,7 @@ public class LoginActivity extends BaseActivity {
 					edit.putString("mic", mic);
 					edit.putString("mail", mail);
 					edit.putString("control", control);
+					edit.putString("WeatherSender", WeatherSender);
 					edit.putString("AdrId", AdrId);
 					edit.putString("DeptId", DeptId);
 					edit.putString("Pwd", passwordEditText.getText().toString());
@@ -503,6 +505,10 @@ public class LoginActivity extends BaseActivity {
 				if (control.startsWith("anyType")) {
 					control = "";
 				}
+				String WeatherSender = soapchilds.getProperty("WeatherSender").toString();
+				if (WeatherSender.startsWith("anyType")) {
+					WeatherSender = "";
+				}
 				String AdrId = soapchilds.getProperty("KqId").toString();
 				if (AdrId.startsWith("anyType")) {
 					AdrId = "";
@@ -528,6 +534,7 @@ public class LoginActivity extends BaseActivity {
 				userdata.put("mic", mic);
 				userdata.put("mail", mail);
 				userdata.put("control", control);
+				userdata.put("WeatherSender", WeatherSender);
 				userdata.put("AdrId", AdrId);
 				userdata.put("DeptId", DeptId);
 
