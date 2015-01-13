@@ -86,12 +86,14 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/riqi_edit"
+                android:id="@+id/btn_choose"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
+                android:hint="  请选择日期"
+                android:editable="false"
                 android:inputType="textNoSuggestions" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -115,13 +117,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:inputType="textNoSuggestions" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:text="℃"
                 android:textColor="@color/dimgray"
-                android:textSize="18sp" 
-                android:text="℃"/>
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -199,46 +202,51 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="预警等级："
+                android:layout_marginTop="5dp"
+                android:text="预警等级  "
                 android:textColor="@color/dimgray"
                 android:textSize="18sp" />
 
             <RadioGroup
                 android:id="@+id/yujing_edit"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/radio0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/weather_yellow"
                     android:checked="true"
                     android:text="黄" />
 
                 <RadioButton
                     android:id="@+id/radio1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/weather_orange"
                     android:text="橙" />
 
                 <RadioButton
                     android:id="@+id/radio2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/weather_red"
                     android:text="红" />
+
                 <RadioButton
                     android:id="@+id/radio3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/weather_blue"
                     android:text="蓝" />
             </RadioGroup>
-
         </LinearLayout>
     </LinearLayout>
 

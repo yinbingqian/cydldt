@@ -1,7 +1,9 @@
 package com.lnpdit.chatuidemo.activity;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import lnpdit.stategrid.informatization.data.MessengerService;
@@ -15,12 +17,15 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.lnpdit.chatuidemo.R;
+import com.lnpdit.chatuidemo.activity.DateTimePickerDialog.OnDateTimeSetListener;
 import com.sytm.bean.TelBookModel;
 import com.sytm.tmkq.ReportDepContactsActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -31,9 +36,18 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -49,7 +63,7 @@ public class WeatherAddActivity extends Activity {
 	TextView rcv_text;
 	TextView rcv_id_text;
 	Button choose_bt;
-	EditText riqi_edit;
+	EditText btn_choose;
 	EditText wendu_edit;
 	EditText shidu_edit;
 	EditText fengxiang_edit;
@@ -59,6 +73,8 @@ public class WeatherAddActivity extends Activity {
 	RadioButton orangeButton;
 	RadioButton redButton;
 	RadioButton blueButton;
+
+	static final int DATE_DIALOG_ID = 0;
 
 	Button send_bt;
 	Button return_bt;
@@ -79,12 +95,13 @@ public class WeatherAddActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_weather_add);
 
+
 		context = this;
 		Intent intent = this.getIntent();
 		userid = intent.getStringExtra("userid");
 
 		viewInit();
-
+		
 		ToDoDB tdd = new ToDoDB(context);
 		Cursor cursor = tdd.selectcontact();
 		contact_num = cursor.getCount();
@@ -107,7 +124,17 @@ public class WeatherAddActivity extends Activity {
 		rcv_text = (TextView) this.findViewById(R.id.rcv_text);
 		rcv_id_text = (TextView) this.findViewById(R.id.rcv_id_text);
 		choose_bt = (Button) this.findViewById(R.id.choose_contact);
-		riqi_edit = (EditText) this.findViewById(R.id.riqi_edit);
+
+		btn_choose=(EditText)this.findViewById(R.id.btn_choose);
+		btn_choose.setClickable(true);
+		btn_choose.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				showDialog();
+			}
+		});
 		wendu_edit = (EditText) this.findViewById(R.id.wendu_edit);
 		shidu_edit = (EditText) this.findViewById(R.id.shidu_edit);
 		fengxiang_edit = (EditText) this.findViewById(R.id.fengxiang_edit);
@@ -157,10 +184,10 @@ public class WeatherAddActivity extends Activity {
 			String name = list.get(i).getName();
 			int id = list.get(i).getId();
 
-			if(i!=0){				
+			if (i != 0) {
 				selectedStr = selectedStr + "," + name;
 				selectedIdStr = selectedIdStr + "," + id;
-			}else{
+			} else {
 				selectedStr = name;
 				selectedIdStr = String.valueOf(id);
 			}
@@ -171,14 +198,14 @@ public class WeatherAddActivity extends Activity {
 	}
 
 	private void sendMsg() {
-		String riqi = riqi_edit.getText().toString();
+		String riqi = btn_choose.getText().toString();
 		String wendu = wendu_edit.getText().toString();
 		String shidu = shidu_edit.getText().toString();
 		String fengxiang = fengxiang_edit.getText().toString();
 		String fengli = fengli_edit.getText().toString();
 		String yujing = fengli_edit.getText().toString();
 		if (riqi.equals("")) {
-			Toast.makeText(context, "发送内容不能为空", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "请选择日期", Toast.LENGTH_SHORT).show();
 			return;
 		} else if (wendu.equals("")) {
 			Toast.makeText(context, "发送内容不能为空", Toast.LENGTH_SHORT).show();
@@ -251,8 +278,7 @@ public class WeatherAddActivity extends Activity {
 		}
 	};
 
-	@Override
-	protected Dialog onCreateDialog(int id) {
+	protected Dialog onCreateDialog1(int id) {
 		Dialog dialog = null;
 		switch (id) {
 		case MUTI_CHOICE_DIALOG:
@@ -313,7 +339,7 @@ public class WeatherAddActivity extends Activity {
 			String csoapaction = cnamespace + "/" + cmethodname;
 
 			SoapObject rpc = new SoapObject(cnamespace, cmethodname);
-			rpc.addProperty("Wdate", riqi_edit.getText().toString());
+			rpc.addProperty("Wdate", btn_choose.getText().toString());
 			rpc.addProperty("Temperature", wendu_edit.getText().toString());
 			rpc.addProperty("Humidity", shidu_edit.getText().toString());
 			rpc.addProperty("WindDIR", fengxiang_edit.getText().toString());
@@ -364,4 +390,31 @@ public class WeatherAddActivity extends Activity {
 		}
 	}
 
+	public void showDialog()
+	{
+		DateTimePickerDialog dialog  = new DateTimePickerDialog(this, System.currentTimeMillis());
+		dialog.setOnDateTimeSetListener(new OnDateTimeSetListener()
+	      {
+			public void OnDateTimeSet(AlertDialog dialog, long date)
+			{
+//				Toast.makeText(WeatherAddActivity.this, "您输入的日期是："+getStringDate(date), Toast.LENGTH_LONG).show();
+				btn_choose.setText(getStringDate(date));
+//				int flag = DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_WEEKDAY| DateUtils.FORMAT_SHOW_TIME;
+//				birthEdit.setText(DateUtils.formatDateTime(this.getContext(), date, flag));
+			}
+		});
+		dialog.show();
+	}
+	/**
+	* 将长时间格式字符串转换为时间 yyyy-MM-dd HH:mm:ss
+	*
+	*/
+	public static String getStringDate(Long date) 
+	{
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
+		String dateString = formatter.format(date);
+		
+		return dateString;
+	}   
 }
