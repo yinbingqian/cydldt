@@ -40,22 +40,22 @@ import com.sytm.view.LoadingDialog;
 public class MyReportDetailActivity extends Activity {
 	private TextView report_detail_date, report_detail_time,
 			report_detail_content, report_detail_huifu, title, nei_title,
-			reportreply_name, report_attach1, report_attach2, report_attach3,report_detail_title;
+			reportreply_name, report_attach1, report_attach2, report_attach3, report_attach4, report_attach5, report_attach6,report_detail_title;
 	private ListView listView;
 	private InputMethodManager manager;
 	private View top;
 	private ServiceResult sr = new ServiceResult();
-	private Button reply_detail_left,report_attach1_btn,report_attach2_btn,report_attach3_btn;
+	private Button reply_detail_left,report_attach1_btn,report_attach2_btn,report_attach3_btn,report_attach4_btn,report_attach5_btn,report_attach6_btn;
 	private Intent intent;
 	private ReportDetailModel detailModel;
 	private MyReportDetailAdapter adapter;
 	private EditText report_content;
-	private String toempid = "", repid = "", empid = "", toname = "", name = "",filepath1="",filepath2="",filepath3="";
-	private ImageView report_detail_topdown,report_attach1_img,report_attach2_img,report_attach3_img;
+	private String toempid = "", repid = "", empid = "", toname = "", name = "",filepath1="",filepath2="",filepath3="",filepath4="",filepath5="",filepath6="";
+	private ImageView report_detail_topdown,report_attach1_img,report_attach2_img,report_attach3_img,report_attach4_img,report_attach5_img,report_attach6_img;
 	private List<ReportDetail_ReplyModel> list = new ArrayList<ReportDetail_ReplyModel>();
 	private List<AttachFileModel> fileModels = new ArrayList<AttachFileModel>();
 	private LinearLayout reportreply_view, cancel_reply, report_reply,report_attach;
-	private LinearLayout report_attach1_rel,report_attach2_rel,report_attach3_rel;
+	private LinearLayout report_attach1_rel,report_attach2_rel,report_attach3_rel,report_attach4_rel,report_attach5_rel,report_attach6_rel;
 	private int tag = 0;
 	private Dialog dialog2;
 	private boolean open = true;
@@ -97,15 +97,27 @@ public class MyReportDetailActivity extends Activity {
 		report_attach1 = (TextView) top.findViewById(R.id.report_attach1);
 		report_attach2 = (TextView) top.findViewById(R.id.report_attach2);
 		report_attach3 = (TextView) top.findViewById(R.id.report_attach3);
+		report_attach4 = (TextView) top.findViewById(R.id.report_attach4);
+		report_attach5 = (TextView) top.findViewById(R.id.report_attach5);
+		report_attach6 = (TextView) top.findViewById(R.id.report_attach6);
 		report_attach1_btn = (Button) top.findViewById(R.id.report_attach1_btn);
 		report_attach2_btn = (Button) top.findViewById(R.id.report_attach2_btn);
 		report_attach3_btn = (Button) top.findViewById(R.id.report_attach3_btn);
+		report_attach4_btn = (Button) top.findViewById(R.id.report_attach4_btn);
+		report_attach5_btn = (Button) top.findViewById(R.id.report_attach5_btn);
+		report_attach6_btn = (Button) top.findViewById(R.id.report_attach6_btn);
 		report_attach1_img = (ImageView) top.findViewById(R.id.report_attach1_img);
 		report_attach2_img = (ImageView) top.findViewById(R.id.report_attach2_img);
 		report_attach3_img = (ImageView) top.findViewById(R.id.report_attach3_img);
+		report_attach4_img = (ImageView) top.findViewById(R.id.report_attach4_img);
+		report_attach5_img = (ImageView) top.findViewById(R.id.report_attach5_img);
+		report_attach6_img = (ImageView) top.findViewById(R.id.report_attach6_img);
 		report_attach1_rel = (LinearLayout) top.findViewById(R.id.report_attach1_rel);
 		report_attach2_rel = (LinearLayout) top.findViewById(R.id.report_attach2_rel);
 		report_attach3_rel = (LinearLayout) top.findViewById(R.id.report_attach3_rel);
+		report_attach4_rel = (LinearLayout) top.findViewById(R.id.report_attach4_rel);
+		report_attach5_rel = (LinearLayout) top.findViewById(R.id.report_attach5_rel);
+		report_attach6_rel = (LinearLayout) top.findViewById(R.id.report_attach6_rel);
 		report_attach.setVisibility(View.GONE);
 		report_attach.setEnabled(false);
 		listView = (ListView) findViewById(R.id.report_detail_listview);
@@ -260,6 +272,39 @@ public class MyReportDetailActivity extends Activity {
 				}
 			}
 		});
+		report_attach4_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (!filepath4.equals("")) {
+					Handler handler = new Handler();
+					AttachmentDownUtils filedownload = new AttachmentDownUtils(MyReportDetailActivity.this, handler, filepath4);
+					filedownload.run();
+				}
+			}
+		});
+		report_attach5_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (!filepath5.equals("")) {
+					Handler handler = new Handler();
+					AttachmentDownUtils filedownload = new AttachmentDownUtils(MyReportDetailActivity.this, handler, filepath5);
+					filedownload.run();
+				}
+			}
+		});
+		report_attach6_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (!filepath6.equals("")) {
+					Handler handler = new Handler();
+					AttachmentDownUtils filedownload = new AttachmentDownUtils(MyReportDetailActivity.this, handler, filepath6);
+					filedownload.run();
+				}
+			}
+		});
 	}
 
 	/**
@@ -347,6 +392,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.GONE);
 							report_attach3_rel.setVisibility(View.GONE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach1_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -364,6 +412,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.VISIBLE);
 							report_attach3_rel.setVisibility(View.GONE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach2_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -381,6 +432,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.VISIBLE);
 							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach3_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -391,6 +445,66 @@ public class MyReportDetailActivity extends Activity {
 								report_attach3_img.setImageResource(R.drawable.ppt_icon);
 							}else if(Constant.TxtFormat.contains(fileformat)){
 								report_attach3_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 3) {
+							report_attach4.setText(fileModels.get(i).getFilename());
+							filepath4 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach4_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 4) {
+							report_attach5.setText(fileModels.get(i).getFilename());
+							filepath5 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.VISIBLE);
+							report_attach6_rel.setVisibility(View.GONE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach5_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 5) {
+							report_attach6.setText(fileModels.get(i).getFilename());
+							filepath6 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.VISIBLE);
+							report_attach6_rel.setVisibility(View.VISIBLE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach6_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.txt_icon);
 							}
 						}
 					}
@@ -432,6 +546,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.GONE);
 							report_attach3_rel.setVisibility(View.GONE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach1_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -449,6 +566,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.VISIBLE);
 							report_attach3_rel.setVisibility(View.GONE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach2_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -466,6 +586,9 @@ public class MyReportDetailActivity extends Activity {
 							report_attach1_rel.setVisibility(View.VISIBLE);
 							report_attach2_rel.setVisibility(View.VISIBLE);
 							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.GONE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
 							if (Constant.ImgFormat.contains(fileformat)) {
 								report_attach3_img.setImageResource(R.drawable.img_icon);
 							}else if(Constant.WordFormat.contains(fileformat)){
@@ -476,6 +599,66 @@ public class MyReportDetailActivity extends Activity {
 								report_attach3_img.setImageResource(R.drawable.ppt_icon);
 							}else if(Constant.TxtFormat.contains(fileformat)){
 								report_attach3_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 3) {
+							report_attach4.setText(fileModels.get(i).getFilename());
+							filepath4 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.GONE);
+							report_attach6_rel.setVisibility(View.GONE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach4_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach4_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 4) {
+							report_attach5.setText(fileModels.get(i).getFilename());
+							filepath5 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.VISIBLE);
+							report_attach6_rel.setVisibility(View.GONE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach5_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach5_img.setImageResource(R.drawable.txt_icon);
+							}
+						}else if (i == 5) {
+							report_attach6.setText(fileModels.get(i).getFilename());
+							filepath6 = fileModels.get(i).getFilepath();
+							report_attach1_rel.setVisibility(View.VISIBLE);
+							report_attach2_rel.setVisibility(View.VISIBLE);
+							report_attach3_rel.setVisibility(View.VISIBLE);
+							report_attach4_rel.setVisibility(View.VISIBLE);
+							report_attach5_rel.setVisibility(View.VISIBLE);
+							report_attach6_rel.setVisibility(View.VISIBLE);
+							if (Constant.ImgFormat.contains(fileformat)) {
+								report_attach6_img.setImageResource(R.drawable.img_icon);
+							}else if(Constant.WordFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.word_icon);
+							}else if(Constant.XlsFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.xls_icon);
+							}else if(Constant.PptFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.ppt_icon);
+							}else if(Constant.TxtFormat.contains(fileformat)){
+								report_attach6_img.setImageResource(R.drawable.txt_icon);
 							}
 						}
 					}

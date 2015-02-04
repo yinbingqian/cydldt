@@ -212,6 +212,132 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/report_attach4_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach4_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:maxEms="20"
+                            android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach4_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/report_attach5_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach5_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:maxEms="20"
+                            android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach5_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/report_attach6_rel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/report_attach6_img"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/word_icon" />
+
+                        <TextView
+                            android:id="@+id/report_attach6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/report_cancel_in"
+                            android:maxEms="20"
+                            android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/report_attach6_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.7"
+                        android:background="@drawable/down_btn"
+                        android:drawableLeft="@drawable/down_img"
+                        android:paddingLeft="13dp"
+                        android:text="@string/clickdown"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <TextView

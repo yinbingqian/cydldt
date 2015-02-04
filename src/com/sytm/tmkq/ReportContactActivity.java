@@ -25,11 +25,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.lnpdit.chatuidemo.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sytm.adapter.ReportContactAdapter;
@@ -41,17 +40,15 @@ import com.sytm.netcore.ServiceContent;
 import com.sytm.netcore.ServiceResult;
 import com.sytm.util.JsonUtils;
 import com.sytm.application.HanZiUtils;
-import com.sytm.widget.AlphabetListReportView;
-import com.sytm.widget.AlphabetListReportView.OnItemClickListener;
-import com.sytm.widget.AlphabetListReportView.OnRefreshListener;
+import com.sytm.widget.RTPullListView;
+import com.sytm.widget.RTPullListView.OnRefreshListener;
 
 @SuppressLint("HandlerLeak")
-public class ReportContactActivity extends Activity implements
-		OnItemClickListener, OnRefreshListener {
+public class ReportContactActivity extends Activity {
 	private ImageLoader mImageLoader;
 	private List<ReportContactModel> modes = new ArrayList<ReportContactModel>();
 	private List<TelBookModel> list = new ArrayList<TelBookModel>();
-	private AlphabetListReportView listView;
+	private RTPullListView listView;
 	private HashMap<String, Integer> alphaIndexer = null;
 	private ServiceResult sr = new ServiceResult();
 	private ArrayList<TelBookModel> menuList = new ArrayList<TelBookModel>();
@@ -87,14 +84,14 @@ public class ReportContactActivity extends Activity implements
 		mImageLoader = ImageLoader.getInstance();
 		open = true;
 		intent=getIntent();
-		listView = (AlphabetListReportView) findViewById(R.id.mylistviewkq);
+		listView = (RTPullListView) findViewById(R.id.mylistviewkq);
 		put_search = (EditText) findViewById(R.id.serveredit);
 		left = (Button) findViewById(R.id.left);
 		right = (Button) findViewById(R.id.reportcontact_right);
 		number = (TextView) findViewById(R.id.contactnumber);
 		manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		listView.setOnItemClickListener(this);
-		listView.setonRefreshListener(this);
+//		listView.setOnItemClickListener(this);
+//		listView.setonRefreshListener(this);
 		left.setOnClickListener(new MyOnClickListener());
 		right.setOnClickListener(new MyOnClickListener());
 		put_search.addTextChangedListener(new MyaddTextChangedListener());
@@ -108,6 +105,38 @@ public class ReportContactActivity extends Activity implements
 			setData();
 		}
 		new Task().execute("list");
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (modes.get(position - 1).getTag() == 0) {
+				modes.get(position - 1).setTag(1);
+				for (int i = 0; i < menuList.size(); i++) {
+					if (modes.get(position - 1).getId()
+							.equals(Integer.toString(menuList.get(i).getId()))) {
+						menuList.get(i).setTag(1);
+					}
+				}
+			} else {
+				modes.get(position - 1).setTag(0);
+				for (int i = 0; i < menuList.size(); i++) {
+					if (modes.get(position - 1).getId()
+							.equals(Integer.toString(menuList.get(i).getId()))) {
+						menuList.get(i).setTag(0);
+					}
+				}
+			}
+			adapter.notifyDataSetChanged();
+			}
+		});
+		listView.setonRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				new Task().execute("list");
+			}
+		});
 	}
 
 	/**
@@ -188,7 +217,7 @@ public class ReportContactActivity extends Activity implements
 				adapter = new ReportContactAdapter(ReportContactActivity.this,
 						mImageLoader);
 				adapter.setData(modes);
-				listView.setAlphabetIndex(alphaIndexer);
+//				listView.setAlphabetIndex(alphaIndexer);
 				listView.setAdapter(adapter);
 				number.setText(getResources().getString(R.string.all_contacts)
 						+ modes.size()
@@ -401,13 +430,6 @@ public class ReportContactActivity extends Activity implements
 			dialog.show();
 		}
 	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		AlphabetListReportView.remove();
-	}
-
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -421,33 +443,33 @@ public class ReportContactActivity extends Activity implements
 		}
 	}
 
-	@Override
-	public void onRefresh() {
-		new Task().execute("list");
-	}
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		if (modes.get(position - 1).getTag() == 0) {
-			modes.get(position - 1).setTag(1);
-			for (int i = 0; i < menuList.size(); i++) {
-				if (modes.get(position - 1).getId()
-						.equals(Integer.toString(menuList.get(i).getId()))) {
-					menuList.get(i).setTag(1);
-				}
-			}
-		} else {
-			modes.get(position - 1).setTag(0);
-			for (int i = 0; i < menuList.size(); i++) {
-				if (modes.get(position - 1).getId()
-						.equals(Integer.toString(menuList.get(i).getId()))) {
-					menuList.get(i).setTag(0);
-				}
-			}
-		}
-		adapter.notifyDataSetChanged();
-	}
+//	@Override
+//	public void onRefresh() {
+//		new Task().execute("list");
+//	}
+//
+//	@Override
+//	public void onItemClick(AdapterView<?> parent, View view, int position,
+//			long id) {
+//		if (modes.get(position - 1).getTag() == 0) {
+//			modes.get(position - 1).setTag(1);
+//			for (int i = 0; i < menuList.size(); i++) {
+//				if (modes.get(position - 1).getId()
+//						.equals(Integer.toString(menuList.get(i).getId()))) {
+//					menuList.get(i).setTag(1);
+//				}
+//			}
+//		} else {
+//			modes.get(position - 1).setTag(0);
+//			for (int i = 0; i < menuList.size(); i++) {
+//				if (modes.get(position - 1).getId()
+//						.equals(Integer.toString(menuList.get(i).getId()))) {
+//					menuList.get(i).setTag(0);
+//				}
+//			}
+//		}
+//		adapter.notifyDataSetChanged();
+//	}
 
 	class reportComparator implements Comparator<ReportContactModel> {
 

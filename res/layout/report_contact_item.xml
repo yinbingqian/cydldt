@@ -5,27 +5,10 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/fenxian"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/hengline_11"
-         />
-
-    <TextView
-        android:id="@+id/first_alpha"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/namebg_03"
-        android:paddingLeft="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:orientation="horizontal" >
 
         <ImageView
@@ -33,9 +16,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
             android:contentDescription="@string/contact_img"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/contact_icon" />
 
         <LinearLayout
             android:layout_width="wrap_content"

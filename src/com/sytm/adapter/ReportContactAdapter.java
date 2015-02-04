@@ -75,8 +75,8 @@ public class ReportContactAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.report_contact_item, null);
 
-			holder.fistAlphaTextView = (TextView) convertView
-					.findViewById(R.id.first_alpha);
+//			holder.fistAlphaTextView = (TextView) convertView
+//					.findViewById(R.id.first_alpha);
 			holder.nameTextView = (TextView) convertView
 					.findViewById(R.id.name);
 			holder.depnameTextView = (TextView) convertView
@@ -85,7 +85,7 @@ public class ReportContactAdapter extends BaseAdapter {
 					.findViewById(R.id.phone);
 			holder.imageView = (ImageView) convertView
 					.findViewById(R.id.contactimg);
-			holder.fenxian = (TextView) convertView.findViewById(R.id.fenxian);
+//			holder.fenxian = (TextView) convertView.findViewById(R.id.fenxian);
 			holder.call_tel = (ImageView) convertView
 					.findViewById(R.id.call_phone);
 			convertView.setTag(holder);
@@ -149,14 +149,14 @@ public class ReportContactAdapter extends BaseAdapter {
 					previewStr = mode.getFirstAlpha();
 				}
 
-				if (!previewStr.equals(currentAlpha)) {
-					holder.fenxian.setVisibility(View.GONE);
-					holder.fistAlphaTextView.setVisibility(View.VISIBLE);
-					holder.fistAlphaTextView.setText(currentAlpha);
-				} else {
-					holder.fenxian.setVisibility(View.VISIBLE);
-					holder.fistAlphaTextView.setVisibility(View.GONE);
-				}
+//				if (!previewStr.equals(currentAlpha)) {
+//					holder.fenxian.setVisibility(View.GONE);
+////					holder.fistAlphaTextView.setVisibility(View.VISIBLE);
+////					holder.fistAlphaTextView.setText(currentAlpha);
+//				} else {
+//					holder.fenxian.setVisibility(View.VISIBLE);
+////					holder.fistAlphaTextView.setVisibility(View.GONE);
+//				}
 			}
 		}
 
@@ -183,12 +183,12 @@ public class ReportContactAdapter extends BaseAdapter {
 	    }
 	  } 
 	class ViewHolder {
-		TextView fistAlphaTextView;
+//		TextView fistAlphaTextView;
 		TextView nameTextView;
 		TextView phoneTextView;
 		TextView depnameTextView;
 		ImageView imageView;
-		TextView fenxian;
+//		TextView fenxian;
 		ImageView call_tel;
 	}
 

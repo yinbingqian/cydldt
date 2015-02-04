@@ -1,76 +1,58 @@
 package com.sytm.adapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.HashMap;
 
 import com.lnpdit.chatuidemo.R;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
-import com.nostra13.universalimageloader.core.process.BitmapProcessor;
-import com.sytm.bean.ConteactModel;
-import com.sytm.common.Constant;
-import com.sytm.common.DepnameModel;
-import com.sytm.util.ImageUtils;
+import com.sytm.tmkq.ReportContactActivity;
+import com.sytm.tmkq.ReportDepContactsActivity;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ReportDepAdapter extends BaseAdapter {
+	private class buttonViewHolder {
+		TextView appdept;
+		TextView appdept2;
+		LinearLayout imagebg1;
+		LinearLayout imagebg2;
+	}
 
-	private Context context;
-	private ArrayList<DepnameModel> modes;
-    private ImageLoader mImageLoader;
-    private DisplayImageOptions mDisplayImageOptions;
-    private ImageLoadingListenerImpl mImageLoadingListenerImpl;
-	public ReportDepAdapter(Context context){
-		this.context = context;
-//		 this.mImageLoader = imageLoader;
-//		    int defaultImageId = R.drawable.nan_04;
-//		    mDisplayImageOptions = new DisplayImageOptions.Builder()
-//		                       .showStubImage(defaultImageId)
-//		                       .showImageForEmptyUri(defaultImageId)
-//		                       .showImageOnFail(defaultImageId)
-//		                       .preProcessor(new BitmapProcessor() {
-//								
-//								@Override
-//								public Bitmap process(Bitmap arg0) {
-//									return ImageUtils.toRoundBitmap(arg0);
-//								}
-//							})
-//		                       .cacheInMemory()
-//		                       .cacheOnDisc()
-//		                       .resetViewBeforeLoading()
-//		                       .build();
-//		    mImageLoadingListenerImpl=new ImageLoadingListenerImpl();
+	private ArrayList<HashMap<String, Object>> mAppList;
+	private LayoutInflater mInflater;
+	private Context mContext;
+	private String[] keyString;
+	private buttonViewHolder holder;
+	private ReportDepContactsActivity MainContext;
+
+	public ReportDepAdapter(Context c,
+			ArrayList<HashMap<String, Object>> appList, int resource,
+			String[] from, int[] to,ReportDepContactsActivity activity) {
+		mAppList = appList;
+		MainContext = activity;
+		mContext = c;
+		mInflater = (LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		keyString = new String[from.length];
+		System.arraycopy(from, 0, keyString, 0, from.length);
 	}
-	
-	
-	public void setData(ArrayList<DepnameModel> modes){
-		this.modes = modes;
-	}
-	
+
 	@Override
 	public int getCount() {
-		return modes != null && modes.size() > 0 ? modes.size() : 0;
+		return mAppList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return modes != null && modes.size() > 0 ? modes.get(position) : null;
+		return mAppList.get(position);
 	}
 
 	@Override
@@ -78,80 +60,91 @@ public class ReportDepAdapter extends BaseAdapter {
 		return position;
 	}
 
+	public void removeItem(int positon) {
+		mAppList.remove(positon);
+		this.notifyDataSetChanged();
+	}
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder ;
-		if(convertView == null){
-			holder = new ViewHolder();
-			convertView = LayoutInflater.from(context).inflate(R.layout.alphalistview_item1, null);
-			
-			holder.fistAlphaTextView = (TextView) convertView.findViewById(R.id.first_alpha);
-			holder.nameTextView = (TextView) convertView.findViewById(R.id.name);
-			holder.fenxian =(TextView) convertView.findViewById(R.id.fenxian);
+		if (convertView != null) {
+			holder = (buttonViewHolder) convertView.getTag();
+		} else {
+			convertView = mInflater.inflate(R.layout.list_in_contactdept, null);
+			holder = new buttonViewHolder();
+			holder.appdept = (TextView) convertView.findViewById(R.id.dept_tv);
+			holder.appdept2 = (TextView) convertView.findViewById(R.id.dept_tv2);
+			holder.imagebg1 = (LinearLayout) convertView.findViewById(R.id.imagebg_1);
+			holder.imagebg2 = (LinearLayout) convertView.findViewById(R.id.imagebg_2);
 			convertView.setTag(holder);
-		}else{
-			
-			holder = (ViewHolder) convertView.getTag();
-			
 		}
+		HashMap<String, Object> appInfo = mAppList.get(position);
+		if (appInfo != null) {
+			String Id1 = (String) appInfo.get(keyString[0]);
+			String Grade1 = (String) appInfo.get(keyString[1]);
+			String Class1 = (String) appInfo.get(keyString[2]);
+			String Remark1 = (String) appInfo.get(keyString[3]);
+			String Id2 = (String) appInfo.get(keyString[4]);
+			String Grade2 = (String) appInfo.get(keyString[5]);
+			String Class2 = (String) appInfo.get(keyString[6]);
+			String Remark2 = (String) appInfo.get(keyString[7]);
 
-		if(modes != null && modes.size() > 0){
-			DepnameModel conteactMode = modes.get(position);
-			if(conteactMode != null){
-				
-				//名称
-				String name = conteactMode.getDepname();
-					holder.nameTextView.setText(name);
-	
-				//首字母(前后两项对比字母是否相同，如果相同则过滤，否则添加进来)
-				String currentAlpha = conteactMode.getFirstAlpha();
-				DepnameModel mode = (position - 1) >= 0 ? modes.get(position - 1)  : null;
-				String previewStr = "";
-				if(mode != null){
-					previewStr = mode.getFirstAlpha();
-				}
-				
-				if (!previewStr.equals(currentAlpha)) {
-					holder.fenxian.setVisibility(View.GONE);
-					holder.fistAlphaTextView.setVisibility(View.VISIBLE);
-					holder.fistAlphaTextView.setText(currentAlpha);
-				}else{
-					holder.fenxian.setVisibility(View.VISIBLE);
-					holder.fistAlphaTextView.setVisibility(View.GONE);
-				}
-			}
+			holder.appdept.setText(Class1);
+			holder.appdept2.setText(Class2);
+			
+			convertView.setOnClickListener(new AdapterListener(position, Id1,
+					Grade1, Class1, Remark1));
+			holder.imagebg1.setOnClickListener(new AdapterListener(position, Id1,
+					Grade1, Class1, Remark1));
+			holder.imagebg2.setOnClickListener(new AdapterListener(position, Id2,
+					Grade2, Class2, Remark2));
+			
+			holder.imagebg1.setClickable(true);
+			holder.imagebg2.setClickable(true);
 		}
-		
-		
 		return convertView;
 	}
-	 //监听图片异步加载
-	  public class ImageLoadingListenerImpl extends SimpleImageLoadingListener {
 
-	    public final List<String> displayedImages = 
-	          Collections.synchronizedList(new LinkedList<String>());
-
-	    @Override
-	    public void onLoadingComplete(String imageUri, View view,Bitmap bitmap) {
-	      if (bitmap != null) {
-//	        ImageView imageView = (ImageView) view;
-	        boolean isFirstDisplay = !displayedImages.contains(imageUri);
-	        if (isFirstDisplay) {
-	          //图片的淡入效果
-//	          FadeInBitmapDisplayer.animate(imageView, 500);
-	          displayedImages.add(imageUri);
-	        }
-	        if (bitmap.isRecycled()) {
-				bitmap.recycle();
-			}
-	      }
-	      bitmap =null;
-	    }
-	  } 
-	class ViewHolder{
-		TextView fistAlphaTextView;
-		TextView nameTextView;
-		TextView fenxian;
+	public void addItem(ArrayList<HashMap<String, Object>> item) {
+		int count = item.size();
+		for (int i = 0; i < count; i++) {
+			mAppList.add(item.get(i));
+		}
 	}
 
+	
+	
+	class AdapterListener implements OnClickListener {
+		private int position;
+		private String Id;
+		private String Grade;
+		private String Class;
+		private String Remark;
+		private String mark;
+		private String aging;
+		private String status;
+		private String count;
+
+		public AdapterListener(int pos, String _Id, String _Grade,
+				String _Class, String _Remark) {
+			// TODO Auto-generated constructor stub
+			position = pos;
+			Id = _Id;
+			Grade = _Grade;
+			Class = _Class;
+			Remark = _Remark;
+		}
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent();
+			intent.setClass(mContext, ReportContactActivity.class);
+			intent.putExtra("id", Id);
+			intent.putExtra("Grade", Grade);
+			intent.putExtra("Class", Class);
+			intent.putExtra("Remark", Remark);
+			MainContext.startActivityForResult(intent, 5);
+//			mContext.startActivity(intent);
+		}
+	}
 }

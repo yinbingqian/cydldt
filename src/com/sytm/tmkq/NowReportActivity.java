@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -63,7 +64,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 	private SharedPreferences sp;
 	private ImageView send_weizhi;
 	private String tishi = "", lng = "", lat = "", GetType = "", path1 = "",
-			path2 = "", path3 = "";
+			path2 = "", path3 = "", path4 = "", path5 = "", path6 = "";
 	private List<TelBookModel> list = new ArrayList<TelBookModel>();
 	private List<TelBookModel> bookModels = new ArrayList<TelBookModel>();
 	private StringBuffer ids = new StringBuffer();;
@@ -84,8 +85,8 @@ public class NowReportActivity extends Activity implements OnClickListener {
 	private final int LEN = 500;
 	private int num = 0;
 	private Bitmap smallBitmap;
-	private ImageView imageView, imageView1, imageView2;
-	private TextView filename1, filename2, filename3;
+	private ImageView imageView, imageView1, imageView2,imageView3,imageView4,imageView5;
+	private TextView filename1, filename2, filename3,filename4,filename5,filename6;
 	/***
 	 * 使用照相机拍照获取图片
 	 */
@@ -97,7 +98,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 	private PopupWindow popupWindow;
 	private String picpathmain;
 	private File file;
-	private boolean Exist1 = false, Exist2 = false, Exist3 = false;
+	private boolean Exist1 = false, Exist2 = false, Exist3 = false, Exist4 = false, Exist5 = false, Exist6 = false;
 	private int exist = 0;
 
 	@Override
@@ -119,9 +120,15 @@ public class NowReportActivity extends Activity implements OnClickListener {
 		imageView = (ImageView) this.findViewById(R.id.imageView);
 		imageView1 = (ImageView) this.findViewById(R.id.imageView1);
 		imageView2 = (ImageView) this.findViewById(R.id.imageView2);
+		imageView3 = (ImageView) this.findViewById(R.id.imageView3);
+		imageView4 = (ImageView) this.findViewById(R.id.imageView4);
+		imageView5 = (ImageView) this.findViewById(R.id.imageView5);
 		filename1 = (TextView) findViewById(R.id.filename1);
 		filename2 = (TextView) findViewById(R.id.filename2);
 		filename3 = (TextView) findViewById(R.id.filename3);
+		filename4 = (TextView) findViewById(R.id.filename4);
+		filename5 = (TextView) findViewById(R.id.filename5);
+		filename6 = (TextView) findViewById(R.id.filename6);
 		sendreport_name1.setOnClickListener(this);
 		sendreport_name2.setOnClickListener(this);
 		sendreport_name3.setOnClickListener(this);
@@ -296,6 +303,27 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				popuWidow(v, 2);
 			}
 		});
+		imageView3.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popuWidow(v, 3);
+			}
+		});
+		imageView4.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popuWidow(v, 4);
+			}
+		});
+		imageView5.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popuWidow(v, 5);
+			}
+		});
 	}
 
 	@SuppressLint("InlinedApi")
@@ -330,7 +358,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				num = 4;
+				num = 10;
 				popupWindow.dismiss();
 			}
 		});
@@ -346,6 +374,15 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					exist++;
 				}
 				if (!Exist3) {
+					exist++;
+				}
+				if (!Exist4) {
+					exist++;
+				}
+				if (!Exist5) {
+					exist++;
+				}
+				if (!Exist6) {
 					exist++;
 				}
 				if (exist == 0) {
@@ -440,9 +477,15 @@ public class NowReportActivity extends Activity implements OnClickListener {
 			String path111 = data.getStringExtra("path1");
 			String path222 = data.getStringExtra("path2");
 			String path333 = data.getStringExtra("path3");
+			String path444 = data.getStringExtra("path4");
+			String path555 = data.getStringExtra("path5");
+			String path666 = data.getStringExtra("path6");
 			String filefromt1 = path111.substring(path111.lastIndexOf(".") + 1);
 			String filefromt2 = path222.substring(path222.lastIndexOf(".") + 1);
 			String filefromt3 = path333.substring(path333.lastIndexOf(".") + 1);
+			String filefromt4 = path444.substring(path444.lastIndexOf(".") + 1);
+			String filefromt5 = path555.substring(path555.lastIndexOf(".") + 1);
+			String filefromt6 = path666.substring(path666.lastIndexOf(".") + 1);
 			if (!filefromt1.equals("")) {
 				if (!Exist1) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
@@ -490,7 +533,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						options.inJustDecodeBounds = false;
 						smallBitmap = BitmapFactory
 								.decodeFile(path111, options);
-						imageView2.setImageBitmap(smallBitmap);
+						imageView.setImageBitmap(smallBitmap);
 					} else if (Constant.TxtFormat.contains(filefromt1)) {
 						imageView2.setImageResource(R.drawable.txt_icon);
 					} else if (Constant.PptFormat.contains(filefromt1)) {
@@ -504,6 +547,66 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt1)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path111, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt1)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt1)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt1)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path111.substring(path111
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt1)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path111, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt1)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt1)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt1)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path111.substring(path111
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt1)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path111, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt1)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt1)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt1)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt1)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path111.substring(path111
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
 				}
 			}
 			if (!filefromt2.equals("")) {
@@ -567,6 +670,66 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt2)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path222, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt2)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt2)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt2)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path222.substring(path222
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt2)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path222, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt2)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt2)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt2)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path222.substring(path222
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt2)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path222, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt2)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt2)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt2)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt2)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename6.setText(path222.substring(path222
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
 				}
 			}
 			if (!filefromt3.equals("")) {
@@ -630,6 +793,435 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt3)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path333, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt3)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt3)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt3)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path333.substring(path333
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt3)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path333, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt3)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt3)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt3)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path333.substring(path333
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path333, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt3)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt3)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt3)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename6.setText(path333.substring(path333
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
+				}
+			}
+			if (!filefromt4.equals("")) {
+				if (!Exist1) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView.setImageResource(R.drawable.word_icon);
+					}
+					filename1.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist1 = !Exist1;
+					path1 = path111;
+				} else if (!Exist2) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView1.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView1.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView1.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView1.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView1.setImageResource(R.drawable.word_icon);
+					}
+					filename2.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist2 = !Exist2;
+					path2 = path222;
+				} else if (!Exist3) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView2.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView2.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView2.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView2.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView2.setImageResource(R.drawable.word_icon);
+					}
+					filename3.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist3 = !Exist3;
+					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt4)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path444, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt4)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt4)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt4)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt4)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename6.setText(path444.substring(path444
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
+				}
+			}
+			if (!filefromt5.equals("")) {
+				if (!Exist1) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView.setImageResource(R.drawable.word_icon);
+					}
+					filename1.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist1 = !Exist1;
+					path1 = path111;
+				} else if (!Exist2) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView1.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView1.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView1.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView1.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView1.setImageResource(R.drawable.word_icon);
+					}
+					filename2.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist2 = !Exist2;
+					path2 = path222;
+				} else if (!Exist3) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView2.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView2.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView2.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView2.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView2.setImageResource(R.drawable.word_icon);
+					}
+					filename3.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist3 = !Exist3;
+					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt5)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path555, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt5)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt5)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt5)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt5)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename6.setText(path555.substring(path555
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
+				}
+			}
+			if (!filefromt6.equals("")) {
+				if (!Exist1) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView.setImageResource(R.drawable.word_icon);
+					}
+					filename1.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist1 = !Exist1;
+					path1 = path111;
+				} else if (!Exist2) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView1.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView1.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView1.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView1.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView1.setImageResource(R.drawable.word_icon);
+					}
+					filename2.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist2 = !Exist2;
+					path2 = path222;
+				} else if (!Exist3) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView2.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView2.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView2.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView2.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView2.setImageResource(R.drawable.word_icon);
+					}
+					filename3.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist3 = !Exist3;
+					path3 = path333;
+				}else if (!Exist4) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView3.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView3.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView3.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView3.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView3.setImageResource(R.drawable.word_icon);
+					}
+					filename4.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist4 = !Exist4;
+					path4 = path444;
+				}else if (!Exist5) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView4.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView4.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView4.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView4.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView4.setImageResource(R.drawable.word_icon);
+					}
+					filename5.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist5 = !Exist5;
+					path5 = path555;
+				}else if (!Exist6) {
+					if (Constant.ImgFormat.contains(filefromt6)) {
+						BitmapFactory.Options options = new BitmapFactory.Options();
+						options.inJustDecodeBounds = false;
+						smallBitmap = BitmapFactory
+								.decodeFile(path666, options);
+						imageView5.setImageBitmap(smallBitmap);
+					} else if (Constant.TxtFormat.contains(filefromt6)) {
+						imageView5.setImageResource(R.drawable.txt_icon);
+					} else if (Constant.PptFormat.contains(filefromt6)) {
+						imageView5.setImageResource(R.drawable.ppt_icon);
+					} else if (Constant.XlsFormat.contains(filefromt6)) {
+						imageView5.setImageResource(R.drawable.xls_icon);
+					} else if (Constant.WordFormat.contains(filefromt6)) {
+						imageView5.setImageResource(R.drawable.word_icon);
+					}
+					filename6.setText(path666.substring(path666
+							.lastIndexOf("/") + 1));
+					Exist6 = !Exist6;
+					path6 = path666;
 				}
 			}
 			smallBitmap = null;
@@ -698,7 +1290,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path2 = path + name;
 						imageView1.setImageBitmap(photo);
 						filename2.setText(name);
-					} else {
+					} else if (num == 2) {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
 							ImageUtils.savePhotoToSDCard(photo, path, name);
@@ -708,7 +1300,38 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path3 = path + name;
 						imageView2.setImageBitmap(photo);
 						filename3.setText(name);
+					}else if (num == 3) {
+						String name = System.currentTimeMillis() + num + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(photo, path, name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path4 = path + name;
+						imageView3.setImageBitmap(photo);
+						filename4.setText(name);
+					}else if (num == 4) {
+						String name = System.currentTimeMillis() + num + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(photo, path, name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path5 = path + name;
+						imageView4.setImageBitmap(photo);
+						filename5.setText(name);
+					} else {
+						String name = System.currentTimeMillis() + num + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(photo, path, name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path6 = path + name;
+						imageView5.setImageBitmap(photo);
+						filename6.setText(name);
 					}
+					
 				} else {
 
 					BitmapFactory.Options options = new BitmapFactory.Options();
@@ -768,7 +1391,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView1.setImageBitmap(smallBitmap);
 						Exist2 = true;
 						filename2.setText(name);
-					} else {
+					} else if (num == 2) {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
 							ImageUtils.savePhotoToSDCard(smallBitmap, path,
@@ -780,6 +1403,42 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView2.setImageBitmap(smallBitmap);
 						Exist3 = true;
 						filename3.setText(name);
+					} else if (num == 3) {
+						String name = System.currentTimeMillis() + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(smallBitmap, path,
+									name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path4 = path + name;
+						imageView3.setImageBitmap(smallBitmap);
+						Exist4 = true;
+						filename4.setText(name);
+					} else if (num == 4) {
+						String name = System.currentTimeMillis() + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(smallBitmap, path,
+									name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path5 = path + name;
+						imageView4.setImageBitmap(smallBitmap);
+						Exist5 = true;
+						filename5.setText(name);
+					} else {
+						String name = System.currentTimeMillis() + ".jpg";
+						try {
+							ImageUtils.savePhotoToSDCard(smallBitmap, path,
+									name);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						path6 = path + name;
+						imageView5.setImageBitmap(smallBitmap);
+						Exist6 = true;
+						filename6.setText(name);
 					}
 					smallBitmap = null;
 					System.gc();
@@ -841,7 +1500,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView1.setImageBitmap(smallBitmap);
 					Exist2 = true;
 					filename2.setText(name);
-				} else {
+				} else if (num == 2) {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
 						ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
@@ -852,6 +1511,39 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView2.setImageBitmap(smallBitmap);
 					Exist3 = true;
 					filename3.setText(name);
+				}  else if (num == 3) {
+					String name = System.currentTimeMillis() + ".jpg";
+					try {
+						ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					path4 = path + name;
+					imageView3.setImageBitmap(smallBitmap);
+					Exist4 = true;
+					filename4.setText(name);
+				} else if (num == 4) {
+					String name = System.currentTimeMillis() + ".jpg";
+					try {
+						ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					path5 = path + name;
+					imageView4.setImageBitmap(smallBitmap);
+					Exist5 = true;
+					filename5.setText(name);
+				}else {
+					String name = System.currentTimeMillis() + ".jpg";
+					try {
+						ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					path6 = path + name;
+					imageView5.setImageBitmap(smallBitmap);
+					Exist6 = true;
+					filename6.setText(name);
 				}
 				smallBitmap = null;
 				System.gc();
@@ -929,7 +1621,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView1.setImageBitmap(smallBitmap);
 				Exist2 = true;
 				filename2.setText(name);
-			} else {
+			} else if (num == 2) {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
 					ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
@@ -940,6 +1632,39 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView2.setImageBitmap(smallBitmap);
 				Exist3 = true;
 				filename3.setText(name);
+			} else if (num == 3) {
+				String name = System.currentTimeMillis() + ".jpg";
+				try {
+					ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				path4 = path + name;
+				imageView3.setImageBitmap(smallBitmap);
+				Exist4 = true;
+				filename4.setText(name);
+			} else if (num == 4) {
+				String name = System.currentTimeMillis() + ".jpg";
+				try {
+					ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				path5 = path + name;
+				imageView4.setImageBitmap(smallBitmap);
+				Exist5 = true;
+				filename5.setText(name);
+			} else {
+				String name = System.currentTimeMillis() + ".jpg";
+				try {
+					ImageUtils.savePhotoToSDCard(smallBitmap, path, name);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				path6 = path + name;
+				imageView5.setImageBitmap(smallBitmap);
+				Exist6 = true;
+				filename6.setText(name);
 			}
 			smallBitmap = null;
 			System.gc();
@@ -1032,6 +1757,72 @@ public class NowReportActivity extends Activity implements OnClickListener {
 								"file",
 								file,
 								"$three$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		".")));
+					}
+					if (!path4.equals("")) {
+						Log.i("上传文件路径4", path4);
+						File file = new File(path4);
+						sc.addStringPart(
+								"filename4",
+								"$four$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		"."))
+										+ "," + file.getName());
+						sc.addFilePart(
+								"file",
+								file,
+								"$four$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		".")));
+					}
+					if (!path5.equals("")) {
+						Log.i("上传文件路径5", path5);
+						File file = new File(path5);
+						sc.addStringPart(
+								"filename5",
+								"$five$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		"."))
+										+ "," + file.getName());
+						sc.addFilePart(
+								"file",
+								file,
+								"$five$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		".")));
+					}
+					if (!path6.equals("")) {
+						Log.i("上传文件路径6", path6);
+						File file = new File(path6);
+						sc.addStringPart(
+								"filename6",
+								"$six$"
+										+ file.getName()
+												.substring(
+														file.getName()
+																.lastIndexOf(
+																		"."))
+										+ "," + file.getName());
+						sc.addFilePart(
+								"file",
+								file,
+								"$six$"
 										+ file.getName()
 												.substring(
 														file.getName()

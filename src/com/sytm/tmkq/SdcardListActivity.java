@@ -37,7 +37,7 @@ public class SdcardListActivity extends Activity {
 	SdcardAdapter adapter;
 	List<UpFileModel> list = new ArrayList<UpFileModel>();
 	int options = 0;
-	String path1 = "", path2 = "", path3 = "";
+	String path1 = "", path2 = "", path3 = "", path4 = "", path5 = "", path6 = "";
 	int exist = 0;
 	Dialog dialog2;
 
@@ -79,6 +79,9 @@ public class SdcardListActivity extends Activity {
 					intent.putExtra("path1", path1);
 					intent.putExtra("path2", path2);
 					intent.putExtra("path3", path3);
+					intent.putExtra("path4", path4);
+					intent.putExtra("path5", path5);
+					intent.putExtra("path6", path6);
 					setResult(RESULT_OK, intent);
 					finish();
 				}else {
@@ -122,7 +125,7 @@ public class SdcardListActivity extends Activity {
 						}
 						if (options >= 0 && options <= exist) {
 							if (list.get(position).getTAG() == 0) {
-								if (options < 4) {
+								if (options < 7) {
 									list.get(position).setTAG(1);
 									options++;
 									if (options == 1) {
@@ -134,6 +137,15 @@ public class SdcardListActivity extends Activity {
 									} else if (options == 3) {
 										path3 = list.get(position).getFile()
 												.getPath();
+									}else if (options == 4) {
+										path4 = list.get(position).getFile()
+												.getPath();
+									}else if (options == 5) {
+										path5 = list.get(position).getFile()
+												.getPath();
+									}else if (options == 6) {
+										path6 = list.get(position).getFile()
+												.getPath();
 									}
 								}
 							} else {
@@ -144,13 +156,29 @@ public class SdcardListActivity extends Activity {
 										path1 = "";
 										path2 = "";
 										path3 = "";
+										path4 = "";
+										path5 = "";
+										path6 = "";
 									} else if (options == 1) {
 										path2 = "";
 										path3 = "";
+										path4 = "";
+										path5 = "";
+										path6 = "";
 									} else if (options == 2) {
 										path3 = "";
+										path4 = "";
+										path5 = "";
+										path6 = "";
 									} else if (options == 3) {
-
+										path4 = "";
+										path5 = "";
+										path6 = "";
+									} else if (options == 4) {
+										path5 = "";
+										path6 = "";
+									} else if (options == 5) {
+										path6 = "";
 									}
 								}
 							}
@@ -230,7 +258,7 @@ public class SdcardListActivity extends Activity {
 			list.add(fileModel);
 		}
 		for (int i = 0; i < list.size(); i++) {
-			if ((path1 + "," + path2 + "," + path3).contains(list.get(i)
+			if ((path1 + "," + path2 + "," + path3+ "," + path4+ "," + path5+ "," + path6).contains(list.get(i)
 					.getFile().getPath())) {
 				list.get(i).setTAG(1);
 			}

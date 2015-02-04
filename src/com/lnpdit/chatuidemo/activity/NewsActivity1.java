@@ -55,16 +55,16 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	Context context;
 	Button return_bt;
-//	Button add_bt;
+	Button add_bt;
 	
 
 	private boolean hasMeasured = false;// 是否Measured.
 	private LinearLayout layout_left;// 左边布局
 	private LinearLayout layout_right;// 右边布局
-	private TextView iv_set;// 图片
+	private ImageView iv_set;// 图片
 	private ListView lv_set;// 设置菜单
 	private ListView lv_news;
-//	private TextView dn_text;
+	private TextView dn_text;
 	private TextView title_text;
 	private ProgressBar progressbar;
 	// private RelativeLayout progressbar_layout;
@@ -105,7 +105,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 		Thread thread = new Thread(runnable);
 		thread.start();
 		
-//		dn_text.setText("按部门浏览");
+		dn_text.setText("全部风采");
 		
 		dept_id="0";
 		mGetTopicDataThread runnable_news = new mGetTopicDataThread();
@@ -117,13 +117,13 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 
 	void InitView() {
 		return_bt = (Button) this.findViewById(R.id.return_bt);
-//		add_bt = (Button) this.findViewById(R.id.add_bt);
+		add_bt = (Button) this.findViewById(R.id.add_bt);
 		layout_left = (LinearLayout) findViewById(R.id.layout_left);
 		layout_right = (LinearLayout) findViewById(R.id.layout_right);
 		lv_set = (ListView) findViewById(R.id.lv_set);
 		lv_news = (ListView) findViewById(R.id.listview);
-		iv_set = (TextView) findViewById(R.id.iv_set);
-//		dn_text = (TextView) this.findViewById(R.id.dn_content_text);
+		iv_set = (ImageView) findViewById(R.id.iv_set);
+		dn_text = (TextView) this.findViewById(R.id.dn_content_text);
 		title_text = (TextView) this.findViewById(R.id.item_text);
 		mylaout = (RightMenuLinearLayout) findViewById(R.id.mylaout);
 		mywebviewlayout = (RightMenuLinearLayout) findViewById(R.id.mywebviewlaout);
@@ -144,16 +144,16 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 				finish();
 			}
 		});
-//		add_bt.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent1 = new Intent();
-//				intent1.setClass(NewsActivity1.this,NewsPhotoActivity.class);
-//				startActivity(intent1);
-//			}
-//		});
+		add_bt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent1 = new Intent();
+				intent1.setClass(NewsActivity1.this,NewsPhotoActivity.class);
+				startActivity(intent1);
+			}
+		});
 		mylaout.setOnScrollListener(new OnScrollListener() {
 			@Override
 			public void doScroll(float distanceX) {
@@ -445,7 +445,7 @@ public class NewsActivity1 extends Activity implements OnTouchListener,
 		// 只要没有滑动则都属于点击
 		// Toast.makeText(context, title[position], 1).show();
 
-//		dn_text.setText(remoteWindowItem.get(position).get("Class").toString());
+		dn_text.setText(remoteWindowItem.get(position).get("Class").toString());
 		dept_id = remoteWindowItem.get(position).get("Id").toString();
 		mGetTopicDataThread runnable = new mGetTopicDataThread();
 		Thread thread = new Thread(runnable);
