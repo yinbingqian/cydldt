@@ -272,7 +272,8 @@
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/bgs_23" >
+                        android:src="@drawable/bgs_23"
+                         >
                     </ImageView>
 
                     <ImageView
@@ -293,6 +294,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toLeftOf="@+id/imageView1"
                         android:scaleType="fitXY"
+                        android:layout_centerInParent="true"
                         android:src="@drawable/bgs_23" >
                     </ImageView>
                 </RelativeLayout>
@@ -328,6 +330,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toLeftOf="@+id/filename2"
                         android:layout_marginRight="5dp"
+                         android:layout_marginLeft="10dp"
                         android:textSize="12sp" >
                     </TextView>
                 </RelativeLayout>
@@ -365,6 +368,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toLeftOf="@+id/imageView4"
                         android:scaleType="fitXY"
+                        android:layout_centerInParent="true"
                         android:src="@drawable/bgs_23" >
                     </ImageView>
                 </RelativeLayout>
@@ -399,6 +403,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_toLeftOf="@+id/filename5"
                         android:layout_marginRight="5dp"
+                         android:layout_marginLeft="10dp"
                         android:textSize="12sp" >
                     </TextView>
                 </RelativeLayout>

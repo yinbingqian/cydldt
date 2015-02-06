@@ -63,7 +63,7 @@ public class ReportDepContactsActivity extends Activity {
 	private SharedPreferences sp;
 	private String empid = "";
 	private int TAG = 0;
-	private Button left,search_bt;
+	private Button left;
 //	private TextView number;
 //	private RelativeLayout topLayout;
 	private int screenWidth;
@@ -109,10 +109,17 @@ public class ReportDepContactsActivity extends Activity {
 //		topLayout = (RelativeLayout) findViewById(R.id.top);
 //		put_search = (EditText) findViewById(R.id.serveredit);
 		left = (Button) findViewById(R.id.return_bt);
-		search_bt = (Button) findViewById(R.id.search_bt);
+//		search_bt = (Button) findViewById(R.id.search_bt);
 //		number = (TextView) findViewById(R.id.contactnumber);
-		left.setOnClickListener(new MyOnClickListener());
-		search_bt.setOnClickListener(new MyOnClickListener());
+//		left.setOnClickListener(new MyOnClickListener());
+		left.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+//		search_bt.setOnClickListener(new MyOnClickListener());
 //		put_search.addTextChangedListener(new MyaddTextChangedListener());
 //		topLayout.setOnTouchListener(new MyOnTouchListener());
 //		listView.setOnTouchListener(new MyOnTouchListener());
@@ -141,21 +148,21 @@ public class ReportDepContactsActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
-			case R.id.left:
+			case R.id.return_bt:
 				finish();
 				break;
-			case R.id.search_bt:
-				Intent intent = new Intent();
-				intent.setClass(ReportDepContactsActivity.this,ReportContactActivity.class);
-				SharedPreferences sharedPreferences = getSharedPreferences(
-						"TMMTC", Context.MODE_PRIVATE);
-				String DeptId = sharedPreferences.getString("DeptId", "");
-				intent.putExtra("id", DeptId);
-				intent.putExtra("Grade", "");
-				intent.putExtra("Class", "我的部门");
-				intent.putExtra("Remark", "");
-				startActivity(intent);
-				break;
+//			case R.id.search_bt:
+//				Intent intent = new Intent();
+//				intent.setClass(ReportDepContactsActivity.this,ReportContactActivity.class);
+//				SharedPreferences sharedPreferences = getSharedPreferences(
+//						"TMMTC", Context.MODE_PRIVATE);
+//				String DeptId = sharedPreferences.getString("DeptId", "");
+//				intent.putExtra("id", DeptId);
+//				intent.putExtra("Grade", "");
+//				intent.putExtra("Class", "我的部门");
+//				intent.putExtra("Remark", "");
+//				startActivity(intent);
+//				break;
 			default:
 				break;
 			}

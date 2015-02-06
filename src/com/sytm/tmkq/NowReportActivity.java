@@ -67,7 +67,7 @@ public class NowReportActivity extends Activity implements OnClickListener {
 			path2 = "", path3 = "", path4 = "", path5 = "", path6 = "";
 	private List<TelBookModel> list = new ArrayList<TelBookModel>();
 	private List<TelBookModel> bookModels = new ArrayList<TelBookModel>();
-	private StringBuffer ids = new StringBuffer();;
+	private StringBuffer ids = new StringBuffer();
 	private View viewtext;
 	private Intent intentcontact;
 	private FlowLayout flowLayout;
@@ -132,6 +132,23 @@ public class NowReportActivity extends Activity implements OnClickListener {
 		sendreport_name1.setOnClickListener(this);
 		sendreport_name2.setOnClickListener(this);
 		sendreport_name3.setOnClickListener(this);
+		
+		
+		imageView.setVisibility(View.VISIBLE);
+		imageView1.setVisibility(View.GONE);
+		imageView2.setVisibility(View.GONE);
+		imageView3.setVisibility(View.GONE);
+		imageView4.setVisibility(View.GONE);
+		imageView5.setVisibility(View.GONE);
+		
+		filename1.setVisibility(View.VISIBLE);
+		filename2.setVisibility(View.GONE);
+		filename3.setVisibility(View.GONE);
+		filename4.setVisibility(View.GONE);
+		filename5.setVisibility(View.GONE);
+		filename6.setVisibility(View.GONE);
+		
+		
 		dbManager = new SendReportDBManager(NowReportActivity.this);
 		flowLayout.removeAllViewsInLayout();
 		bookModels = dbManager.query("sendreport");
@@ -507,6 +524,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -527,6 +557,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -547,6 +590,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -567,6 +623,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -587,6 +656,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
 					if (Constant.ImgFormat.contains(filefromt1)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -603,10 +685,23 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					} else if (Constant.WordFormat.contains(filefromt1)) {
 						imageView5.setImageResource(R.drawable.word_icon);
 					}
-					filename4.setText(path111.substring(path111
+					filename6.setText(path111.substring(path111
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			if (!filefromt2.equals("")) {
@@ -630,6 +725,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt2)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -650,6 +758,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt2)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -670,6 +791,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt2)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -690,6 +824,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt2)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -710,6 +857,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
 					if (Constant.ImgFormat.contains(filefromt2)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -730,6 +890,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			if (!filefromt3.equals("")) {
@@ -753,6 +926,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt3)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -773,6 +959,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt3)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -793,6 +992,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt3)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -813,6 +1025,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt3)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -833,14 +1058,27 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
-					if (Constant.ImgFormat.contains(filefromt4)) {
+					if (Constant.ImgFormat.contains(filefromt3)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
 						options.inJustDecodeBounds = false;
 						smallBitmap = BitmapFactory
 								.decodeFile(path333, options);
 						imageView5.setImageBitmap(smallBitmap);
-					} else if (Constant.TxtFormat.contains(filefromt4)) {
+					} else if (Constant.TxtFormat.contains(filefromt3)) {
 						imageView5.setImageResource(R.drawable.txt_icon);
 					} else if (Constant.PptFormat.contains(filefromt3)) {
 						imageView5.setImageResource(R.drawable.ppt_icon);
@@ -853,6 +1091,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			if (!filefromt4.equals("")) {
@@ -876,6 +1127,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt4)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -896,6 +1160,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt4)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -916,6 +1193,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt4)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -936,6 +1226,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt4)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -956,6 +1259,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
 					if (Constant.ImgFormat.contains(filefromt4)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -976,6 +1292,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			if (!filefromt5.equals("")) {
@@ -999,6 +1328,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt5)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1019,6 +1361,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt5)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1039,6 +1394,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt5)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1059,6 +1427,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt5)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1079,6 +1460,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
 					if (Constant.ImgFormat.contains(filefromt5)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1099,6 +1493,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			if (!filefromt6.equals("")) {
@@ -1122,6 +1529,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist1 = !Exist1;
 					path1 = path111;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist2) {
 					if (Constant.ImgFormat.contains(filefromt6)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1142,6 +1562,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist2 = !Exist2;
 					path2 = path222;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (!Exist3) {
 					if (Constant.ImgFormat.contains(filefromt6)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1162,6 +1595,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist3 = !Exist3;
 					path3 = path333;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist4) {
 					if (Constant.ImgFormat.contains(filefromt6)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1182,6 +1628,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist4 = !Exist4;
 					path4 = path444;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				}else if (!Exist5) {
 					if (Constant.ImgFormat.contains(filefromt6)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1202,6 +1661,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist5 = !Exist5;
 					path5 = path555;
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else if (!Exist6) {
 					if (Constant.ImgFormat.contains(filefromt6)) {
 						BitmapFactory.Options options = new BitmapFactory.Options();
@@ -1222,6 +1694,20 @@ public class NowReportActivity extends Activity implements OnClickListener {
 							.lastIndexOf("/") + 1));
 					Exist6 = !Exist6;
 					path6 = path666;
+					
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 			}
 			smallBitmap = null;
@@ -1280,6 +1766,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path1 = path + name;
 						imageView.setImageBitmap(photo);
 						filename1.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.GONE);
+						imageView3.setVisibility(View.GONE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.GONE);
+						filename4.setVisibility(View.GONE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 1) {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
@@ -1290,6 +1789,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path2 = path + name;
 						imageView1.setImageBitmap(photo);
 						filename2.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.GONE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.GONE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 2) {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
@@ -1300,6 +1812,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path3 = path + name;
 						imageView2.setImageBitmap(photo);
 						filename3.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					}else if (num == 3) {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
@@ -1310,6 +1835,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path4 = path + name;
 						imageView3.setImageBitmap(photo);
 						filename4.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.GONE);
 					}else if (num == 4) {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
@@ -1320,6 +1858,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path5 = path + name;
 						imageView4.setImageBitmap(photo);
 						filename5.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.VISIBLE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.VISIBLE);
 					} else {
 						String name = System.currentTimeMillis() + num + ".jpg";
 						try {
@@ -1330,6 +1881,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						path6 = path + name;
 						imageView5.setImageBitmap(photo);
 						filename6.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.VISIBLE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.VISIBLE);
 					}
 					
 				} else {
@@ -1379,6 +1943,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView.setImageBitmap(smallBitmap);
 						Exist1 = true;
 						filename1.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.GONE);
+						imageView3.setVisibility(View.GONE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.GONE);
+						filename4.setVisibility(View.GONE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 1) {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
@@ -1391,6 +1968,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView1.setImageBitmap(smallBitmap);
 						Exist2 = true;
 						filename2.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.GONE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.GONE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 2) {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
@@ -1403,6 +1993,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView2.setImageBitmap(smallBitmap);
 						Exist3 = true;
 						filename3.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.GONE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.GONE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 3) {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
@@ -1415,6 +2018,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView3.setImageBitmap(smallBitmap);
 						Exist4 = true;
 						filename4.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.GONE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.GONE);
 					} else if (num == 4) {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
@@ -1427,6 +2043,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView4.setImageBitmap(smallBitmap);
 						Exist5 = true;
 						filename5.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.VISIBLE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.VISIBLE);
 					} else {
 						String name = System.currentTimeMillis() + ".jpg";
 						try {
@@ -1439,6 +2068,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 						imageView5.setImageBitmap(smallBitmap);
 						Exist6 = true;
 						filename6.setText(name);
+						imageView.setVisibility(View.VISIBLE);
+						imageView1.setVisibility(View.VISIBLE);
+						imageView2.setVisibility(View.VISIBLE);
+						imageView3.setVisibility(View.VISIBLE);
+						imageView4.setVisibility(View.VISIBLE);
+						imageView5.setVisibility(View.VISIBLE);
+						
+						filename1.setVisibility(View.VISIBLE);
+						filename2.setVisibility(View.VISIBLE);
+						filename3.setVisibility(View.VISIBLE);
+						filename4.setVisibility(View.VISIBLE);
+						filename5.setVisibility(View.VISIBLE);
+						filename6.setVisibility(View.VISIBLE);
 					}
 					smallBitmap = null;
 					System.gc();
@@ -1489,6 +2131,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView.setImageBitmap(smallBitmap);
 					Exist1 = true;
 					filename1.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.GONE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.GONE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (num == 1) {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
@@ -1500,6 +2155,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView1.setImageBitmap(smallBitmap);
 					Exist2 = true;
 					filename2.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.GONE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.GONE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				} else if (num == 2) {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
@@ -1511,6 +2179,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView2.setImageBitmap(smallBitmap);
 					Exist3 = true;
 					filename3.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.GONE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.GONE);
+					filename6.setVisibility(View.GONE);
 				}  else if (num == 3) {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
@@ -1522,6 +2203,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView3.setImageBitmap(smallBitmap);
 					Exist4 = true;
 					filename4.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.GONE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.GONE);
 				} else if (num == 4) {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
@@ -1533,6 +2227,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView4.setImageBitmap(smallBitmap);
 					Exist5 = true;
 					filename5.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}else {
 					String name = System.currentTimeMillis() + ".jpg";
 					try {
@@ -1544,6 +2251,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 					imageView5.setImageBitmap(smallBitmap);
 					Exist6 = true;
 					filename6.setText(name);
+					imageView.setVisibility(View.VISIBLE);
+					imageView1.setVisibility(View.VISIBLE);
+					imageView2.setVisibility(View.VISIBLE);
+					imageView3.setVisibility(View.VISIBLE);
+					imageView4.setVisibility(View.VISIBLE);
+					imageView5.setVisibility(View.VISIBLE);
+					
+					filename1.setVisibility(View.VISIBLE);
+					filename2.setVisibility(View.VISIBLE);
+					filename3.setVisibility(View.VISIBLE);
+					filename4.setVisibility(View.VISIBLE);
+					filename5.setVisibility(View.VISIBLE);
+					filename6.setVisibility(View.VISIBLE);
 				}
 				smallBitmap = null;
 				System.gc();
@@ -1610,6 +2330,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView.setImageBitmap(smallBitmap);
 				Exist1 = true;
 				filename1.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.GONE);
+				imageView3.setVisibility(View.GONE);
+				imageView4.setVisibility(View.GONE);
+				imageView5.setVisibility(View.GONE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.GONE);
+				filename4.setVisibility(View.GONE);
+				filename5.setVisibility(View.GONE);
+				filename6.setVisibility(View.GONE);
 			} else if (num == 1) {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
@@ -1621,6 +2354,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView1.setImageBitmap(smallBitmap);
 				Exist2 = true;
 				filename2.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.VISIBLE);
+				imageView3.setVisibility(View.GONE);
+				imageView4.setVisibility(View.GONE);
+				imageView5.setVisibility(View.GONE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.VISIBLE);
+				filename4.setVisibility(View.GONE);
+				filename5.setVisibility(View.GONE);
+				filename6.setVisibility(View.GONE);
 			} else if (num == 2) {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
@@ -1632,6 +2378,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView2.setImageBitmap(smallBitmap);
 				Exist3 = true;
 				filename3.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.VISIBLE);
+				imageView3.setVisibility(View.VISIBLE);
+				imageView4.setVisibility(View.GONE);
+				imageView5.setVisibility(View.GONE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.VISIBLE);
+				filename4.setVisibility(View.VISIBLE);
+				filename5.setVisibility(View.GONE);
+				filename6.setVisibility(View.GONE);
 			} else if (num == 3) {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
@@ -1643,6 +2402,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView3.setImageBitmap(smallBitmap);
 				Exist4 = true;
 				filename4.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.VISIBLE);
+				imageView3.setVisibility(View.VISIBLE);
+				imageView4.setVisibility(View.VISIBLE);
+				imageView5.setVisibility(View.GONE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.VISIBLE);
+				filename4.setVisibility(View.VISIBLE);
+				filename5.setVisibility(View.VISIBLE);
+				filename6.setVisibility(View.GONE);
 			} else if (num == 4) {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
@@ -1654,6 +2426,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView4.setImageBitmap(smallBitmap);
 				Exist5 = true;
 				filename5.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.VISIBLE);
+				imageView3.setVisibility(View.VISIBLE);
+				imageView4.setVisibility(View.VISIBLE);
+				imageView5.setVisibility(View.VISIBLE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.VISIBLE);
+				filename4.setVisibility(View.VISIBLE);
+				filename5.setVisibility(View.VISIBLE);
+				filename6.setVisibility(View.VISIBLE);
 			} else {
 				String name = System.currentTimeMillis() + ".jpg";
 				try {
@@ -1665,6 +2450,19 @@ public class NowReportActivity extends Activity implements OnClickListener {
 				imageView5.setImageBitmap(smallBitmap);
 				Exist6 = true;
 				filename6.setText(name);
+				imageView.setVisibility(View.VISIBLE);
+				imageView1.setVisibility(View.VISIBLE);
+				imageView2.setVisibility(View.VISIBLE);
+				imageView3.setVisibility(View.VISIBLE);
+				imageView4.setVisibility(View.VISIBLE);
+				imageView5.setVisibility(View.VISIBLE);
+				
+				filename1.setVisibility(View.VISIBLE);
+				filename2.setVisibility(View.VISIBLE);
+				filename3.setVisibility(View.VISIBLE);
+				filename4.setVisibility(View.VISIBLE);
+				filename5.setVisibility(View.VISIBLE);
+				filename6.setVisibility(View.VISIBLE);
 			}
 			smallBitmap = null;
 			System.gc();
