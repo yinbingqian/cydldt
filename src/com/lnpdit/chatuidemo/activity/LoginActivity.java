@@ -16,7 +16,6 @@ package com.lnpdit.chatuidemo.activity;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,46 +31,43 @@ import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.preference.PreferenceManager;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Xml;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.easemob.EMCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
+import com.easemob.util.EMLog;
+import com.easemob.util.HanziToPinyin;
 import com.lnpdit.chatuidemo.Constant;
 import com.lnpdit.chatuidemo.CydlApplication;
 import com.lnpdit.chatuidemo.R;
 import com.lnpdit.chatuidemo.db.UserDao;
 import com.lnpdit.chatuidemo.domain.User;
 import com.lnpdit.chatuidemo.utils.CommonUtils;
-import com.easemob.util.EMLog;
-import com.easemob.util.HanziToPinyin;
 
 /**
  * 登陆页面
@@ -104,23 +100,11 @@ public class LoginActivity extends BaseActivity {
 		String pwd = intent_extra.getStringExtra("pwd");
 		String name = intent_extra.getStringExtra("name");
 		
-//		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-//		preferences.edit().putString(PREF_USERNAME, username).ucommit();  
-//		preferences.edit().putString(PREF_PWD, pwd).commit();
-		
 		usernameEditText = (EditText) this.findViewById(R.id.username);
 		passwordEditText = (EditText) this.findViewById(R.id.password);
 		
 		context = this;
 		
-		
-//		usernameEditText.setText(username);
-//		passwordEditText.setText(pwd);
-//		Intent intent=new Intent(LoginActivity.this, com.lnpdit.chatuidemo.activity.AlertDialog.class);
-//		intent.putExtra("editTextShow", true);
-//		intent.putExtra("titleIsCancel",true);
-//		intent.putExtra("msg", "请设置当前用户的昵称");
-//		startActivityForResult(intent, REQUEST_CODE_SETNICK);
 		CheckVersion ck = new CheckVersion();
 		Thread th = new Thread(ck);
 		th.start();
@@ -181,7 +165,8 @@ public class LoginActivity extends BaseActivity {
 			});
 			pd.setMessage("正在登陆...");
 			pd.show();
-			// 调用sdk登陆方法登陆聊天服务器
+			
+//			 调用sdk登陆方法登陆聊天服务器
 			EMChatManager.getInstance().login(username, password, new EMCallBack() {
 
 				@Override
@@ -245,13 +230,21 @@ public class LoginActivity extends BaseActivity {
 					if (!LoginActivity.this.isFinishing())
 						pd.dismiss();
 					// 主平台鉴权
-					MAdminLoginThread loginrunnable = new MAdminLoginThread();
+//					MAdminLoginThread loginrunnable = new MAdminLoginThread();
+//					loginrunnable.setLoginInfo(username, password);
+//					Thread adminthread = new Thread(loginrunnable);
+//					adminthread.start();
+					
+					MAdminIMSILoginThread loginrunnable = new MAdminIMSILoginThread();
 					loginrunnable.setLoginInfo(username, password);
 					Thread adminthread = new Thread(loginrunnable);
 					adminthread.start();
-//					
-//					SharedPreferences sp = context.getSharedPreferences("user_info", MODE_APPEND);
-//					CydlApplication.currentUserNick=sp.getString("RealName", "");
+					
+//					MAdminLoginThread loginrunnable = new MAdminLoginThread();
+//					loginrunnable.setLoginInfo(username, password);
+//					Thread adminthread = new Thread(loginrunnable);
+//					adminthread.start();
+					
 					// 进入主页面
 					startActivity(new Intent(LoginActivity.this, MainActivity.class));
 					finish();
@@ -358,7 +351,7 @@ public class LoginActivity extends BaseActivity {
 					return;
 				}
 				if (Islock.equals("True")) {
-					Toast.makeText(context, "您的g帐号被锁定，无法登陆.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "您的帐号被锁定，无法登陆.", Toast.LENGTH_SHORT).show();
 
 					login_bt.setVisibility(1);
 					progressbar.setVisibility(8);
@@ -404,6 +397,163 @@ public class LoginActivity extends BaseActivity {
 
 		}
 	};
+	
+	public class MAdminIMSILoginThread implements Runnable {
+		private String username_t = "";
+		private String pwd_t = "";
+
+		public void setLoginInfo(String _username, String _pwd) {
+			this.username_t = _username;
+			this.pwd_t = _pwd;
+		}
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+
+			String url = MessengerService.URL;
+			String methodname = MessengerService.METHOD_UserRegister;
+			String namespace = MessengerService.NAMESPACE;
+			String soapaction = namespace + "/" + methodname;
+
+			SoapObject rpc = new SoapObject(namespace, methodname);
+
+			TelephonyManager mTelephonyMgr = (TelephonyManager) context  
+                    .getSystemService(Context.TELEPHONY_SERVICE);  
+            Log.d("getImsi", "get mTelephonyMgr " + mTelephonyMgr.toString());  
+            String imsi = mTelephonyMgr.getSubscriberId();  
+            String imei = mTelephonyMgr.getDeviceId();
+			
+			rpc.addProperty("name", username_t);
+			rpc.addProperty("password", pwd_t);
+			rpc.addProperty("imsi", imsi);
+			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+			envelope.bodyOut = rpc;
+			envelope.dotNet = true;
+			envelope.setOutputSoapObject(rpc);
+
+			HttpTransportSE ht = new HttpTransportSE(url);
+
+			ht.debug = true;
+			try {
+				ht.call(soapaction, envelope);
+				SoapObject siminfo = (SoapObject) envelope.bodyIn;
+
+				SoapObject soapchilds1 = (SoapObject) siminfo.getProperty(0);
+				SoapObject soapchilds2 = (SoapObject) soapchilds1.getProperty(1);
+				SoapObject soapchilds3 = (SoapObject) soapchilds2.getProperty(0);
+				SoapObject soapchilds = (SoapObject) soapchilds3.getProperty(0);
+
+				String Id = soapchilds.getProperty("Id").toString();
+				if (Id.startsWith("anyType")) {
+					Id = "";
+				}
+				String Sim = soapchilds.getProperty("Sim").toString();
+				if (Sim.startsWith("anyType")) {
+					Sim = "";
+				}
+				String Name = soapchilds.getProperty("Name").toString();
+				if (Name.startsWith("anyType")) {
+					Name = "";
+				}
+				String RealName = soapchilds.getProperty("RealName").toString();
+				if (RealName.startsWith("anyType")) {
+					RealName = "";
+				}
+				CydlApplication.currentUserNick=RealName;
+				String Sex = soapchilds.getProperty("Sex").toString();
+				if (Sex.startsWith("anyType")) {
+					Sex = "";
+				}
+				String HeadPic = soapchilds.getProperty("HeadPic").toString();
+				if (HeadPic.startsWith("anyType")) {
+					HeadPic = "";
+				}
+				String Islock = soapchilds.getProperty("Islock").toString();
+				if (Islock.startsWith("anyType")) {
+					Islock = "";
+				}
+				String information = soapchilds.getProperty("information")
+						.toString();
+				if (information.startsWith("anyType")) {
+					information = "";
+				}
+				String contact = soapchilds.getProperty("contact").toString();
+				if (contact.startsWith("anyType")) {
+					contact = "";
+				}
+				String meeting = soapchilds.getProperty("meeting").toString();
+				if (meeting.startsWith("anyType")) {
+					meeting = "";
+				}
+				String message = soapchilds.getProperty("message").toString();
+				if (message.startsWith("anyType")) {
+					message = "";
+				}
+				String location = soapchilds.getProperty("location").toString();
+				if (location.startsWith("anyType")) {
+					location = "";
+				}
+				String mic = soapchilds.getProperty("mic").toString();
+				if (mic.startsWith("anyType")) {
+					mic = "";
+				}
+				String mail = soapchilds.getProperty("mail").toString();
+				if (mail.startsWith("anyType")) {
+					mail = "";
+				}
+				String control = soapchilds.getProperty("control").toString();
+				if (control.startsWith("anyType")) {
+					control = "";
+				}
+				String WeatherSender = soapchilds.getProperty("WeatherSender").toString();
+				if (WeatherSender.startsWith("anyType")) {
+					WeatherSender = "";
+				}
+				String AdrId = soapchilds.getProperty("KqId").toString();
+				if (AdrId.startsWith("anyType")) {
+					AdrId = "";
+				}
+				String DeptId = soapchilds.getProperty("DeptId").toString();
+				if (DeptId.startsWith("anyType")) {
+					DeptId = "";
+				}
+
+				HashMap<String, String> userdata = new HashMap<String, String>();
+				userdata.put("Id", Id);
+				userdata.put("Sim", Sim);
+				userdata.put("Name", Name);
+				userdata.put("RealName", RealName);
+				userdata.put("Sex", Sex);
+				userdata.put("HeadPic", HeadPic);
+				userdata.put("Islock", Islock);
+				userdata.put("information", information);
+				userdata.put("contact", contact);
+				userdata.put("meeting", meeting);
+				userdata.put("message", message);
+				userdata.put("location", location);
+				userdata.put("mic", mic);
+				userdata.put("mail", mail);
+				userdata.put("control", control);
+				userdata.put("WeatherSender", WeatherSender);
+				userdata.put("AdrId", AdrId);
+				userdata.put("DeptId", DeptId);
+
+				
+				Message msg = new Message();
+				msg.arg1 = 0;
+				msg.obj = userdata;
+				mLoginInfoNomatch_handler.sendMessage(msg);
+			} catch (IOException e) {
+				// TODO Auto-generated catch blockan
+				e.printStackTrace();
+			} catch (XmlPullParserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public class MAdminLoginThread implements Runnable {
 		private String username_t = "";
 		private String pwd_t = "";

@@ -131,9 +131,9 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 		iv_switch_open_speaker = (ImageView) getView().findViewById(R.id.iv_switch_open_speaker);
 		iv_switch_close_speaker = (ImageView) getView().findViewById(R.id.iv_switch_close_speaker);
 		logoutBtn = (Button) getView().findViewById(R.id.btn_logout);
-		if(!TextUtils.isEmpty(EMChatManager.getInstance().getCurrentUser())){
-			logoutBtn.setText(getString(R.string.button_logout) + "(" + EMChatManager.getInstance().getCurrentUser() + ")");
-		}
+//		if(!TextUtils.isEmpty(EMChatManager.getInstance().getCurrentUser())){
+			logoutBtn.setText(getString(R.string.button_logout));
+//		}
 
 		textview1 = (TextView) getView().findViewById(R.id.textview1);
 		textview2 = (TextView) getView().findViewById(R.id.textview2);
@@ -267,7 +267,7 @@ public class SettingsFragment extends Fragment implements OnClickListener {
 			CydlApplication.getInstance().logout();
 			// 重新显示登陆页面
 			((MainActivity) getActivity()).finish();
-			startActivity(new Intent(getActivity(), LoginActivity.class));
+			startActivity(new Intent(getActivity(), InitActivity.class));
 			break;
 		case R.id.ll_black_list:
 			startActivity(new Intent(getActivity(), BlacklistActivity.class));

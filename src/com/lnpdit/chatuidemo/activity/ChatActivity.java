@@ -373,7 +373,6 @@ public class ChatActivity extends BaseActivity implements OnClickListener {
 			// 显示发送要转发的消息
 			forwardMessage(forward_msg_id);
 		}
-
 	}
 
 	/**
@@ -396,7 +395,6 @@ public class ChatActivity extends BaseActivity implements OnClickListener {
 			if (filePath != null) {
 				File file = new File(filePath);
 				if (!file.exists()) {
-					// 不存在大图发送缩略图
 					filePath = ImageUtils.getThumbnailImagePath(filePath);
 				}
 				sendPicture(filePath);

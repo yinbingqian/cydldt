@@ -22,6 +22,7 @@ public class MessengerService {
 //	public static final String IP = "http://200.20.30.145:82";
 //	public static final String IP = "http://200.20.30.201:82";
 //	public static final String IP = "http://200.20.31.220:82";
+//	public static final String IP = "http://200.20.31.35:82";//wz地址
 	public static final String IP = "http://211.140.246.117";//服务器地址
 //	public static final String IP = "http://219.148.199.62/dianli";
 	public static final String URL = IP + "/phoneinvoke.asmx?wsdl";
@@ -63,6 +64,10 @@ public class MessengerService {
 	public static final String METHOD_GetTikuRandomById = "GetTikuRandomById";
 	public static final String METHOD_GetTikuColumn = "GetTikuColumn";
 	public static final String METHOD_GetNewsByDepartmentId = "GetNewsByDepartmentId";
+	public static final String METHOD_UserRegister = "UserRegister";
+	public static final String METHOD_UserLoginByIMSI = "UserLoginByIMSI";
+	public static final String METHOD_GetReaderArray = "GetReaderArray";
+	public static final String METHOD_GetReaderItems = "GetReaderItems";
 
 	public static final String WEEK = "week";
 

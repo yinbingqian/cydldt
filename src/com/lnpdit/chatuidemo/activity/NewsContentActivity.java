@@ -10,8 +10,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.lnpdit.chatuidemo.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +23,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class NewsContentActivity extends Activity{
+import com.lnpdit.chatuidemo.R;
+
+public class NewsContentActivity extends Activity {
 
 	Context context;
 
@@ -45,21 +45,21 @@ public class NewsContentActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news_display);
-		
+
 		Intent intent = this.getIntent();
 		id = intent.getStringExtra("id");
 		title = intent.getStringExtra("title");
 		time = intent.getStringExtra("time");
-		
+
 		viewInit();
 		mGetNewsData content_runnable = new mGetNewsData();
 		Thread thread = new Thread(content_runnable);
 		thread.start();
 	}
-	
+
 	private void viewInit() {
 		return_bt = (Button) this.findViewById(R.id.return_bt);
-//		progressbar = (ProgressBar) this.findViewById(R.id.progressbar);
+		// progressbar = (ProgressBar) this.findViewById(R.id.progressbar);
 		title_tv = (TextView) this.findViewById(R.id.content_title_tv);
 		time_tv = (TextView) this.findViewById(R.id.a_time);
 		webview = (WebView) this.findViewById(R.id.content_web);
@@ -81,8 +81,8 @@ public class NewsContentActivity extends Activity{
 		@Override
 		public void handleMessage(Message msg) {
 			try {
-//				progressbar.setVisibility(8);
-				
+				// progressbar.setVisibility(8);
+
 				webview.getSettings().setSupportZoom(true);
 				webview.clearCache(true);
 				webview.getSettings().setDefaultTextEncodingName("utf-8");
@@ -90,8 +90,8 @@ public class NewsContentActivity extends Activity{
 						LayoutAlgorithm.SINGLE_COLUMN);
 				webview.loadDataWithBaseURL(null, msg.obj.toString(),
 						"text/html", "utf-8", null);
-//				webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//				webview.setBackgroundColor(0);
+				// webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+				// webview.setBackgroundColor(0);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -137,5 +137,5 @@ public class NewsContentActivity extends Activity{
 		}
 
 	}
-	
+
 }

@@ -12,8 +12,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.lnpdit.chatuidemo.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +29,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.lnpdit.chatuidemo.R;
 
 public class PeixunQuestionActivity extends Activity {
 

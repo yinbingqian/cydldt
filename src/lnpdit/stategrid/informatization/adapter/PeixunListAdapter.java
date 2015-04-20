@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.lnpdit.chatuidemo.R;
+import com.lnpdit.chatuidemo.activity.PeixunDataActivity;
 import com.lnpdit.chatuidemo.activity.PeixunQuestionActivity;
 
 import android.content.Context;
@@ -128,6 +129,7 @@ public class PeixunListAdapter extends BaseAdapter {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			if(remark1.equals("1")){
 			Intent intent = new Intent();
 			intent.setClass(mContext, PeixunQuestionActivity.class);
 			intent.putExtra("id", id);
@@ -138,6 +140,18 @@ public class PeixunListAdapter extends BaseAdapter {
 			intent.putExtra("remark3", remark3);
 			intent.putExtra("crtime", crtime);
 			mContext.startActivity(intent);
+			}else if(remark1.equals("2")){
+				Intent intent = new Intent();
+				intent.setClass(mContext, PeixunDataActivity.class);
+				intent.putExtra("id", id);
+				intent.putExtra("deptid", deptid);
+				intent.putExtra("title", title);
+				intent.putExtra("remark1", remark1);
+				intent.putExtra("remark2", remark2);
+				intent.putExtra("remark3", remark3);
+				intent.putExtra("crtime", crtime);
+				mContext.startActivity(intent);
+			}
 		}
 	}
 }
