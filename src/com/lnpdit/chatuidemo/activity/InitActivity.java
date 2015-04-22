@@ -262,7 +262,7 @@ public class InitActivity extends BaseActivity {
 							if (!InitActivity.this.isFinishing())
 								pd.dismiss();
 							// 主平台鉴权
-							MAdminLoginThread loginrunnable = new MAdminLoginThread();
+							MAdminIMSILoginThread loginrunnable = new MAdminIMSILoginThread();
 							loginrunnable.setLoginInfo(username, password);
 							Thread adminthread = new Thread(loginrunnable);
 							adminthread.start();
@@ -367,9 +367,9 @@ public class InitActivity extends BaseActivity {
 //				finish();
 //			}
 			
-			HashMap<String, String> login_hash = (HashMap<String, String>) msg.obj;
 			switch (msg.arg1) {
 			case 0:// 普通用户
+				HashMap<String, String> login_hash = (HashMap<String, String>) msg.obj;
 				String Id = login_hash.get("Id");
 				String Sim = login_hash.get("Sim");
 				String Name = login_hash.get("Name");
@@ -446,6 +446,9 @@ public class InitActivity extends BaseActivity {
 					finish();
 				}
 				break;
+			case 1:
+				Toast.makeText(context, "IMSI号码不符，请联系系统管理员", Toast.LENGTH_SHORT).show();
+				break;
 			default:
 				break;
 			}
@@ -488,10 +491,112 @@ public class InitActivity extends BaseActivity {
 				ht.call(soapaction, envelope);
 				SoapObject siminfo = (SoapObject) envelope.bodyIn;
 
-				String res = siminfo.getProperty("UserRegisterResult").toString();
+				SoapObject soapchilds1 = (SoapObject) siminfo.getProperty(0);
+				SoapObject soapchilds2 = (SoapObject) soapchilds1
+						.getProperty(1);
+				SoapObject soapchilds3 = (SoapObject) soapchilds2
+						.getProperty(0);
+				SoapObject soapchilds = (SoapObject) soapchilds3.getProperty(0);
+
+				String Id = soapchilds.getProperty("Id").toString();
+				if (Id.startsWith("anyType")) {
+					Id = "";
+				}
+				String Sim = soapchilds.getProperty("Sim").toString();
+				if (Sim.startsWith("anyType")) {
+					Sim = "";
+				}
+				String Name = soapchilds.getProperty("Name").toString();
+				if (Name.startsWith("anyType")) {
+					Name = "";
+				}
+				String RealName = soapchilds.getProperty("RealName").toString();
+				if (RealName.startsWith("anyType")) {
+					RealName = "";
+				}
+				CydlApplication.currentUserNick = RealName;
+				String Sex = soapchilds.getProperty("Sex").toString();
+				if (Sex.startsWith("anyType")) {
+					Sex = "";
+				}
+				String HeadPic = soapchilds.getProperty("HeadPic").toString();
+				if (HeadPic.startsWith("anyType")) {
+					HeadPic = "";
+				}
+				String Islock = soapchilds.getProperty("Islock").toString();
+				if (Islock.startsWith("anyType")) {
+					Islock = "";
+				}
+				String information = soapchilds.getProperty("information")
+						.toString();
+				if (information.startsWith("anyType")) {
+					information = "";
+				}
+				String contact = soapchilds.getProperty("contact").toString();
+				if (contact.startsWith("anyType")) {
+					contact = "";
+				}
+				String meeting = soapchilds.getProperty("meeting").toString();
+				if (meeting.startsWith("anyType")) {
+					meeting = "";
+				}
+				String message = soapchilds.getProperty("message").toString();
+				if (message.startsWith("anyType")) {
+					message = "";
+				}
+				String location = soapchilds.getProperty("location").toString();
+				if (location.startsWith("anyType")) {
+					location = "";
+				}
+				String mic = soapchilds.getProperty("mic").toString();
+				if (mic.startsWith("anyType")) {
+					mic = "";
+				}
+				String mail = soapchilds.getProperty("mail").toString();
+				if (mail.startsWith("anyType")) {
+					mail = "";
+				}
+				String control = soapchilds.getProperty("control").toString();
+				if (control.startsWith("anyType")) {
+					control = "";
+				}
+				String WeatherSender = soapchilds.getProperty("WeatherSender")
+						.toString();
+				if (WeatherSender.startsWith("anyType")) {
+					WeatherSender = "";
+				}
+				String AdrId = soapchilds.getProperty("KqId").toString();
+				if (AdrId.startsWith("anyType")) {
+					AdrId = "";
+				}
+				String DeptId = soapchilds.getProperty("DeptId").toString();
+				if (DeptId.startsWith("anyType")) {
+					DeptId = "";
+				}
+
+				HashMap<String, String> userdata = new HashMap<String, String>();
+				userdata.put("Id", Id);
+				userdata.put("Sim", Sim);
+				userdata.put("Name", Name);
+				userdata.put("RealName", RealName);
+				userdata.put("Sex", Sex);
+				userdata.put("HeadPic", HeadPic);
+				userdata.put("Islock", Islock);
+				userdata.put("information", information);
+				userdata.put("contact", contact);
+				userdata.put("meeting", meeting);
+				userdata.put("message", message);
+				userdata.put("location", location);
+				userdata.put("mic", mic);
+				userdata.put("mail", mail);
+				userdata.put("control", control);
+				userdata.put("WeatherSender", WeatherSender);
+				userdata.put("AdrId", AdrId);
+				userdata.put("DeptId", DeptId);
+
 				Message msg = new Message();
 				msg.arg1 = 0;
-				msg.obj = res;
+				msg.obj = userdata;
 				mLoginInfoNomatch_handler.sendMessage(msg);
 			} catch (IOException e) {
 				// TODO Auto-generated catch blockan
@@ -499,6 +604,11 @@ public class InitActivity extends BaseActivity {
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (Exception e){
+				e.printStackTrace();
+				Message msg = new Message();
+				msg.arg1 = 1;
+				mLoginInfoNomatch_handler.sendMessage(msg);
 			}
 		}
 	}
@@ -652,6 +762,12 @@ public class InitActivity extends BaseActivity {
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (Exception e){
+				e.printStackTrace();
+				Message msg = new Message();
+				msg.arg1 = 0;
+//				msg.obj = userdata;
+				mLoginInfoNomatch_handler.sendMessage(msg);
 			}
 		}
 	}
